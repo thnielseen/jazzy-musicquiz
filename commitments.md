@@ -24,27 +24,32 @@ Maria Larsson Bovin,
 Jenni Pulli, 
 Jenny Waller
 
-## Mötesföhållanden
-Hur bokas möten? 
-Vart har vi möten?
-Rollfördelning?
-Kamera på/av?
-Möteskanal? 
-
 ## Ambitionsnivå
 vad är ambitionsnivån?
 vad är kunskapsnivåerna sedan innan?
 vad är kul? vad är tråkigt?
+Övriga önskemål? 
+
+## Mötesföhållanden
+Hur bokas möten? 
+Vart har vi möten?
+Hur ofta ska vi ha möten? 
+Rollfördelning under möten?
+Kamera på/av?
+Möteskanal? 
 
 ## Arbetsförhållanden
 Dagar och tider vi jobbat
+Hur arbetar vi under jul, nyår och mellandagar? 
 
 ## Arbetsmetoder
 Hantering av att göra-listan/backlogen
-Nilken linting- och prettier-konfiguration kör vi?
+Vilken linting- och prettier-konfiguration kör vi?
+Har alla Node.js installerat? Med LTS (long time support)
+
 Hur jobbar vi med kod?
 Hur ofta commitar vi och hur skriver vi meddelanden?
-Bransches strategi?
+Branches strategi?
 Hur gör vi pull request?
 Hur, när och vem gör code reviews/merges?
 
