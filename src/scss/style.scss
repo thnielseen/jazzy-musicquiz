@@ -2,22 +2,22 @@
 //@charset 'utf-8';
 
 // Vendors
-//@forward './vendors';
+//@use './vendors';
 
 // Utilities
-@forward './utilities';
+@use './utilities';
 
 // Theme
-@forward './themes';
+@use './themes';
 
 // Base
-@forward './base';
+@use './base';
 
 // Components
-@forward './components';
+@use './components';
 
 // Layouts
-@forward './layouts';
+@use './layouts';
 
 // Pages
-@forward './pages';
+@use './pages';
