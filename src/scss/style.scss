@@ -1,16 +1,23 @@
-@use './utilities';
+//*** Styles index ***//
+@charset 'utf-8';
+
+// Vendors
+@forward './vendors';
+
+// Utilities
+@forward './utilities';
 
 // Theme
-@use './themes';
+@forward './theme';
 
 // Base
-@use './base';
+@forward './base';
 
 // Components
-@use './components';
+@forward './components';
 
 // Layouts
-@use './layouts';
+@forward './layouts';
 
 // Pages
-@use './pages';
+@forward './pages';
