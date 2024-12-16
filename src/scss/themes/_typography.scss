@@ -1,0 +1,19 @@
+//*** Themes: Typography styles ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+// Module Name
+$_module-name: 'Typography styles';
+
+/* ### #{$_module-name} START */
+
+:root {
+  // typography custom properties
+  // ...
+}
+
+/* ### #{$_module-name} END
+/* ------------------------------------------------------------ */

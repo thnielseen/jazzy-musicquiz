@@ -1,0 +1,27 @@
+//**** Layouts Index ****//
+
+// 1. Container
+// Main content wrapper and width constraints
+@forward './container';
+
+// 2. Header
+// Site header and navigation area
+@forward './header';
+
+// 3. Sidebar
+// Side content and navigation
+@forward './sidebar';
+
+// 4. Footer
+// Site footer and bottom content
+@forward './footer';
+
+// Layout Name
+// @forward '';
+
+
+
+// Additional Layout Partials
+// @forward './grid-areas';
+// @forward './sections';
+// @forward './flex-layouts';

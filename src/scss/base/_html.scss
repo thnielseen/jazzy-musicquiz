@@ -1,0 +1,18 @@
+//*** Base: Html element styles ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+// Module Name
+$_module-name: 'Html element styles';
+
+/* ### #{$_module-name} START */
+
+html {
+  // ...
+}
+
+/* ### #{$_module-name} END
+/* ------------------------------------------------------------ */

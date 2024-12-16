@@ -1,0 +1,26 @@
+//*** Base: Form elements styling ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+// Module Name
+$_module-name: 'Form elements styling';
+
+/* ### #{$_module-name} START */
+
+form {
+  // ...
+}
+
+input {
+  // ...
+}
+
+button {
+  // ...
+}
+
+/* ### #{$_module-name} END
+/* ------------------------------------------------------------ */

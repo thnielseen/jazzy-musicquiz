@@ -1,0 +1,27 @@
+//*** Base: Body elemen styles ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+// Module Name
+$_module-name: 'Body element styles';
+
+/* ### #{$_module-name} START */
+
+body {
+  // ...
+
+  // media query mixin example use
+  // @include mx.for-breakpoint('mobile-only') {
+  //  // ...
+  // }
+
+  // @include mx.for-breakpoint('desktop-only') {
+  //  // ...
+  // }
+}
+
+/* ### #{$_module-name} END
+/* ------------------------------------------------------------ */

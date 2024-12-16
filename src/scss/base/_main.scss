@@ -1,0 +1,18 @@
+//*** Base: Main element styles ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+// Module Name
+$_module-name: 'Main element styles';
+
+/* ### #{$_module-name} START */
+
+main {
+  // ...
+}
+
+/* ### #{$_module-name} END
+/* ------------------------------------------------------------ */
