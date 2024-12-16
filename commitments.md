@@ -34,10 +34,12 @@ Kravlistan ska prioriteras och extra saker görs i mån av tid eller efter inlä
 Möten sker via Teams. Agenda ska finnas i mötesbokningen och inbjudan ska ske minst en dag innan. 
 Gruppen ska ha stående möten som planeras vecka för vecka. Innan vi avslutar ett möte skriver vi en sammanfattning av möten ihop. 
 Gruppen ska ha standups varje morgon via Teams chat. Trello uppdateras efter dessa standups. Varje person svarar på fårgorna i standupsanteckningar som ligger i mappen i projektet. Möte bokas vid behov för mer diskusion. Följande frågor ska besvaras under varje standups. 
+```
   Vad har du åstadkommit sedan igår?
   Vad kommer du att fokusera på idag?
   Har du några blockeringar?
   Behöver du hjälp med något?
+```
 Kamera ska vara på under möten om inte speciella förhållande förhindrar det. 
 Vi ska ha öppet i tak. Alla får lov att säga vad man tycker och tänker men på ett snyggt sätt. 
 
@@ -51,6 +53,7 @@ Gruppen ska visa Github-respekt och ha tydlig kommunikation för att minimera ri
 Vi använder ESLint, Prettier, Vite, Typescript, npm, Sass/scss.
 Kodbeskrivning ska finnas för varje funktion. Ska vara i js-docs format. https://jsdoc.app/about-getting-started
 Konsekvent namngivning genom BEM. https://getbem.com/naming/ & https://www.elpassion.com/blog/5-reasons-to-use-bem-a
+```
 Filstruktur;
 ├── assets/                 # Original assets
 ├── public/                 # Static assets
@@ -60,9 +63,11 @@ Filstruktur;
 │   └── scss/               # SCSS architecture
 ├── scripts/                # Build scripts
 └── index.html              # Entry HTML file
+```
 Vi ska arbetar i moduler.
 Vi ändrar inte i andras kod utan att diskutera detta på ett möte först. Om man går igenom någons kod har har synpunkter trycker man på det blå pluset och lägger en kommentar och gå igenom det på nästa möte.
 Vi följer GitFlow och committar efter varje avgörande ändring. Commitmeddelande ska se ut på följande sätt;  
+```
   Add: for new features or files
   Fix: for bug fixes
   Update: for changes to existing features
@@ -70,6 +75,7 @@ Vi följer GitFlow och committar efter varje avgörande ändring. Commitmeddelan
   Refactor: for code restructuring
   Doc: for documentation changes
   Test: for adding/updating tests
+```
 Vi ska ha en branch för varje feature och vi delar även upp ansvar per feature. Var sin huvudbranch där man kan koppla sina branches till. 
 Code review och merge görs ihop eller efter tydliga instrukter. 
 Pull request gör vid behov.
