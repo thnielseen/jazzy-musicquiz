@@ -5,11 +5,6 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-// Module Name
-$_module-name: 'Typography styles';
-
-/* ### #{$_module-name} START */
-
 :root {
   // color custom properties
   // ...
@@ -19,7 +14,3 @@ $_module-name: 'Typography styles';
   // changes in color custom properties for dark theme
   // ...
 }
-
-
-/* ### #{$_module-name} END
-/* ------------------------------------------------------------ */
