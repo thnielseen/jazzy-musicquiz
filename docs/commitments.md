@@ -115,3 +115,4 @@ Angelica Nylander
 Egil Eskilsson
 Therese Nielsen
 Elin Nilsson
+Frida Nordenlöw
