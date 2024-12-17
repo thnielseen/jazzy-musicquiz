@@ -76,7 +76,7 @@ Vi följer GitFlow och committar efter varje avgörande ändring. Commitmeddelan
   Doc: for documentation changes
   Test: for adding/updating tests
 ```
-Vi ska ha en branch för varje feature och vi delar även upp ansvar per feature. Var sin huvudbranch där man kan koppla sina branches till. 
+Vi har en dev bransch och alla arbetar emot den och inte main branschen. Vi har sedan underbransh.  
 Code review och merge görs ihop eller efter tydliga instrukter. 
 Pull request gör vid behov.
 Vi kollar koden tillsammans innan vi mergar feature till main samt hanterar eventuella konflikter ihop.
@@ -111,4 +111,4 @@ Vid behov blandar vi in Maria och Jenni.
 Uppdateringar i kontraktet ska ske i samförstånd. 
 
 ## Underskrivet av
-
+Angelica Nylander
