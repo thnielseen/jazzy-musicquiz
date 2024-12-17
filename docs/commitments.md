@@ -112,3 +112,4 @@ Uppdateringar i kontraktet ska ske i samförstånd.
 
 ## Underskrivet av
 Angelica Nylander
+Egil Eskilsson
