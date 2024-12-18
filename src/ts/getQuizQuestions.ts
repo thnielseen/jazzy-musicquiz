@@ -1,11 +1,11 @@
 // Interface representing an answer object
-interface IAnswer {
+export interface IAnswer {
   answer: string;       // The text of the answer
   isCorrect: boolean;   // Indicates if the answer is correct
 }
 
 // Interface representing a question object
-interface IQuestion {
+export interface IQuestion {
   question: string;             // The text of the question
   answers: IAnswer[];           // An array of possible answers
   correctAnswer: string;        // The correct answer as a string
@@ -15,7 +15,7 @@ interface IQuestion {
 }
 
 // Class representing an answer
-class Answer implements IAnswer {
+export class Answer implements IAnswer {
   answer: string;    // The text of the answer
   isCorrect: boolean; // Indicates if the answer is correct
 
@@ -26,7 +26,7 @@ class Answer implements IAnswer {
 }
 
 // Class representing a question
-class Question implements IQuestion {
+ export class Question implements IQuestion {
   question: string;                // The text of the question
   answers: Answer[];               // An array of Answer objects
   correctAnswer: string;           // The correct answer as a string
