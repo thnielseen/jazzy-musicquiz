@@ -6,6 +6,8 @@
 @use '../abstracts/mixins' as mx;
 
 :root {
+
+  //---------- Theme Colors ----------//
   --background-color: #FFFBE7;
   --background-accent: #FFFFDB;
 
@@ -17,6 +19,7 @@
   --button-background-hover: #A31860;
   --button-text: #FAFAFA;
 
+  //---------- INFO Colors ----------//
   --valid-border: #4CAF50;
   --valid-background: #E6F3E6;
   --valid-text: #2E7C32;
@@ -31,6 +34,8 @@
 }
 
 .dark-theme {
+
+  //---------- Theme Colors ----------//
   --background-color: #002C37;
   --background-accent: #115F6B;
 
@@ -42,6 +47,8 @@
   --button-background-hover: #C83A84;
   --button-text: #FAFAFA;
 
+
+  //---------- INFO Colors ----------//
   --valid-border: #2ADE8A;
   --valid-background: #063A20;
   --valid-text: #29D685;
