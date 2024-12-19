@@ -1,0 +1,33 @@
+//*** Pages: Game ***//
+//* Description of the module's purpose
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as fn;
+@use '../abstracts/mixins' as mx;
+
+
+.game{
+    &__title{
+
+    }
+    &__content{
+        margin: 0 auto;
+        max-width: calc(var(--fs-300) * 4 + 70ch);
+        padding: calc(var(--fs-300) * 2);
+        background-color: var(--background-accent);
+        color: var(--text-color);
+        border: 2px solid var(--text-color);
+        border-radius: calc(var(--fs-300) * .75);
+    
+        @include mx.for-breakpoint('tablet-up') {
+          padding: calc(var(--fs-300) * 4);
+        }
+    }
+    // Testar ta bort blå punkt på knapp
+    input[type="radio"]{
+        visibility: hidden;
+        height: 0;
+        width: 0;
+    }
+ 
+}
