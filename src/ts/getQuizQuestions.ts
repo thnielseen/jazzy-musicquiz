@@ -4,8 +4,8 @@ export interface IAnswer {
   isCorrect: boolean;   // Indicates if the answer is correct
 }
 
-// Interface representing a question object
-export interface IQuestion {
+// Interface representing a QuizQuestion object
+export interface IQuizQuestion {
   question: string;             // The text of the question
   answers: IAnswer[];           // An array of possible answers
   correctAnswer: string;        // The correct answer as a string
@@ -25,8 +25,8 @@ export class Answer implements IAnswer {
   }
 }
 
-// Class representing a question
- export class Question implements IQuestion {
+// Class representing a QuizQuestion
+ export class QuizQuestion implements IQuizQuestion {
   question: string;                // The text of the question
   answers: Answer[];               // An array of Answer objects
   correctAnswer: string;           // The correct answer as a string
@@ -36,12 +36,12 @@ export class Answer implements IAnswer {
   score: number;                   // The score awarded for the question
 
   /**
-   * Constructor for the Question class.
+   * Constructor for the QuizQuestion class.
    * @param question - The text of the question.
    * @param answers - An array of possible answers as strings.
    * @param correctAnswer - The correct answer as a string.
    * 
-   * The constructor initializes the question properties and converts the 
+   * The constructor initializes the QuizQuestion properties and converts the 
    * answers array into Answer objects. It also determines which answer is correct.
    */
   constructor(question: string, answers: string[], correctAnswer: string) {
@@ -68,14 +68,15 @@ export class Answer implements IAnswer {
   }
 
   /**
-   * Calculates the score for the question based on the user's performance.
-   * @returns The calculated score as a number.
+   * Calculates the score for the QuizQuestion based on the user's performance.
    * 
    * Scoring rules:
    * - 0 points if the user's answer is incorrect.
    * - 1 point if the time taken exceeds 60 seconds.
    * - 10 points if the user answers correctly within 10 seconds.
    * - For times between 10 and 60 seconds, the score decreases linearly from 10 to 1.
+   * 
+   * @returns {number} The calculated score.
    */
   calculateScore(): number {
     if (!this.isUserAnswerCorrect) {
@@ -104,8 +105,8 @@ export class Answer implements IAnswer {
     this.score = this.calculateScore(); // Calculate the score
   }
 }
-export const quizQuestions: Question[] = [
-  new Question(
+export const quizQuestions: QuizQuestion[] = [
+  new QuizQuestion(
     "Trying to keep up with you, And I don't know if I can do it, Oh no ....",
     [
       "You had too much",
@@ -116,7 +117,7 @@ export const quizQuestions: Question[] = [
     "I've said too much"
     
   ),
-  new Question(
+  new QuizQuestion(
     "Another turning point, a fork stuck in the road\nTime grabs you by the wrist, ..... ",
     [
       "Directs you down the road",
@@ -126,7 +127,7 @@ export const quizQuestions: Question[] = [
     ],
     "Directs you where to go"
   ),
-  new Question(
+  new QuizQuestion(
     "I'm wastin' my time, I got nothin' to do\nI'm hangin' around, ....",
     [
       "I'm waitin' for you",
@@ -136,7 +137,7 @@ export const quizQuestions: Question[] = [
     ],
     "I'm waitin' for you"
   ),
-  new Question(
+  new QuizQuestion(
     "I'll be your dream, I'll be your wish, I'll be your fantasy\nI'll be your hope, I'll be your love, ....",
     [
       "Be the guidance you'd seek",
@@ -146,7 +147,7 @@ export const quizQuestions: Question[] = [
     ],
     "Be everything that you need"
   ),
-  new Question(
+  new QuizQuestion(
     "You want what you can't have, ooh girl, that's too damn bad. Don't touch what you can't grab ....",
     [
       "End up with two backhands.",
@@ -156,7 +157,7 @@ export const quizQuestions: Question[] = [
     ],
     "End up with two backhands."
   ),
-  new Question(
+  new QuizQuestion(
     "When I see your face\nThere's not a ....\n'Cause you're amazing\nJust the way you are",
     [
       "thing that I could change",
@@ -167,7 +168,7 @@ export const quizQuestions: Question[] = [
     ],
     "thing that I would change"
   ),
-  new Question(
+  new QuizQuestion(
     "You think I'm pretty without any makeup on\nYou think I'm funny when I tell ....",
     [
       "the joke too long",
@@ -177,7 +178,7 @@ export const quizQuestions: Question[] = [
     ],
     "the punch line wrong"
   ),
-  new Question(
+  new QuizQuestion(
     "I guess I just lost my husband\nI don't know where he went\nSo I'm gonna ....",
     [
       "spend his money",
@@ -188,7 +189,7 @@ export const quizQuestions: Question[] = [
     ],
     "spend his money"
   ),
-  new Question(
+  new QuizQuestion(
     "Party rock is in the house tonight\nEverybody just have a good time (yeah)\nAnd we gon' make .....",
     [
       "you cruise around",
@@ -198,7 +199,7 @@ export const quizQuestions: Question[] = [
     ],
     "you lose your mind"
   ),
-  new Question(
+  new QuizQuestion(
     "My head's under water\nBut I'm breathing fine\nYou're crazy and I'm ...",
     [
       "out of my mind",
@@ -208,7 +209,7 @@ export const quizQuestions: Question[] = [
     ],
     "out of my mind"
   ),
-  new Question(
+  new QuizQuestion(
     "The best thing about bein' a woman\nIs the prerogative to have a little.... and",
     [
       "fun",
@@ -218,7 +219,7 @@ export const quizQuestions: Question[] = [
     ],
     "fun"
   ),
-  new Question(
+  new QuizQuestion(
     "A little bit of Monica in my life\nA little bit of Erica by my side\nA little bit of Rita's ....",
     [
       "all I need",
@@ -228,7 +229,7 @@ export const quizQuestions: Question[] = [
     ],
     "all I need"
   ),
-  new Question(
+  new QuizQuestion(
     "When the night has come\nAnd the land is dark\n... is the only light we'll see",
     [
       "And the stars",
@@ -238,7 +239,7 @@ export const quizQuestions: Question[] = [
     ],
     "And the moon"
   ),
-  new Question(
+  new QuizQuestion(
     "Yesterday, all my troubles seemed so far away\nNow they look as though ...\nOh, I believe in yesterday",
     [
       "they came to stay",
@@ -248,7 +249,7 @@ export const quizQuestions: Question[] = [
     ],
     "they're here to stay"
   ),
-    new Question(
+    new QuizQuestion(
       "I'm just a poor boy, ....\nBecause I'm easy come, easy go\nLittle high, little low",
       [
         "I need no sympathy",
@@ -258,7 +259,7 @@ export const quizQuestions: Question[] = [
       ],
       "I need no sympathy"
     ),
-    new Question(
+    new QuizQuestion(
       "When I find myself in times of trouble, Mother Mary comes to me\n.... let it be",
       [
         "whispers of tomorrow",
@@ -268,7 +269,7 @@ export const quizQuestions: Question[] = [
       ],
       "Speaking words of wisdom,"
     ),
-    new Question(
+    new QuizQuestion(
       "You may say I'm a dreamer\nBut I'm not the only one\nI hope someday ....\nAnd the world will be as one",
       [
         "you'll come home",
@@ -278,7 +279,7 @@ export const quizQuestions: Question[] = [
       ],
       "you'll join us"
     ),
-    new Question(
+    new QuizQuestion(
       "And if I only could\nI'd make a deal with God\nAnd I'd get Him ....",
       [
         "to swap our places",
@@ -288,7 +289,7 @@ export const quizQuestions: Question[] = [
       ],
       "to swap our places"
     ),
-    new Question(
+    new QuizQuestion(
       "There were sounds in my head, little voices whispering\nThat I should go and this should end....",
       [
         "All lies in the end",
@@ -298,7 +299,7 @@ export const quizQuestions: Question[] = [
       ],
       "Oh, and I found myself listening"
     ),
-    new Question(
+    new QuizQuestion(
       "Oh, thinkin' about all our younger years\nThere was only you and me",
       [
         "We thought forever was ours to keep",
@@ -309,7 +310,7 @@ export const quizQuestions: Question[] = [
       "We were young and wild and free"
     ),
     
-    new Question(
+    new QuizQuestion(
       "..., every step you take\nI'll be watchin' you",
       [
         "Every move you make",
@@ -320,7 +321,7 @@ export const quizQuestions: Question[] = [
       "Every move you make"
     ),
   
-    new Question(
+    new QuizQuestion(
       "I saw him dancing there by the record machine\nI knew he must have ...\nThe beat was going strong, playing my favorite song",
       [
         "standing so keen",
@@ -331,7 +332,7 @@ export const quizQuestions: Question[] = [
       "about seventeen"
     ),
   
-    new Question(
+    new QuizQuestion(
       "But I'm a creep, I'm a weirdo\nWhat the hell ...\nI don't belong here",
       [
         "am I doin' here?",
@@ -341,7 +342,7 @@ export const quizQuestions: Question[] = [
       ],
       "am I doin' here?"
     ),
-    new Question(
+    new QuizQuestion(
       "Get it right the first time\n...\nI can't afford to let it pass",
       [
         "Or it's not the same thing",
@@ -351,7 +352,7 @@ export const quizQuestions: Question[] = [
       ],
       "That's the main thing"
     ),
-    new Question(
+    new QuizQuestion(
       "It's nine o'clock on a Saturday\nThe regular crowd shuffles in\nThere's an old man sittin' next to me\n....",
       [
         "Makin' love to his gin and tonic",
@@ -361,7 +362,7 @@ export const quizQuestions: Question[] = [
       ],
       "Makin' love to his tonic and gin"
     ),  
-  new Question(
+  new QuizQuestion(
     "You'll know it's all because of you, we can do whatever we want to ....",
     [
       "You'll see there's nothing we can't do.",
@@ -371,7 +372,7 @@ export const quizQuestions: Question[] = [
     ],
     "Hey there Delilah, here's to you."
   ),
-  new Question(
+  new QuizQuestion(
     "I walked across an empty land\nI knew the pathway like the back of my hand\nI felt the earth ....",
     [
       "trembling at my feet",
@@ -381,7 +382,7 @@ export const quizQuestions: Question[] = [
     ],
     "beneath my feet"
   ),
-  new Question(
+  new QuizQuestion(
     "I don't want anybody else\nWhen I think about you, ....",
     [
       "my heart swells",
@@ -391,7 +392,7 @@ export const quizQuestions: Question[] = [
     ],
     "I touch myself"
   ),
-  new Question(
+  new QuizQuestion(
     "And when I touch you, I feel happy inside\nIt's such a feelin' that my love ....",
     [
       "I get high",
@@ -401,7 +402,7 @@ export const quizQuestions: Question[] = [
     ],
     "I can't hide"
   ),
-  new Question(
+  new QuizQuestion(
     "I got my first ....\nBought it at the five and dime",
     [
       "real clean swing",
@@ -411,7 +412,7 @@ export const quizQuestions: Question[] = [
     ],
     "real six string"
   ),
-  new Question(
+  new QuizQuestion(
     "Oh, I'm just a girl, my apologies\nWhat I've become is ....\nOh, I'm just a girl, lucky me",
     [
       "so troublesome",
@@ -421,7 +422,7 @@ export const quizQuestions: Question[] = [
     ],
     "so burdensome"
   ),
-  new Question(
+  new QuizQuestion(
     "Oh, it's a nice day to start again\nCome on, nice day for a ....",
     [
       "white wedding day",
@@ -431,7 +432,7 @@ export const quizQuestions: Question[] = [
     ],
     "white wedding day"
   ),
-  new Question(
+  new QuizQuestion(
     "How they dance in the courtyard, sweet summer sweat\nSome dance to remember, ....",
     [
       "some dance to forget",
@@ -441,6 +442,6 @@ export const quizQuestions: Question[] = [
     ],
     "some dance to forget"
   )
-  // More questions can be added here
+  // More QuizQuestions can be added here
 ];
 
