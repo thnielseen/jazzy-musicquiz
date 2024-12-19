@@ -6,11 +6,51 @@
 @use '../abstracts/mixins' as mx;
 
 :root {
-  // color custom properties
-  // ...
+  --background-color: #FFFBE7;
+  --background-accent: #FFFFDB;
+
+  --text-color: #115F6B;
+  --link-color: #A31860;
+  --link-color-hover: #C94A1C;
+
+  --button-background: #115F6B;
+  --button-background-hover: #A31860;
+  --button-text: #FAFAFA;
+
+  --valid-border: #4CAF50;
+  --valid-background: #E6F3E6;
+  --valid-text: #2E7C32;
+
+  --danger-border: #F44336;
+  --danger-background: #FFEBEE;
+  --danger-text: #CF2D2D;
+
+  --info-border: #007CF7;
+  --info-background: #E6F2FF;
+  --info-text: #0056B3;
 }
 
 .dark-theme {
-  // changes in color custom properties for dark theme
-  // ...
+  --background-color: #002C37;
+  --background-accent: #115F6B;
+
+  --text-color: #FFFFDB;
+  --link-color: #FF8FC9;
+  --link-color-hover: #F27300;
+
+  --button-background: #2E7C88;
+  --button-background-hover: #C83A84;
+  --button-text: #FAFAFA;
+
+  --valid-border: #2ADE8A;
+  --valid-background: #063A20;
+  --valid-text: #29D685;
+
+  --danger-border: #FF5649;
+  --danger-background: #4D0C0C;
+  --danger-text: #FF5649;
+
+  --info-border: #4DA6FF;
+  --info-background: #0C2C4D;
+  --info-text: #4DA6FF;
 }
