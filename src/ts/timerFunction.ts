@@ -4,6 +4,7 @@
  X Skapa en funtkion som nollställer timern om starta spel knappen trycks en gång till.
  * Skapa en funktion för att stoppa timern med hjälp av counter funktionen.
  X Skapa en funktion som när timern stoppas så lagrar den till det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet. 
+ * Skapa ett klickevent på starta spelknappen som triggar ovan funktioner. 
  */
 
 export class Timer {
@@ -37,7 +38,7 @@ export class Timer {
         }, 1000); // Uppdatera varje sekund
     }
 
-    
+
     stop() {
         if (this.intervalId !== null) {
             clearInterval(this.intervalId);
@@ -72,7 +73,7 @@ export class Timer {
 
         savedTimes.push(this.seconds);
 
-        // Om vi har fler än 10 objekt, ta bort det äldsta (index 0)
+        // Om det finns fler än 10 objekt i local storage, ta bort det äldsta (index 0)
         if (savedTimes.length > 10) {
             savedTimes.shift();
         }
@@ -96,10 +97,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // En timer som räknar upp till 10 bara först test. Ska ändras så att counter stoppar timern!!!!
     const myTimer = new Timer(10, timeDisplay);
+
+     // Funktion som körs när spelet startar (Lägg till fler funktioner!!!!)
+     function startGame() {
+        console.log('Spelet startas!');
+        myTimer.start();  // Starta timern
+    }
     
-    // En eventlistener på knappen Starta spelet för att starta timern när knappen klickas
-    startButton.addEventListener('click', () => {
-        //console.log('Start button clicked'); //console.log för testning
-        myTimer.start();
-    });
+    // Eventlyssnare fpå knappen som startar spelet och triggar de andra funktionerna här ovan. 
+    startButton.addEventListener('click', startGame);
 });
