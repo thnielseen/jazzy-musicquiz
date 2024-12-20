@@ -3,7 +3,7 @@
  X Skapa en funktion för att starta timern med hjälp av starta spel knappen.
  X Skapa en funtkion som nollställer timern om starta spel knappen trycks en gång till.
  * Skapa funktionen counter och koppla denna till stop funktionen här.
- * Ändra timern nedan så att den stoppar efter 30 minter om inte ovan funktion utlöst ett stopp.  
+ X Skapa en funktion som stoppar timern efter 30 minter om inte ovan funktion utlöst ett stopp.  
  X Skapa en funktion som när timern stoppas så lagrar den det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet.
 
  */
@@ -34,6 +34,12 @@ export class Timer {
 
             if (this.seconds >= this.target) {
                 //console.log('Target reached! Timer stopped.'); //console.log för testning
+                this.stop();
+            }
+
+            // Stanna timern efter 30 minuter om inget stop utlöses
+            if (this.seconds >= 1800) { // 30 minuter = 1800 sekunder
+                console.log('30 minuter har passerat, timern stängs av.');
                 this.stop();
             }
         }, 1000); // Uppdatera varje sekund
