@@ -4,21 +4,52 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-$_module-name: 'Page Header';
-
-/* ### #{$_module-name} START */
 
 .header {
+  width: 100%;
 
-  &__brand {
-    // ...
+  &__content {
+    padding-block: calc(var(--fs-300) * 1.25);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: calc(var(--fs-300) * 2.5);
+
+    color: var(--text-color);
+
+    @include mx.for-breakpoint('tablet-up') {
+      row-gap: 0;
+    }
   }
 
-  &__nav {
-    // ...
+  &__brand {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__brand-image {
+    display: block;
+    width: calc(var(--fs-400) * 9);
+    height: auto;
+  }
+
+  &__score, &__timer {
+    width: 50%;
+    display: inline-block;
+    font-size: var(--fs-500);
+    font-weight: 700;
+  }
+
+  &__score {
+    order: 0;
+    text-align: left;
+  }
+
+  &__timer {
+    order: 1;
+    text-align: right;
   }
 
 }
-
-/* ### #{$_module-name} END
-/* ------------------------------------------------------------ */
