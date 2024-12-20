@@ -1,7 +1,12 @@
 import '../scss/style.scss'
 
 import { quizQuestions } from './getQuizQuestions'
-import { setupStartButton } from './startButton'
+import { setupStartButton } from './startButton';
 
 console.log(quizQuestions)
-console.log(setupStartButton)
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    // Koppla startknapp och display till setupStartButton
+    setupStartButton('start-game-button', 'timeDisplay');
+});
