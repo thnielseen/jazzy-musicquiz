@@ -9,15 +9,14 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
         return;
     }
 
-    // Skapa en Timer-objekt med en måltid på 10 sekunder för testning
+    startButton.addEventListener('click', () => {
+        startGame(timeDisplay);
+    });
+}
+
+function startGame(timeDisplay: HTMLElement) {
     const myTimer = new Timer(10, timeDisplay);
 
-    // Funktioner som körs när spelet startar
-    function startGame() {
-        console.log('Spelet startas!');
-        myTimer.start();  // Starta timern
-    }
-
-    // Eventlyssnare på knappen
-    startButton.addEventListener('click', startGame);
+    console.log('Spelet startar!');
+    myTimer.start();  // Starta timern
 }
