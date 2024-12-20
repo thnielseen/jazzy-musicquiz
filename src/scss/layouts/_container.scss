@@ -20,7 +20,7 @@ $_module-name: 'Container';
   &--boxed, &--narrow {
     @extend .container;
     margin-inline: auto;
-    padding-inline: min(3.125%, .75rem);
+    padding-inline: max(3.125%, .75rem);
     
   }
 

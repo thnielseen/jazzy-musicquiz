@@ -1,12 +1,6 @@
-//*** Base: Body elemen styles ***//
+//*** Pages: Result ***//
 //* Description of the module's purpose
 
 @use '../abstracts/variables' as var;
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
-
-
-body {
-  background-color: var(--background-color);
-  font-family: var(--primary-ff);
-}

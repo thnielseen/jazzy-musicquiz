@@ -3,6 +3,10 @@
 @use '../variables' as var;
 @use '../functions' as fn;
 
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+
 
 //* Media Queries: Table of content
 // 1. Map with possible orientations
@@ -41,11 +45,11 @@ $valid-suffixes: ('-up', '-down', '-only', '');
 ///
 @function is-valid-suffix($breakpoint) {
   // Extract everything after the first `-`
-  $separator-index: str-index($breakpoint, '-');
+  $separator-index: string.index($breakpoint, '-');
   
   @if $separator-index {
-    $suffix: str-slice($breakpoint, $separator-index);
-    @return index($valid-suffixes, $suffix) != null;
+    $suffix: string.slice($breakpoint, $separator-index);
+    @return list.index($valid-suffixes, $suffix) != null;
   }
   
   // No suffix is also valid
@@ -57,7 +61,7 @@ $valid-suffixes: ('-up', '-down', '-only', '');
 /// @param {String} $current-key - The current breakpoint key to find the next key for
 /// @return {String|Null} The next breakpoint key, or null if no next key exists
 @function get-max-width-key($current-key) {
-  $keys: map-keys($breakpoints); // Extract all keys from the breakpoints map
+  $keys: map.keys(var.$breakpoints); // Extract all keys from the breakpoints map
   $found: false; // Flag to track when we find the current key
   
   @each $key in $keys {
@@ -81,7 +85,7 @@ $valid-suffixes: ('-up', '-down', '-only', '');
 /// @param {String} $substring - The substring to search for
 /// @return {Boolean} True if substring is found, false otherwise
 @function has-substring($string, $substring) {
-  @return str-index($string, $substring) != null;
+  @return string.index($string, $substring) != null;
 }
 
 //* 6.
@@ -90,11 +94,11 @@ $valid-suffixes: ('-up', '-down', '-only', '');
 /// @return {String} The extracted breakpoint key
 @function extract-breakpoint-key($breakpoint) {
   // Find position of the first `-` in the string
-  $separator-index: str-index($breakpoint, '-');
+  $separator-index: string.index($breakpoint, '-');
   
   @if $separator-index {
     // Extract everything before the `-`
-    @return str-slice($breakpoint, 1, $separator-index - 1);
+    @return string.slice($breakpoint, 1, $separator-index - 1);
   } @else {
     // No `-` in the string, return the whole string
     @return $breakpoint;
@@ -122,7 +126,7 @@ $valid-suffixes: ('-up', '-down', '-only', '');
   $min-width-key: extract-breakpoint-key($breakpoint);
   
   // Check if the breakpoint exists
-  @if not map-has-key($breakpoints, $min-width-key) {
+  @if not map.has-key(var.$breakpoints, $min-width-key) {
     @error "Unknown breakpoint: '#{$min-width-key}'. Valid breakpoints are: #{map-keys($breakpoints)}";
   }
   
@@ -139,8 +143,8 @@ $valid-suffixes: ('-up', '-down', '-only', '');
   }
 
   $max-width-key: get-max-width-key($min-width-key);
-  $min-width: map-get($breakpoints, $min-width-key);
-  $max-width: map-get($breakpoints, $max-width-key);
+  $min-width: map.get(var.$breakpoints, $min-width-key);
+  $max-width: map.get(var.$breakpoints, $max-width-key);
 
   @if $orientation {
     @if not index(var.$orientations, $orientation) {
