@@ -32,6 +32,7 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
             <li class="game__answer-button">
               <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
               <label for="answer${answerIndex}">${answer.answer}</label>
+              <span class="game__answer-icon"></span>
             </li>
           `
             )
