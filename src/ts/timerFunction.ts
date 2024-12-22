@@ -5,19 +5,18 @@
  * Skapa funktionen counter och koppla denna till stop funktionen här.
  X Skapa en funktion som stoppar timern efter 30 minter om inte ovan funktion utlöst ett stopp.  
  X Skapa en funktion som när timern stoppas så lagrar den det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet.
-
  */
+
+ import { questionCount } from './questionCounter';
 
 export class Timer {
     private seconds: number;
     private intervalId: number | null;
-    private target: number;
     private timeDisplay: HTMLElement;
 
-    constructor(target: number, timeDisplay: HTMLElement) {
+    constructor(timeDisplay: HTMLElement) {
         this.seconds = 0;
         this.intervalId = null;
-        this.target = target;
         this.timeDisplay = timeDisplay;
     }
 
@@ -32,9 +31,9 @@ export class Timer {
             this.seconds++;
             this.displayTime();
 
-            if (this.seconds >= this.target) {
-                //console.log('Target reached! Timer stopped.'); //console.log för testning
-                this.stop();
+            if (questionCount >= 10) {
+                console.log('Quizet är klart, timern stängs av.');
+                this.stop();  // Stoppa timern om quizet är över
             }
 
             // Stanna timern efter 30 minuter om inget stop utlöses
