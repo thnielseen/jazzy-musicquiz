@@ -1,4 +1,5 @@
 import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
+import { printQuestion } from "./printQuestion";
 
 /**
  * Retrieves the next question from the quiz and increases the question count.
@@ -13,10 +14,10 @@ import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
 // Counter for amount of questions shown
 let questionCount = 0; 
 
-function getNextQuestion(): QuizQuestion | null {
+export function getNextQuestion(): QuizQuestion | null {
     if (questionCount < 10) {
         const nextQuestion = quizQuestions[questionCount]; // Get question based on index in quizQuestions array
-        printQuestion(nextQuestion); // Name of Therese's print question function
+        printQuestion(nextQuestion, questionCount); // Name of Therese's print question function
         questionCount++; // Increase counter
         return nextQuestion;
     } else {
@@ -27,15 +28,3 @@ function getNextQuestion(): QuizQuestion | null {
     }
 }
 
-// Connect this function call to an event (button) somewhere else later
-getNextQuestion(); 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Remove later - simulated function that deals with printing the question (will be made by Therese)
-function printQuestion(question: QuizQuestion) {
-    console.log(`Fråga: ${question.question}`);
-    question.answers.forEach((answer, index) => {
-      console.log(`${index + 1}: ${answer.answer}`);
-    });
-  }
