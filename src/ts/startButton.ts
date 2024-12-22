@@ -1,4 +1,4 @@
-import { Timer } from './timerFunction';  // Importera Timer-klassen
+//import { Timer } from './timerFunction';  // Importera Timer-klassen
 
 export function setupStartButton(startButtonId: string, timeDisplayId: string) {
     const startButton = document.getElementById(startButtonId)!;
