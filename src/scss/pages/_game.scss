@@ -5,11 +5,25 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-
 .game{
     &__title{
-        /* Test */
-        color: red;
+        font-size: var(--fs-400);
+        margin-bottom: 1.25em;
+        color: var(--text-color);
+        text-align: center; 
+    }
+    &__question-title{
+        font-size: var(--fs-500);
+        font-weight: 700;
+        line-height: 1.25em;
+        margin-bottom: .75em;
+        color: var(--text-color);
+        text-align: center;
+    }
+    &__question{
+        font-size: var(--fs-300);
+        margin-bottom: 1.5em; 
+        line-height: 1.5em;
     }
     &__content{
         margin: 0 auto;
@@ -24,11 +38,49 @@
           padding: calc(var(--fs-300) * 4);
         }
     }
-    // Testar ta bort blå punkt på knapp
-    input[type="radio"]{
-        visibility: hidden;
-        height: 0;
-        width: 0;
+    &__buttons{
+        display: grid;
+        gap: calc(var(--fs-300));
+        grid-auto-rows: 1fr;
+
+        @include mx.for-breakpoint('tablet-up') {
+            grid-template-columns: 1fr 1fr;
+        };
+    }   
+    &__answer-button{
+        display: flex;
+        justify-content: center; 
+        font-family: inherit;
+        background-color: var(--button-background);
+        color: var(--button-text);
+        font-size: var(--fs-300); 
+        border: 0;
+        border-radius: calc(var(--fs-300) * .75);
+        padding: calc(var(--fs-300) * 1) calc(var(--fs-300) * 3);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        &:hover{
+        background-color: var(--button-background-hover);
+        }
+        // Hides radio button
+        input[type="radio"]{
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+        &:has(input:checked){
+            background: var(--button-background-hover);
+        }
     }
- 
+    &__answer-label{
+        display: flex;
+        align-items: center;
+    }
+    &__answer-icon .icon{
+        width: calc(var(--fs-300) * 2);
+        height: calc(var(--fs-300) * 2);
+        fill: var(--button-text);
+        margin-left: calc(var(--fs-300) * 0.5);
+    } 
 }
