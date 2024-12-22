@@ -11,7 +11,7 @@ import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
  */
 
 // Counter for amount of questions shown
-let questionCount = 0; 
+export let questionCount = 0; 
 
 function getNextQuestion(): QuizQuestion | null {
     if (questionCount < 10) {

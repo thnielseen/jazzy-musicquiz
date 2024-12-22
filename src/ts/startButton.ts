@@ -1,4 +1,4 @@
-//import { Timer } from './timerFunction';  // Importera Timer-klassen
+import { Timer } from './timerFunction';  // Importera Timer-klassen
 
 export function setupStartButton(startButtonId: string, timeDisplayId: string) {
     const startButton = document.getElementById(startButtonId)!;
@@ -11,7 +11,7 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
 
     // Eventlyssnare på startknappen som startar spelet och triggar timern, ..............
     startButton.addEventListener('click', () => {
-        const myTimer = new Timer(10, timeDisplay);  // Skapa Timer-objektet
+        const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
         console.log('Spelet startas!');
         myTimer.start();  // Starta timern
     });
