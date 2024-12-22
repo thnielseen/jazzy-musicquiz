@@ -2,7 +2,7 @@
  X Skapa en platshållare för timern i html
  X Skapa en funktion för att starta timern med hjälp av starta spel knappen.
  X Skapa en funtkion som nollställer timern om starta spel knappen trycks en gång till.
- * Skapa funktionen counter och koppla denna till stop funktionen här.
+ X Kkoppla denna funktion till stop funktionen.
  X Skapa en funktion som stoppar timern efter 30 minter om inte ovan funktion utlöst ett stopp.  
  X Skapa en funktion som när timern stoppas så lagrar den det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet.
  */
