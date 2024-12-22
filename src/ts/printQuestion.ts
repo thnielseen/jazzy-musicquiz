@@ -14,7 +14,7 @@ import { QuizQuestion } from './getQuizQuestions';
  * @param {number} questionIndex - The index of the current question, used for display and tracking.
  */
 export function printQuestion(question: QuizQuestion, questionIndex: number): void {
-  const gameContent = document.querySelector('.js-game-content');
+  const gameContent = document.querySelector('.js-question-card');
   const questionNumberElement = document.querySelector('.js-game-question-number');
 
   if (gameContent && questionNumberElement) {
@@ -23,14 +23,13 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
 
       // Render the question and answer options
       gameContent.innerHTML = `
-      <article class="game__question-card">
         <h3 class="game__question-title">Vilken sångtext saknas?</h3>
-        <h4 data-qid="${questionIndex}">${question.question}</h4>
-        <ul>
+        <h4 class="game__question" data-qid="${questionIndex}">${question.question}</h4>
+        <ul class="game__buttons">
           ${question.answers
             .map(
               (answer, answerIndex) => `
-            <li>
+            <li class="game__answer-button">
               <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
               <label for="answer${answerIndex}">${answer.answer}</label>
             </li>
@@ -38,7 +37,6 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
             )
             .join('')}
         </ul>
-      </article>
     `;
   } else {
       if (!gameContent) {
