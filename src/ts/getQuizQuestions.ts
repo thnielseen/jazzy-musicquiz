@@ -165,7 +165,6 @@ export const quizQuestions: QuizQuestion[] = [
     "When I see your face\nThere's not a ....\n'Cause you're amazing\nJust the way you are",
     [
       "thing that I could change",
-      "thing that I would change",
       "thing to replace",
       "thing I could say",
       "thing I could erase"
@@ -189,9 +188,8 @@ export const quizQuestions: QuizQuestion[] = [
       "drink my money",
       "drink his money",
       "spend my money",
-      "act all funny"
     ],
-    "spend his money"
+    "drink my money",
   ),
   new QuizQuestion(
     "Party rock is in the house tonight\nEverybody just have a good time (yeah)\nAnd we gon' make .....",
