@@ -1,3 +1,6 @@
+import { shuffleArray } from "./utilities";
+
+
 // Interface representing an answer object
 export interface IAnswer {
   answer: string;       // The text of the answer
@@ -13,6 +16,7 @@ export interface IQuizQuestion {
   timeTaken: number | null;     // The time taken by the user to answer (in seconds)
   isUserAnswerCorrect: boolean | null; // Indicates if the user's answer is correct
 }
+
 
 // Class representing an answer
 export class Answer implements IAnswer {
@@ -161,7 +165,6 @@ export const quizQuestions: QuizQuestion[] = [
     "When I see your face\nThere's not a ....\n'Cause you're amazing\nJust the way you are",
     [
       "thing that I could change",
-      "thing that I would change",
       "thing to replace",
       "thing I could say",
       "thing I could erase"
@@ -185,9 +188,8 @@ export const quizQuestions: QuizQuestion[] = [
       "drink my money",
       "drink his money",
       "spend my money",
-      "act all funny"
     ],
-    "spend his money"
+    "drink my money",
   ),
   new QuizQuestion(
     "Party rock is in the house tonight\nEverybody just have a good time (yeah)\nAnd we gon' make .....",
@@ -445,3 +447,20 @@ export const quizQuestions: QuizQuestion[] = [
   // More QuizQuestions can be added here
 ];
 
+/**
+ * Shuffles the order of the provided quiz questions
+ * and also shuffles the order of the answers for each question.
+ *
+ * @param {QuizQuestion[]} quizQuestions - The array of QuizQuestion objects to shuffle.
+ * @returns {QuizQuestion[]} - The shuffled array of QuizQuestions with shuffled answers.
+ */
+export const createGameQuestions = (quizQuestions: QuizQuestion[]): QuizQuestion[] => {
+  // Shuffle the quiz questions array
+  shuffleArray(quizQuestions).forEach((quizQuestion) => {
+    // Shuffle the answers within each question
+    quizQuestion.answers = shuffleArray(quizQuestion.answers);
+  });
+
+  // Return the shuffled array of questions
+  return quizQuestions;
+};

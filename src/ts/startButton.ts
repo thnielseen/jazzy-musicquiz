@@ -1,5 +1,7 @@
 import { Timer } from './timerFunction';  // Importera timer-funktionen
 import { getNextQuestion } from './questionCounter'; // Importerar räknaren för att stoppa spelomgången
+import { quizQuestions, createGameQuestions } from './getQuizQuestions';
+
 
 export function setupStartButton(startButtonId: string, timeDisplayId: string) {
     const startButton = document.getElementById(startButtonId)!;
@@ -14,6 +16,7 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
     startButton.addEventListener('click', () => {
         const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
         myTimer.start();  // Starta timern
+        createGameQuestions(quizQuestions); // Skapa frågor
         getNextQuestion(); // Startar counter funktion när spelet startar. 
         console.log('Spelet startas!');
     });
