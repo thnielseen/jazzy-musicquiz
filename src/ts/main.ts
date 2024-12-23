@@ -1,12 +1,10 @@
 import '../scss/style.scss'
 
-import { quizQuestions } from './getQuizQuestions'
+//import { quizQuestions } from './getQuizQuestions'
 import { setupStartButton } from './startButton';
 import { getNextQuestion } from './questionCounter';
 
-
-console.log(quizQuestions)
-
+//console.log(quizQuestions)
 
 window.addEventListener('DOMContentLoaded', () => {
     // Koppla startknapp och display till setupStartButton
@@ -14,7 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 //Temportary event listener for next question button and calling counterfunction for testing purposes (to be removed and added to start button)
-getNextQuestion();
 document.querySelector('.js-next-question')?.addEventListener('click', () => {
     getNextQuestion();
     console.log('Next question button clicked');
