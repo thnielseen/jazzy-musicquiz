@@ -6,6 +6,33 @@
 @use '../abstracts/mixins' as mx;
 
 :root {
-  // typography custom properties
-  // ...
+  --primary-ff: "Poppins";
+
+  --fs-100: clamp(0.64rem, 0.6152rem + 0.1104vw, 0.7035rem);
+  --fs-200: clamp(0.8rem, 0.7461rem + 0.2395vw, 0.9377rem);
+  --fs-300: clamp(1rem, 0.9022rem + 0.4348vw, 1.25rem);
+  --fs-400: clamp(1.25rem, 1.0871rem + 0.7239vw, 1.6663rem);
+  --fs-500: clamp(1.5625rem, 1.3048rem + 1.1454vw, 2.2211rem);
+  --fs-600: clamp(1.9531rem, 1.5588rem + 1.7524vw, 2.9607rem);
+  --fs-700: clamp(2.4414rem, 1.8524rem + 2.6178vw, 3.9467rem);
+  --fs-800: clamp(3.0518rem, 2.1873rem + 3.842vw, 5.2609rem);
+  --fs-900: clamp(3.8147rem, 2.5633rem + 5.5619vw, 7.0128rem);
+}
+
+
+body {
+  font-size: var(--fs-300);
+  font-weight: 400;
+  line-height: 1.3em;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+
+.title {
+  font-size: var(--fs-700);
 }
