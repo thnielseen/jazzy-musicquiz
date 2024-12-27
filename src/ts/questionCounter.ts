@@ -1,6 +1,8 @@
 import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
 import { printQuestion } from "./printQuestion";
 import { printResult } from "./printResult";
+import { switchHiddenGameAndResult } from './showAndHideSections';
+
 
 /**
  * Retrieves the next question from the quiz and increases the question count.
@@ -26,6 +28,7 @@ export function getNextQuestion(): QuizQuestion | null {
         // What happens when quiz is over
         console.log('Quiz is finished!');
         printResult(quizQuestions);
+        switchHiddenGameAndResult(); // Alternerar mellan att gömma/visa game eller result-section
         return null;
     }
 }
