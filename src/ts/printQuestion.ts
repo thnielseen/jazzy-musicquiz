@@ -1,5 +1,9 @@
 import { QuizQuestion } from './getQuizQuestions';
 
+// Variables to store the current question and the time it was displayed
+export let questionStartTime: number;
+export let currentQuestion: QuizQuestion;
+
 /**
  * Renders a question and its answers in the DOM.
  * 
@@ -39,6 +43,10 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
             .join('')}
         </ul>
     `;
+
+    // Store the current question and the time it was displayed
+    currentQuestion = question;
+    questionStartTime = Date.now();
   } else {
       if (!gameContent) {
           console.error("Game content container not found.");
