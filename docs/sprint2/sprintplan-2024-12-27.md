@@ -9,5 +9,5 @@
 - Vi kör på med standup den vanliga tiden, 8.45.
 - Vi stannar kvar i mötet efter standupen. Finns det något mer att förbereda inför presentationen gör vi det. Kanske går vi in tidigare och tittar på de andra gruppernas presentation.
 - Går igenom feedback, både från stakeholders presentationen och Jennis (ang koden).
-- Lägger in eventuella nya uppgifter i backlog.
+- Uppdaterar och lägger in eventuella nya uppgifter i backlog.
 - Fördelar uppgifter från backlog
