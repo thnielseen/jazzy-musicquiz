@@ -12,12 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {  // ???
     // Koppla startknapp och display till setupStartButton
     setupStartButton('start-game-button', 'timeDisplay');
 });
-
-//Temportary event listener for next question button and calling counterfunction for testing purposes (to be removed and added to start button)
-document.querySelector('.js-next-question')?.addEventListener('click', () => {
-    getNextQuestion();
-    console.log('Next question button clicked');
-  });
   
 // Temporary event listener for restart button (should be removed and added to restart button)
 // When added to restart button, game section (questions) will show again
