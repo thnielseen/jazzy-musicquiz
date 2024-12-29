@@ -33,9 +33,9 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
           ${question.answers
             .map(
               (answer, answerIndex) => `
-            <li class="game__answer-button">
-              <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
+            <li class="game__answer-button js-answer-btn">
               <label for="answer${answerIndex}">${answer.answer}</label>
+              <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
               <span class="game__answer-icon js-answer-icon"></span>
             </li>
           `

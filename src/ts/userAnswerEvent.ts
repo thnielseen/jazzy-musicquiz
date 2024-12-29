@@ -1,6 +1,7 @@
 import { questionStartTime, currentQuestion } from "./printQuestion";
 import { getNextQuestion } from "./questionCounter";
 
+
 /**
  * Event listener for user answers.
  * Selects the game content element and listens for click events on radio buttons.
@@ -14,42 +15,66 @@ import { getNextQuestion } from "./questionCounter";
 export function userAnswerEvent(): void {
   const gameContent = document.querySelector('.js-question-card');
 
-  if (gameContent) {
-    // Event delegation to listen for clicks on radio buttons in the game content element 
-    gameContent.addEventListener('click', function(event) {
-      const target = event.target as HTMLElement;
+  // Get submit answer button
+  const submitAnswerBtn = document.querySelector('.js-next-question');
+  submitAnswerBtn?.addEventListener('click', submitAnswer);
+  
+  function submitAnswer(e: Event) {
 
-      // Check if the clicked element is a radio button input and get the value of the selected answer
-      if (target && target.tagName === 'INPUT' && (target as HTMLInputElement).type === 'radio') {
-        // Get the value of the selected answer
-        const radioButton = target as HTMLInputElement;
-        //Store the value of the selected answer
-        const userAnswer = radioButton.value;
+    e.preventDefault;
 
-        // Calculate the time taken to answer the question
-        const timeTaken = (Date.now() - questionStartTime) / 1000; 
+    //! DEBUG
+    // const rbs = Array.from(document.querySelectorAll('input[name="answer"]')) as HTMLInputElement[];
+    // rbs.forEach(rb => {
+    //   console.log(rb.id, rb.checked);
+    // });
 
-        // Check if there is a current question object
-        if (currentQuestion) {
-          // Store the user's answer, check if it is correct, and update the score in the current question object
-          currentQuestion.timeTaken = timeTaken;
-          currentQuestion.checkUserAnswer(userAnswer);
+    // Get the elements
+    const checkedAnswer = document.querySelector('input[name="answer"]:checked') as HTMLInputElement;
 
-          // Log the updated question properties to the console for testing
-          console.log('User answer:', userAnswer, 'Is user answer correct:', currentQuestion.isUserAnswerCorrect, 'Time taken:', timeTaken,  'Score:', currentQuestion.score);
+    if (checkedAnswer) {
+      const answerBtn = checkedAnswer.closest('.js-answer-btn');
+      const answerIcon = answerBtn?.querySelector('.js-answer-icon') as HTMLInputElement;
 
-          // Get the next question after a short delay          
-          setTimeout(() => {
-            getNextQuestion();
-          }, 2000);
+      // Store the value of the selected answer
+      const userAnswer: string = checkedAnswer.value;
+
+      // Calculate the time taken to answer the question
+      const timeTaken = (Date.now() - questionStartTime) / 1000;
+
+      if (currentQuestion) {
+        // Store the user's answer, check if it is correct, and update the score in the current question object
+        currentQuestion.timeTaken = timeTaken;
+        currentQuestion.checkUserAnswer(userAnswer);
+
+        //! DEBUG: Log the updated question properties to the console for testing
+        console.log(
+          'User answer:', userAnswer, 
+          '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
+          '\nTime taken:', timeTaken,  
+          '\nScore:', currentQuestion.score
+        );
+
+        // Show for user if correct or incorrect
+        if (currentQuestion.isUserAnswerCorrect) {
+          answerBtn?.classList.add('valid');
+          answerIcon.innerHTML = '<svg class="icon"><use href="#party-icon"/></svg>';
         } else {
-          // Log an error if there is no current question object
-          console.error('Ingen aktuell fråga är inställd.');
+          answerBtn?.classList.add('invalid');
+          answerIcon.innerHTML = '<svg class="icon"><use href="#sad-icon"/></svg>';
         }
+        
+        // Get the next question after a short delay          
+        setTimeout(() => {
+          getNextQuestion();
+        }, 3000);
       }
-    });
-  } else {
-    // Log an error if the parent element for the game content
-    console.error('Föräldraelementet för spelinnehåll hittades inte.');
+      else {
+        // Log an error if there is no current question object
+        console.error('Ingen aktuell fråga är inställd.');
+      }
+    } else {
+      alert('Var vänlig markera ett svar innan du cklickar på knappen "Skicka svar"');
+    }
   }
 }
