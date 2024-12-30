@@ -1,5 +1,9 @@
 import { QuizQuestion } from './getQuizQuestions';
 
+// Variables to store the current question and the time it was displayed
+export let questionStartTime: number;
+export let currentQuestion: QuizQuestion;
+
 /**
  * Renders a question and its answers in the DOM.
  * 
@@ -29,9 +33,9 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
           ${question.answers
             .map(
               (answer, answerIndex) => `
-            <li class="game__answer-button">
-              <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
+            <li class="game__answer-button js-answer-btn">
               <label for="answer${answerIndex}">${answer.answer}</label>
+              <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
               <span class="game__answer-icon js-answer-icon"></span>
             </li>
           `
@@ -39,6 +43,10 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
             .join('')}
         </ul>
     `;
+
+    // Store the current question and the time it was displayed
+    currentQuestion = question;
+    questionStartTime = Date.now();
   } else {
       if (!gameContent) {
           console.error("Game content container not found.");
