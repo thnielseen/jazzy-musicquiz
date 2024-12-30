@@ -2,7 +2,7 @@ import '../scss/style.scss'
 
 //import { quizQuestions } from './getQuizQuestions'
 import { setupStartButton } from './startButton';
-import { getNextQuestion } from './questionCounter';
+// import { getNextQuestion } from './questionCounter';
 import { switchHiddenGameAndResult, showStartSection } from './showAndHideSections';  // ??? Importera timer-funktionen
 import { userAnswerEvent } from './userAnswerEvent';
 
