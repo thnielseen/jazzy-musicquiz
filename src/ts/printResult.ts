@@ -1,9 +1,4 @@
-//** 
-// x Skapa en funktion som visar en spelares resultat 
-// x Printa HTML-strukturen och innehållet 
-// - Koppla till counter-funktionen
-// */
-
+// Varför blir quizQuestions gulmarkerad?
 import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
 
 /**
@@ -32,8 +27,8 @@ export function printResult(quizQuestions: QuizQuestion[]): void { // Typen på 
     resultContainer.innerHTML = `
     <h2 class="result__title">Resultat</h2>
           <div class="row">
-            <span class="result__label">Antal rätt: ${correctAnswers} av 10</span>
-            <span class="result__data js-result-count">9</span>
+            <span class="result__label">Antal rätt:</span>
+            <span class="result__data js-result-count">${correctAnswers} av 10</span>
           </div>
           <div class="row">
             <span class="result__label">Antal poäng:</span>
@@ -41,14 +36,7 @@ export function printResult(quizQuestions: QuizQuestion[]): void { // Typen på 
           </div>
           <div class="row">
             <span class="result__label">Din tid:</span>
-            <span class="result__data">
-              ${totalTime}
-              <span class="js-result-minutes">3</span> minuter
-              <span class="js-result-seconds">35</span> sekunder
-            </span>
+            <span class="result__data">${totalTime}</span>
     `
 
 }
-
-// Flytta till rätt ställe att kalla på den här funktionen
-printResult(quizQuestions);
