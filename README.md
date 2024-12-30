@@ -20,21 +20,28 @@ Efter avslutad spelomgång skulle antalet korrekta svar, den totala poängen sam
 
 
 ## Författare
+[Egil Eskilsson](https://github.com/bluemountain3d)
 
-- [Egil Eskilsson](https://github.com/bluemountain3d)
-- [Frida Nordenlöw](https://github.com/fridanordenlow)
-- [Therese Nielsen](https://github.com/thnielseen)
-- [Elin Nilsson](https://github.com/webbelin)
-- [Angelica Nylander](https://github.com/angien90)
+[Frida Nordenlöw](https://github.com/fridanordenlow)
+
+[Therese Nielsen](https://github.com/thnielseen)
+
+[Elin Nilsson](https://github.com/webbelin)
+
+[Angelica Nylander](https://github.com/angien90)
 
 ## Scrum
 Vi följde Scrum-metoden och delade in projektet i sprintar.
 
 #### Produktägare
 Angelica Nylander, 
+
 Egil Eskilsson,
+
 Elin Nilsson,
+
 Frida Nordenlöw,
+
 Therese Nielsen
 
 #### Scrum Master
@@ -42,14 +49,20 @@ Rollen delas upp över de olika sprintarna så att alla fick testa på rollen.
 
 #### Utvecklingsteam
 Angelica Nylander, 
+
 Egil Eskilsson,
+
 Elin Nilsson,
+
 Frida Nordenlöw,
+
 Therese Nielsen
 
 #### Stackholders 
-Maria Larsson Bovin, 
+Maria Larsson Bovin,
+
 Jenni Pulli, 
+
 Jenny Waller
 
 #### Gruppkontrakt
@@ -75,22 +88,25 @@ Vi fick efter sprint 1 demonstrera sprintens resultat för stackholders. Där ha
 Efter varje sprint höll vi retrospektiva möten med hjälp av verktyget Miro. Där utvärderade vi vårt arbete och diskuterade vad som fungerade bra och identifierade områden för förbättring. Denna process hjälpte oss att ständigt utvecklas och anpassa vårt arbetssätt.
 
 ## Spelets logotype
-![Logo](assets/jazz_up_logo.png)
+Loggan tog vi fram med hjälp av AI.
+
+<img src="assets/jazz_up_logo.png" alt="Logo" width="300">
 
 ## Textstil
-I quizet använder vi textstiler från GoogleFonts
+I quizet använder vi textstiler från GoogleFonts:
 
 - Poppins-Bold
 - Poppins-Regular
   
 ## Färgreferenser
-| Color               | Hex                                                                |
-| -----------------   | ------------------------------------------------------------------ |
-| Bakgrundsfärg       | ![#bcebe5](https://via.placeholder.com/10/bcebe5?text=+) #bcebe5 |
-| Kortfärg & textfärg | ![#feffeb](https://via.placeholder.com/10/feffeb?text=+) #feffeb |
-| Textfärg            | ![#115f6b](https://via.placeholder.com/10/115f6b?text=+) #115f6b |
-| Knappfärg           | ![#2e7c88](https://via.placeholder.com/10/2e7c88?text=+) #2e7c88 |
-| Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) #c83a84 |
+| Color               | Hex                                                               |
+| ------------------- | ----------------------------------------------------------------- |
+| Bakgrundsfärg       | ![#bcebe5](https://via.placeholder.com/10/bcebe5?text=+) `#bcebe5` |
+| Kortfärg & textfärg | ![#feffeb](https://via.placeholder.com/10/feffeb?text=+) `#feffeb` |
+| Textfärg            | ![#115f6b](https://via.placeholder.com/10/115f6b?text=+) `#115f6b` |
+| Knappfärg           | ![#2e7c88](https://via.placeholder.com/10/2e7c88?text=+) `#2e7c88` |
+| Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) `#c83a84` |
+
 
 
 ## Installationer
