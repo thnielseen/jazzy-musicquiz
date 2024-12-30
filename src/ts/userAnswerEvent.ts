@@ -13,7 +13,6 @@ import { getNextQuestion } from "./questionCounter";
  * - The next question is retrieved after a short delay of 2 seconds.
  */
 export function userAnswerEvent(): void {
-  const gameContent = document.querySelector('.js-question-card');
 
   // Get submit answer button
   const submitAnswerBtn = document.querySelector('.js-next-question');
