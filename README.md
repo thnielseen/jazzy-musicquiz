@@ -1,4 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9ew2LI-M)
+ [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9ew2LI-M)
 
 
 # Quiz-spel - Grupparbete i Scrum
@@ -34,36 +34,16 @@ Efter avslutad spelomgång skulle antalet korrekta svar, den totala poängen sam
 Vi följde Scrum-metoden och delade in projektet i sprintar.
 
 #### Produktägare
-Angelica Nylander, 
-
-Egil Eskilsson,
-
-Elin Nilsson,
-
-Frida Nordenlöw,
-
-Therese Nielsen
+Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
 #### Scrum Master
 Rollen delas upp över de olika sprintarna så att alla fick testa på rollen. 
 
 #### Utvecklingsteam
-Angelica Nylander, 
-
-Egil Eskilsson,
-
-Elin Nilsson,
-
-Frida Nordenlöw,
-
-Therese Nielsen
+Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
 #### Stackholders 
-Maria Larsson Bovin,
-
-Jenni Pulli, 
-
-Jenny Waller
+Maria Larsson Bovin, Jenni Pulli och Jenny Waller
 
 #### Gruppkontrakt
 För att säkerställa ett effektivt och harmoniskt samarbete inom gruppen skapade vi ett gruppkontrakt. Detta kontrakt innehöll bland annat överenskommelser kring arbetsfördelning, kommunikation och konflikthantering. Det hjälpte oss att hålla fokus på våra mål och arbeta tillsammans på ett strukturerat sätt. 
@@ -87,18 +67,21 @@ Vi fick efter sprint 1 demonstrera sprintens resultat för stackholders. Där ha
 #### Retrospektiv
 Efter varje sprint höll vi retrospektiva möten med hjälp av verktyget Miro. Där utvärderade vi vårt arbete och diskuterade vad som fungerade bra och identifierade områden för förbättring. Denna process hjälpte oss att ständigt utvecklas och anpassa vårt arbetssätt.
 
-## Spelets logotype
+## Design
+En wireframe till projektet togs fram med hjälp av Figma innan arbetet startade. 
+
+### Spelets logotype
 Loggan tog vi fram med hjälp av AI.
 
 <img src="assets/jazz_up_logo.png" alt="Logo" width="300">
 
-## Textstil
+### Textstil
 I quizet använder vi textstiler från GoogleFonts:
 
 - Poppins-Bold
 - Poppins-Regular
   
-## Färgreferenser
+### Färgreferenser
 | Color               | Hex                                                               |
 | ------------------- | ----------------------------------------------------------------- |
 | Bakgrundsfärg       | ![#bcebe5](https://via.placeholder.com/10/bcebe5?text=+) `#bcebe5` |
@@ -106,7 +89,6 @@ I quizet använder vi textstiler från GoogleFonts:
 | Textfärg            | ![#115f6b](https://via.placeholder.com/10/115f6b?text=+) `#115f6b` |
 | Knappfärg           | ![#2e7c88](https://via.placeholder.com/10/2e7c88?text=+) `#2e7c88` |
 | Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) `#c83a84` |
-
 
 
 ## Installationer
