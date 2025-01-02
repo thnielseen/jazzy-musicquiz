@@ -87,6 +87,8 @@ export class Timer {
         // Spara den uppdaterade listan tillbaka i localStorage
         localStorage.setItem('timerHistory', JSON.stringify(savedTimes));
 
-        // console.log('Timer saved:', savedTimes); //console.log för testning
+        console.log('Timer saved:', this.seconds); // Loggar den senaste sparade tiden
+
+        console.log('All saved times:', savedTimes); // Loggar alla sparade tider i localStorage
     }
 }
