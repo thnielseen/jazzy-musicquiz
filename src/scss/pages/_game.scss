@@ -5,82 +5,164 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-.game{
-    &__title{
-        font-size: var(--fs-400);
-        margin-bottom: 1.25em;
-        color: var(--text-color);
-        text-align: center; 
-    }
-    &__question-title{
-        font-size: var(--fs-500);
-        font-weight: 700;
-        line-height: 1.25em;
-        margin-bottom: .75em;
-        color: var(--text-color);
-        text-align: center;
-    }
-    &__question{
-        font-size: var(--fs-300);
-        margin-bottom: 1.5em; 
-        line-height: 1.5em;
-    }
-    &__content{
-        margin: 0 auto;
-        max-width: calc(var(--fs-300) * 4 + 70ch);
-        padding: calc(var(--fs-300) * 2);
-        background-color: var(--background-accent);
-        color: var(--text-color);
-        border: 2px solid var(--text-color);
-        border-radius: calc(var(--fs-300) * .75);
-    
-        @include mx.for-breakpoint('tablet-up') {
-          padding: calc(var(--fs-300) * 4);
-        }
-    }
-    &__buttons{
-        display: grid;
-        gap: calc(var(--fs-300));
-        grid-auto-rows: 1fr;
+.game {
+  &__title {
+    font-size: var(--fs-400);
+    margin-bottom: 1.25em;
+    color: var(--text-color);
+    text-align: center; 
+  }
+  &__question-title {
+    font-size: var(--fs-500);
+    font-weight: 700;
+    line-height: 1.25em;
+    margin-bottom: .75em;
+    color: var(--text-color);
+    text-align: center;
+  }
+  &__question {
+    font-size: var(--fs-300);
+    padding-block: 1em;
+    margin-bottom: 1.5em; 
+    line-height: 1.5em;
+  }
+  &__content {
+    position: relative;
+    margin: 0 auto;
+    max-width: calc(var(--fs-300) * 4 + 70ch);
+    padding: calc(var(--fs-300) * 2);
+    background-color: var(--background-accent);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    border-radius: calc(var(--fs-300) * .75);
 
-        @include mx.for-breakpoint('tablet-up') {
-            grid-template-columns: 1fr 1fr;
-        };
-    }   
-    &__answer-button{
-        display: flex;
-        justify-content: center; 
-        font-family: inherit;
-        background-color: var(--button-background);
-        color: var(--button-text);
-        font-size: var(--fs-300); 
-        border: 0;
-        border-radius: calc(var(--fs-300) * .75);
-        padding: calc(var(--fs-300) * 1) calc(var(--fs-300) * 3);
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        text-align: center;
-        &:hover{
-        background-color: var(--button-background-hover);
-        }
-        // Hides radio button
-        input[type="radio"]{
-            visibility: hidden;
-            height: 0;
-            width: 0;
-        }
-        &:has(input:checked){
-            background: var(--button-background-hover);
-        }
+    display: grid;
+    justify-content: center;
+
+    @include mx.for-breakpoint('tablet-up') {
+      padding: calc(var(--fs-300) * 4);
     }
-    &__answer-label{
-        display: flex;
-        align-items: center;
+  }
+  &__buttons {
+    display: grid;
+    gap: calc(var(--fs-300) * 1.25);
+    grid-auto-rows: 1fr;
+
+    @include mx.for-breakpoint('tablet-up') {
+        grid-template-columns: 1fr 1fr;
+    };
+  }   
+  &__answer-button {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    font-family: inherit;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    font-size: var(--fs-300); 
+    border: 2px solid var(--button-background);
+    border-radius: calc(var(--fs-300) * .5);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+
+    // Hides radio button
+    & input[type="radio"]{
+      visibility: hidden;
+      height: 0;
+      width: 0;
     }
-    &__answer-icon .icon{
-        width: calc(var(--fs-300) * 2);
-        height: calc(var(--fs-300) * 2);
-        fill: var(--button-text);
-        margin-left: calc(var(--fs-300) * 0.5);
-    } 
+
+    & label {
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      min-height: 4.3em;
+      display: flex;
+      align-items: center;
+      padding-block: calc(var(--fs-300) * 1);
+      padding-inline:  calc(var(--fs-300) * 2)  calc(var(--fs-300) * 2);
+    }
+
+    // Hover style only when the button is in its "neutral" state
+    &:not(.valid):not(.invalid):not(:has(input:checked)):hover {
+      background-color: var(--button-background-hover);
+      border-color: var(--button-background-hover);
+    }
+
+    // Style for checked state
+    &:has(input:checked):not(.valid):not(.invalid) {
+      background: var(--button-background-hover);
+      border-color: var(--button-background-hover);
+      outline: 3px solid var(--info-border);
+      outline-offset: 3px;
+    }
+
+    &.valid, &.invalid {
+      outline: 0;
+      & label {
+        padding-inline-end: calc(var(--fs-300) * 5);
+      }
+    }
+
+    &.valid {
+      background-color: var(--valid-background) !important;
+      border: 2px solid var(--valid-border) !important;
+      color: var(--valid-text) !important;
+    }
+
+    &.valid .icon {
+      fill: var(--valid-text) !important;
+    }
+
+    &.invalid {
+      background-color: var(--danger-background) !important;
+      border: 2px solid var(--danger-border) !important;
+      color: var(--danger-text) !important;
+    }
+
+    &.invalid .icon {
+      fill: var(--danger-text) !important;
+    }
+  }
+
+  &__answer-icon .icon {
+    position: absolute;
+    right: calc(var(--fs-300) * 2);
+    top: 50%;
+    translate: 0 -50%;
+    width: calc(var(--fs-300) * 2.3);
+    height: calc(var(--fs-300) * 2.3);
+    fill: var(--button-text);
+  }
+
+  &__next-button {
+    cursor: pointer;
+    position: relative;
+    margin: calc(var(--fs-300) * 3) auto 0;
+
+    border: 0;
+    border-radius: 100px;
+    padding: 1.5em 4em;
+    min-width: 50%;
+
+    background-color: var(--button-background);
+    color: var(--button-text);
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 700;
+
+    &:hover {
+      background-color: var(--button-background-hover);
+    }
+  }
+
+  &__next-question-overlay {
+    position: absolute;
+    z-index: 99;
+    inset: 0;
+    pointer-events: none;
+    display: grid;
+    place-content: center;
+  }
 }
