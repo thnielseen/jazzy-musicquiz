@@ -35,7 +35,7 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
         const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
         myTimer.start();  // Starta timern
         createGameQuestions(quizQuestions, sessionCount); // Skapa frågor
-        getNextQuestion(); // Startar counter funktion när spelet startar. 
+        getNextQuestion(sessionCount); // Startar counter funktion när spelet startar. 
         showGameSection(); // Gömmer intro och visar game section (frågorna)
         console.log('Spelet startas!');
     });
