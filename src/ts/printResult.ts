@@ -59,15 +59,15 @@ export function printResult(questions: QuizQuestion[]): void { // Typen på ques
       <span class="result__label">Din tid:</span>
       <span class="result__data">${formatTime(totalTime)}</span>
     </div>
-    <div class="row">
-      <details>
-        <summary>Highscore</summary>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias,
-          ducimus.
-        </div>
-      </details>
-    </div>
     `
-
 }
+
+// <div class="row">
+// <details>
+//   <summary>Highscore</summary>
+//   <div>
+//     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias,
+//     ducimus.
+//   </div>
+// </details>
+// </div>
