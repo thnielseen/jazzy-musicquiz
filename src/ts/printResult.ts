@@ -1,21 +1,34 @@
-//** 
-// x Skapa en funktion som visar en spelares resultat 
-// x Printa HTML-strukturen och innehållet 
-// - Koppla till counter-funktionen
-// */
+import { QuizQuestion } from "./getQuizQuestions";
 
-import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
+
+// Skulle kunna flyttas ut till en annan modul, typ utilities?
+/**
+ * Converts a time value in seconds to a formatted string "X minuter och Y sekunder".
+ * Calculates full minutes and remaining seconds, ensuring seconds are two digits.
+ * 
+ * @param seconds - The total time in seconds.
+ * @returns A formatted string representing the time.
+ * 
+ * @example
+ * formatTime(125); // "2 minuter och 05 sekunder"
+ * formatTime(59);  // "0 minuter och 59 sekunder"
+ */
+
+function formatTime (seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes} minuter och ${remainingSeconds.toString().padStart(2, '0')} sekunder.`;
+}
 
 /**
  * Calculates and displays the user's quiz results in the result container.
  * It computes the total number of correct answers, total time taken,
  * and total score, then updates the HTML content of the result container.
  * 
- * @param quizQuestions - An array of quiz questions, including the user's answers, time taken, and scores.
+ * @param questions - An array of quiz questions, including the user's answers, time taken, and scores.
  */
 
-
-export function printResult(quizQuestions: QuizQuestion[]): void { // Typen på quizQuestions sätts till QuizQuestion[]
+export function printResult(questions: QuizQuestion[]): void { // Typen på questions sätts till QuizQuestion[]
     const resultContainer = document.querySelector(".result__content");
 
     if(!resultContainer) {
@@ -23,32 +36,38 @@ export function printResult(quizQuestions: QuizQuestion[]): void { // Typen på 
         return;
     }
 
-    const correctAnswers = quizQuestions.filter(q => q.isUserAnswerCorrect).length;
-    const totalTime = quizQuestions.reduce((acc, q) => acc + (q.timeTaken || 0), 0);
-    const totalScore = quizQuestions.reduce((acc, q) => acc + q.score, 0);
+    const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
+    const totalTime: number = Math.floor(
+      questions.reduce((acc, q) => acc + (q.timeTaken ?? 0), 0)
+    ); // Avrunda här för att säkerställa att totalTime är ett heltal    
+    const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
+
 
     console.log(correctAnswers, totalTime, totalScore);  // Debugging
     
     resultContainer.innerHTML = `
     <h2 class="result__title">Resultat</h2>
-          <div class="row">
-            <span class="result__label">Antal rätt: ${correctAnswers} av 10</span>
-            <span class="result__data js-result-count">9</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Antal poäng:</span>
-            <span class="result__data js-result-score">${totalScore}</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Din tid:</span>
-            <span class="result__data">
-              ${totalTime}
-              <span class="js-result-minutes">3</span> minuter
-              <span class="js-result-seconds">35</span> sekunder
-            </span>
+    <div class="row">
+      <span class="result__label">Antal rätt:</span>
+      <span class="result__data js-result-count">${correctAnswers} av 10</span>
+    </div>
+    <div class="row">
+      <span class="result__label">Antal poäng:</span>
+      <span class="result__data js-result-score">${totalScore} p</span>
+    </div>
+    <div class="row">
+      <span class="result__label">Din tid:</span>
+      <span class="result__data">${formatTime(totalTime)}</span>
+    </div>
     `
-
 }
 
-// Flytta till rätt ställe att kalla på den här funktionen
-printResult(quizQuestions);
+// <div class="row">
+// <details>
+//   <summary>Highscore</summary>
+//   <div>
+//     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias,
+//     ducimus.
+//   </div>
+// </details>
+// </div>

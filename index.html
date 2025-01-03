@@ -39,15 +39,14 @@
             width="172"
             height="172"
           />
-        </div>
-        <div class="header__score">
-          Poäng: <span class="js-current-score">0</span>
-        </div>
-        <div class="header__timer">
-          Tid: <span class="js-current-timer">0:00</span>
-        </div>
-      </div>
-    </header>
+          </div>
+          <div class="header__score">
+            Poäng: <span class="js-current-score">0</span>
+          </div>
+          <div class="header__timer">
+          Tid: <span class="js-current-timer" id="timeDisplay">0:00</span>
+          </div>
+      </header>
 
     <main class="container--boxed">
       <!------------------------------------>
@@ -93,17 +92,15 @@
       <!---------------------------------->
       <section class="game hidden">
         <h2 class="game__title">
-          <div id="timeDisplay">0:00</div>
           <span
             >Du är nu på fråga <span class="js-game-question-number">1</span> av
-            10</span
-          >
+            10</span>
           <span class="game__progress-bar js-game-progress-bar"></span>
         </h2>
         <div class="game__content">
           <article class="js-question-card"></article>
           <button type="button" class="game__next-button js-next-question">
-            Skicka svar
+            Bekräfta svar
           </button>
         </div>
       </section>
@@ -160,6 +157,16 @@
             Avsluta
           </button>
         </div>
+
+        <!-- Dialogruta -->
+        <dialog class="result__modal" id="modal">
+          <h3 class="result__modal-title">Är du säker på att du vill avsluta spelet?</h3>
+          <div class="result__modal-buttons">
+            <button class="result__modal-button" id="openConfirm">Ja</button>
+            <button class="result__modal-button" id="closeModal">Nej</button>
+          </div>
+        </dialog>
+
       </section>
     </main>
 
