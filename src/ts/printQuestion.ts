@@ -1,4 +1,5 @@
 import { QuizQuestion } from './getQuizQuestions';
+import { questionCount } from './questionCounter';
 
 // Variables to store the current question and the time it was displayed
 export let questionStartTime: number;
@@ -18,12 +19,13 @@ export let currentQuestion: QuizQuestion;
  * @param {number} questionIndex - The index of the current question, used for display and tracking.
  */
 export function printQuestion(question: QuizQuestion, questionIndex: number): void {
+
   const gameContent = document.querySelector('.js-question-card');
   const questionNumberElement = document.querySelector('.js-game-question-number');
 
   if (gameContent && questionNumberElement) {
       // Update the displayed question number
-      questionNumberElement.textContent = `${questionIndex + 1}`;
+      questionNumberElement.textContent = (questionCount + 1).toString();//`${questionIndex + 1}`;
 
       // Render the question and answer options
       gameContent.innerHTML = `
