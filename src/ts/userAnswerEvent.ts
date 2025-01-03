@@ -42,20 +42,12 @@ export function userAnswerEvent(): void {
       const userAnswer: string = checkedAnswer.value;
 
       // Calculate the time taken to answer the question
-      const timeTaken = (Date.now() - questionStartTime) / 1000;
+      // const timeTaken = (Date.now() - questionStartTime) / 1000;
 
       if (currentQuestion) {
         // Store the user's answer, check if it is correct, and update the score in the current question object
-        currentQuestion.timeTaken = timeTaken;
+        // currentQuestion.timeTaken = timeTaken;
         currentQuestion.checkUserAnswer(userAnswer);
-
-        //! DEBUG: Log the updated question properties to the console for testing
-        console.log(
-          'User answer:', userAnswer, 
-          '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
-          '\nTime taken:', timeTaken,  
-          '\nScore:', currentQuestion.score
-        );
 
         // Show for user if correct or incorrect
         if (currentQuestion.isUserAnswerCorrect) {
@@ -71,6 +63,14 @@ export function userAnswerEvent(): void {
         //   getNextQuestion();
         // }, 3000);
         startCountDown(answerBtn, answerIcon);
+
+        //! DEBUG: Log the updated question properties to the console for testing
+        console.log(
+          'User answer:', userAnswer, 
+          '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
+          // '\nTime taken:', timeTaken,  
+          '\nScore:', currentQuestion.score
+        );
 
       }
       else {
@@ -88,6 +88,10 @@ export function userAnswerEvent(): void {
   }
 
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    // Calculate the time taken to answer the question
+    const timeTaken = (Date.now() - questionStartTime) / 1000;
+    currentQuestion.timeTaken = timeTaken;
+    
     submitAnswerBtn.innerText = 'Bekräfta svar';
     document.body.style.removeProperty('pointer-events');
     document.body.style.removeProperty('cursor');
