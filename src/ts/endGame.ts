@@ -1,12 +1,12 @@
 export function endGameButton(): void{
 
-    const dialog = document.querySelector('dialog') as HTMLDialogElement;
-    const finishGameBtn = document.querySelector('.js-finish') as HTMLButtonElement;
-    const closeModalBtn = document.querySelector('#closeModal') as HTMLButtonElement;
-    const openConfirmBtn = document.querySelector('#openConfirm') as HTMLButtonElement;
+    const dialog = document.querySelector('dialog') as HTMLDialogElement | null;
+    const finishGameBtn = document.querySelector('.js-finish') as HTMLButtonElement | null;
+    const closeModalBtn = document.querySelector('#closeModal') as HTMLButtonElement | null;
+    const openConfirmBtn = document.querySelector('#openConfirm') as HTMLButtonElement | null;
 
     // Kollar om HTML-elementen finns
-    if (dialog && finishGameBtn && closeModalBtn) {
+    if (dialog && finishGameBtn && closeModalBtn && openConfirmBtn) {
 
         // "Avsluta"-knappen på resultatsidan. Öppnar dialogruta.
         finishGameBtn.addEventListener("click", () => {
@@ -18,15 +18,14 @@ export function endGameButton(): void{
 
             // Andra dialogrutan
             const userConfirm = confirm("Är du verkligen säker på att du vill avsluta spelet?");
-            if (userConfirm) { // Klick på "Ja"
+            if (userConfirm) {
                 localStorage.clear();
                 window.location.reload();
-            } else { // Klick på "Nej"
+            } else {
                 dialog.close(); 
             }
 
         });
-
 
         // "Nej"-knapp på första dialogrutan. Återgår till resultatsidan.
         closeModalBtn.addEventListener("click", () => {
@@ -34,9 +33,7 @@ export function endGameButton(): void{
         });
 
     } else {
-
-        console.error("One or more elements were not found in the DOM.");
-
+        console.error("En eller flera HTML-element hittades inte.");
     }
 
 }
