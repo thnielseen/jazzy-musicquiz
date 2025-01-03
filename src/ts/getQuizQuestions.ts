@@ -454,13 +454,15 @@ export const quizQuestions: QuizQuestion[] = [
  * @param {QuizQuestion[]} quizQuestions - The array of QuizQuestion objects to shuffle.
  * @returns {QuizQuestion[]} - The shuffled array of QuizQuestions with shuffled answers.
  */
-export const createGameQuestions = (quizQuestions: QuizQuestion[]): QuizQuestion[] => {
-  // Shuffle the quiz questions array
-  shuffleArray(quizQuestions).forEach((quizQuestion) => {
-    // Shuffle the answers within each question
-    quizQuestion.answers = shuffleArray(quizQuestion.answers);
-  });
-
-  // Return the shuffled array of questions
+export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount: number = 0): QuizQuestion[] => {
+  if (sessionCount < 1) {
+    // Shuffle the quiz questions array
+    shuffleArray(quizQuestions).forEach((quizQuestion) => {
+      // Shuffle the answers within each question
+      quizQuestion.answers = shuffleArray(quizQuestion.answers);
+    });
+  }
+  
+  // Return the array of questions
   return quizQuestions;
 };
