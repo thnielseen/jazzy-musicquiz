@@ -38,7 +38,7 @@ export class Timer {
 
             // Stanna timern efter 30 minuter om inget stop utlöses
             if (this.seconds >= 1800) { // 30 minuter = 1800 sekunder
-                console.log('30 minuter har passerat, timern stängs av.');
+                //console.log('30 minuter har passerat, timern stängs av.');
                 this.stop();
             }
         }, 1000); // Uppdatera varje sekund
@@ -49,7 +49,7 @@ export class Timer {
         if (this.intervalId !== null) {
             clearInterval(this.intervalId);
             this.intervalId = null;
-            //console.log('Timer stopped.');//console.log för testning
+            console.log('Timer stopped.');//console.log för testning
             this.saveTime(); // Sparar värdet i localStorage när timern stoppas
         }
     }
