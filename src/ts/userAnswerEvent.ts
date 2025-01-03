@@ -1,5 +1,5 @@
 import { questionStartTime, currentQuestion } from "./printQuestion";
-import { getNextQuestion } from "./questionCounter";
+import { getNextQuestion, sessionCount } from "./questionCounter";
 
 
 /**
@@ -100,7 +100,7 @@ export function userAnswerEvent(): void {
     answerBtn?.classList.remove('invalid');
     answerIcon.innerHTML = '';
     isCountDownActive = false;
-    getNextQuestion();
+    getNextQuestion(sessionCount);
   }
 
   function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
@@ -113,7 +113,7 @@ export function userAnswerEvent(): void {
           finishCountDown(answerBtn, answerIcon);
           clearInterval(intervalId);
       }
-    }, 1000);
+    }, 1000); //! Ändra tillbaka till 1000
   }
 
   function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
