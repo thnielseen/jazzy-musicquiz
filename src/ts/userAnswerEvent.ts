@@ -1,5 +1,5 @@
 import { questionStartTime, currentQuestion } from "./printQuestion";
-import { getNextQuestion } from "./questionCounter";
+// import { getNextQuestion } from "./questionCounter";
 
 
 /**
