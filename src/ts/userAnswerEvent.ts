@@ -1,5 +1,5 @@
 import { questionStartTime, currentQuestion } from "./printQuestion";
-// import { getNextQuestion } from "./questionCounter";
+import { getNextQuestion } from "./questionCounter";
 
 
 /**
@@ -70,7 +70,7 @@ export function userAnswerEvent(): void {
         // setTimeout(() => {
         //   getNextQuestion();
         // }, 3000);
-        startCoundDown(answerBtn, answerIcon);
+        startCountDown(answerBtn, answerIcon);
 
       }
       else {
@@ -96,6 +96,7 @@ export function userAnswerEvent(): void {
     answerBtn?.classList.remove('invalid');
     answerIcon.innerHTML = '';
     isCountDownActive = false;
+    getNextQuestion();
   }
 
   function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
@@ -111,7 +112,7 @@ export function userAnswerEvent(): void {
     }, 1000);
   }
 
-  function startCoundDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+  function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
     // Prevent multiple countdowns
     if (isCountDownActive) return;
 
