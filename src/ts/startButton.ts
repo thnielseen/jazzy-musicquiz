@@ -1,7 +1,13 @@
 import { Timer } from './timerFunction';  // Importera timer-funktionen
-import { getNextQuestion } from './questionCounter'; // Importerar räknaren för att stoppa spelomgången
-import { quizQuestions, createGameQuestions } from './getQuizQuestions';
-import { showGameSection } from './showAndHideSections';  
+import {
+    getNextQuestion,
+    sessionCount  
+} from './questionCounter'; // Importerar räknaren för att stoppa spelomgången
+import {
+    quizQuestions,
+    createGameQuestions
+} from './getQuizQuestions';
+import { showGameSection } from './showAndHideSections';
 
 export function setupStartButton(startButtonId: string, timeDisplayId: string) {
     const startButton = document.getElementById(startButtonId)!;
@@ -32,8 +38,8 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
         // Starta spelet
         const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
         myTimer.start();  // Starta timern
-        createGameQuestions(quizQuestions); // Skapa frågor
-        getNextQuestion(); // Startar counter funktion när spelet startar. 
+        createGameQuestions(quizQuestions, sessionCount); // Skapa frågor
+        getNextQuestion(sessionCount); // Startar counter funktion när spelet startar. 
         showGameSection(); // Gömmer intro och visar game section (frågorna)
         console.log('Spelet startas!');
     });
