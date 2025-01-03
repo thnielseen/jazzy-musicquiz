@@ -15,15 +15,19 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
 
     // Eventlyssnare på startknappen som startar spelet och triggar timern, ..............
     startButton.addEventListener('click', () => {
-        // Spara användarnamnet i localStorage
-        const username = usernameInput.value.trim();
-        if (username) {
-            localStorage.setItem('username', username);
-            console.log('Användarnamn sparades:', username);
+        // Hämta användarnamnet från inputfältet eller använd standardnamn
+        let username = usernameInput.value.trim(); 
+    
+        if (!username) {
+            username = "Jazzonymous"; // Använd standardnamn om inget anges
+            console.log('Inget användarnamn angavs. Använder standardnamn.');
         } else {
-            console.error('Användarnamn är tomt. Skriv in ett giltigt namn.');
-            return; // Stoppa om användarnamnet är tomt
+            console.log('Användarnamn angivet:', username);
         }
+    
+        // Spara användarnamnet i localStorage
+        localStorage.setItem('username', username);
+        console.log('Användarnamn sparades:', username);
 
         // Starta spelet
         const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
