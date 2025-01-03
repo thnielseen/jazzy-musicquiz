@@ -16,7 +16,8 @@ import { switchHiddenGameAndResult } from './showAndHideSections';
 
 
 // Counter for amount of questions shown
-export let questionCount = 0; 
+export let questionCount = 0;
+export let sessionCount = 0;
 
 export function getNextQuestion(): QuizQuestion | null {
     if (questionCount < 10) {
@@ -29,7 +30,8 @@ export function getNextQuestion(): QuizQuestion | null {
         console.log('Quiz is finished!');
         printResult(quizQuestions);
         switchHiddenGameAndResult(); // Alternerar mellan att gömma/visa game eller result-section
+        sessionCount++;
+        console.log('SessionCounter', sessionCount);
         return null;
     }
 }
-
