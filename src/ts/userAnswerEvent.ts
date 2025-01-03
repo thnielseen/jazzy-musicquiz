@@ -15,8 +15,11 @@ import { getNextQuestion } from "./questionCounter";
 export function userAnswerEvent(): void {
 
   // Get submit answer button
-  const submitAnswerBtn = document.querySelector('.js-next-question');
-  submitAnswerBtn?.addEventListener('click', submitAnswer);
+  const submitAnswerBtn = document.querySelector('.js-next-question') as HTMLButtonElement;
+
+  // Dynamic countdown attributes
+  let isCountDownActive: boolean = false;
+  let currentCountDown: number = 3;
   
   function submitAnswer(e: Event) {
 
@@ -32,7 +35,7 @@ export function userAnswerEvent(): void {
     const checkedAnswer = document.querySelector('input[name="answer"]:checked') as HTMLInputElement;
 
     if (checkedAnswer) {
-      const answerBtn = checkedAnswer.closest('.js-answer-btn');
+      const answerBtn = checkedAnswer.closest('.js-answer-btn') as HTMLElement;
       const answerIcon = answerBtn?.querySelector('.js-answer-icon') as HTMLInputElement;
 
       // Store the value of the selected answer
@@ -64,9 +67,11 @@ export function userAnswerEvent(): void {
         }
         
         // Get the next question after a short delay          
-        setTimeout(() => {
-          getNextQuestion();
-        }, 3000);
+        // setTimeout(() => {
+        //   getNextQuestion();
+        // }, 3000);
+        startCoundDown(answerBtn, answerIcon);
+
       }
       else {
         // Log an error if there is no current question object
@@ -76,4 +81,55 @@ export function userAnswerEvent(): void {
       alert('Var vänlig markera ett svar innan du cklickar på knappen "Skicka svar"');
     }
   }
+
+
+  function updateCountDownDisplay(count: number): void {
+    submitAnswerBtn.innerText = `Nästa fråga visas om.. ${count}`;
+  }
+
+  function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    submitAnswerBtn.innerText = 'Bekräfta svar';
+    document.body.style.removeProperty('pointer-events');
+    document.body.style.removeProperty('cursor');
+
+    answerBtn?.classList.remove('valid');
+    answerBtn?.classList.remove('invalid');
+    answerIcon.innerHTML = '';
+    isCountDownActive = false;
+  }
+
+  function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    const intervalId = setInterval(() => {
+      currentCountDown--;
+      
+      if (currentCountDown > 0) {
+          updateCountDownDisplay(currentCountDown);
+      } else {
+          finishCountDown(answerBtn, answerIcon);
+          clearInterval(intervalId);
+      }
+    }, 1000);
+  }
+
+  function startCoundDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    // Prevent multiple countdowns
+    if (isCountDownActive) return;
+
+    // Set up Initial State
+    isCountDownActive = true;
+    currentCountDown = 3;
+
+    document.body.style.pointerEvents = 'none';
+    document.body.style.cursor = 'wait';
+
+    // Start displaying the countdown
+    updateCountDownDisplay(currentCountDown);
+    runCountDown(answerBtn, answerIcon);
+  }
+
+
+  // Event listener for submit answer button
+  submitAnswerBtn?.addEventListener('click', submitAnswer);
+
+
 }
