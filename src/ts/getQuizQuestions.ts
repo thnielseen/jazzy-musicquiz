@@ -455,7 +455,12 @@ export const quizQuestions: QuizQuestion[] = [
  * @returns {QuizQuestion[]} - The shuffled array of QuizQuestions with shuffled answers.
  */
 export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount: number = 0): QuizQuestion[] => {
-  if (sessionCount < 1) {
+  
+  const numQuestionsLeft: number = (sessionCount * -10) + quizQuestions.length;
+  console.log('numQuestionsLeft',numQuestionsLeft);
+
+  if (sessionCount < 1 || numQuestionsLeft < 10) {
+    console.log('Shuffle')
     // Shuffle the quiz questions array
     shuffleArray(quizQuestions).forEach((quizQuestion) => {
       // Shuffle the answers within each question

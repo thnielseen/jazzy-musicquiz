@@ -21,6 +21,13 @@ export let currentIndex: number = 0;
 export let sessionCount: number = 0;
 
 export function getNextQuestion(currentSession: number): QuizQuestion | null {
+    const numQuestionsLeft: number = (currentSession * -10) + quizQuestions.length;
+
+    if (numQuestionsLeft < 10) {
+        currentSession = sessionCount = 0;
+    }
+
+    console.log('getNextQuestion(): currentSession', currentSession);
 
     currentIndex = (currentSession * 10) + questionCount;
 
