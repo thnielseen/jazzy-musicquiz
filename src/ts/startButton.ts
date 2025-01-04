@@ -1,4 +1,5 @@
-import { Timer } from './timerFunction';  // Importera timer-funktionen
+//import { Timer } from './timerFunction';  // Importera timer-funktionen
+import { getGameTimer } from './gameTimer';
 import {
     getNextQuestion,
     sessionCount  
@@ -19,6 +20,8 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
         return;
     }
 
+    const timer = getGameTimer(timeDisplay);
+
     // Eventlyssnare på startknappen som startar spelet och triggar timern, ..............
     startButton.addEventListener('click', () => {
         // Hämta användarnamnet från inputfältet eller använd standardnamn
@@ -36,8 +39,9 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
         console.log('Användarnamn sparades:', username);
 
         // Starta spelet
-        const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
-        myTimer.start();  // Starta timern
+        //const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
+        //myTimer.start();  // Starta timern
+        timer.start();  // Starta timern
         createGameQuestions(quizQuestions, sessionCount); // Skapa frågor
         getNextQuestion(sessionCount); // Startar counter funktion när spelet startar. 
         showGameSection(); // Gömmer intro och visar game section (frågorna)
