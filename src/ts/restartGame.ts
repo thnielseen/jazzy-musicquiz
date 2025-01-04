@@ -1,4 +1,5 @@
-import { Timer } from './timerFunction';  // Importera timer-funktionen
+//import { Timer } from './timerFunction';  // Importera timer-funktionen
+import { getGameTimer } from './gameTimer';
 import { getNextQuestion, sessionCount } from "./questionCounter";
 import { quizQuestions, createGameQuestions } from "./getQuizQuestions";
 import { switchHiddenGameAndResult } from './showAndHideSections';
@@ -8,10 +9,18 @@ export function initRestartGame(): void {
   const restartBtn = document.querySelector('.js-restart') as HTMLButtonElement;
   const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
 
+  if (!timeDisplay) {
+    console.error('Could not find time display element');
+    return;
+  } 
+
+  const timer = getGameTimer(timeDisplay);
+
   restartBtn?.addEventListener('click', (e)=> {
     e.preventDefault;
-    const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
-    myTimer.start();  // Starta timern
+    //const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
+    //myTimer.start();  // Starta timern
+    timer.start();  // Starta timern
 
     console.log('SessionCount from RestartBtn:', sessionCount);
 
