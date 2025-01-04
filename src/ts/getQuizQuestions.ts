@@ -467,6 +467,11 @@ export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount:
       quizQuestion.answers = shuffleArray(quizQuestion.answers);
     });
   }
+
+  // Reset time taken
+  quizQuestions.forEach(question => {
+    question.timeTaken = 0;
+  });
   
   // Return the array of questions
   return quizQuestions;
