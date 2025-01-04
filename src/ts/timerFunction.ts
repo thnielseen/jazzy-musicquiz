@@ -31,10 +31,10 @@ export class Timer {
             this.seconds++;
             this.displayTime();
 
-            if (questionCount >= 10) {
-                console.log('Quizet är klart, timern stängs av.');
-                this.stop();  // Stoppa timern om quizet är över
-            }
+            // if (questionCount >= 10) {
+            //     console.log('Quizet är klart, timern stängs av.');
+            //     this.stop();  // Stoppa timern om quizet är över
+            // }
 
             // Stanna timern efter 30 minuter om inget stop utlöses
             if (this.seconds >= 1800) { // 30 minuter = 1800 sekunder
