@@ -1,3 +1,4 @@
+import { getGameTimer } from "./gameTimer";
 import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
 import { printQuestion } from "./printQuestion";
 import { printResult } from "./printResult";
@@ -22,6 +23,17 @@ export let sessionCount: number = 0;
 
 export function getNextQuestion(currentSession: number): QuizQuestion | null {
 
+    const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+    const timer = getGameTimer(timeDisplay);
+
+    const numQuestionsLeft: number = (currentSession * -10) + quizQuestions.length;
+
+    if (numQuestionsLeft < 10) {
+        currentSession = sessionCount = 0;
+    }
+
+    console.log('getNextQuestion(): currentSession', currentSession);
+
     currentIndex = (currentSession * 10) + questionCount;
 
     if (questionCount < 10) {
@@ -32,6 +44,7 @@ export function getNextQuestion(currentSession: number): QuizQuestion | null {
     } else {
         // What happens when quiz is over
         console.log('Quiz is finished!');
+        timer.stop();
         sessionCount++;
         questionCount = 0;
         printResult(quizQuestions);

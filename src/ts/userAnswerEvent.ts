@@ -1,3 +1,4 @@
+
 import { questionStartTime, currentQuestion } from "./printQuestion";
 import { getNextQuestion, sessionCount } from "./questionCounter";
 
@@ -13,7 +14,7 @@ import { getNextQuestion, sessionCount } from "./questionCounter";
  * - The next question is retrieved after a short delay of 2 seconds.
  */
 export function userAnswerEvent(): void {
-
+  
   // Get submit answer button
   const submitAnswerBtn = document.querySelector('.js-next-question') as HTMLButtonElement;
 
@@ -58,10 +59,6 @@ export function userAnswerEvent(): void {
           answerIcon.innerHTML = '<svg class="icon"><use href="#sad-icon"/></svg>';
         }
         
-        // Get the next question after a short delay          
-        // setTimeout(() => {
-        //   getNextQuestion();
-        // }, 3000);
         startCountDown(answerBtn, answerIcon);
 
         //! DEBUG: Log the updated question properties to the console for testing
@@ -122,7 +119,7 @@ export function userAnswerEvent(): void {
 
     // Set up Initial State
     isCountDownActive = true;
-    currentCountDown = 3;
+    currentCountDown = 2;
 
     document.body.style.pointerEvents = 'none';
     document.body.style.cursor = 'wait';
