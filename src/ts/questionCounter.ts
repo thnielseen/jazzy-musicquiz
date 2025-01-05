@@ -1,5 +1,6 @@
 import { getGameTimer } from "./gameTimer";
-import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
+import { QuizQuestion } from "./getQuizQuestions";
+import { quizQuestions } from "./quizData";
 import { printQuestion } from "./printQuestion";
 import { printResult } from "./printResult";
 import { switchHiddenGameAndResult } from './showAndHideSections';
