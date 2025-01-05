@@ -4,10 +4,8 @@ import {
     getNextQuestion,
     sessionCount  
 } from './questionCounter'; // Importerar räknaren för att stoppa spelomgången
-import {
-    quizQuestions,
-    createGameQuestions
-} from './getQuizQuestions';
+import { createGameQuestions } from './getQuizQuestions';
+import { quizQuestions } from './quizData';
 import { showGameSection } from './showAndHideSections';
 
 export function setupStartButton(startButtonId: string, timeDisplayId: string) {
@@ -22,7 +20,7 @@ export function setupStartButton(startButtonId: string, timeDisplayId: string) {
 
     const timer = getGameTimer(timeDisplay);
 
-    // Eventlyssnare på startknappen som startar spelet och triggar timern, ..............
+    // Eventlyssnare på startknappen som startar spelet och triggar timern, ...
     startButton.addEventListener('click', () => {
         // Hämta användarnamnet från inputfältet eller använd standardnamn
         let username = usernameInput.value.trim(); 

@@ -1,7 +1,8 @@
 //import { Timer } from './timerFunction';  // Importera timer-funktionen
 import { getGameTimer } from './gameTimer';
 import { getNextQuestion, sessionCount } from "./questionCounter";
-import { quizQuestions, createGameQuestions } from "./getQuizQuestions";
+import { createGameQuestions } from "./getQuizQuestions";
+import { quizQuestions } from './quizData';
 import { switchHiddenGameAndResult } from './showAndHideSections';
 
 
