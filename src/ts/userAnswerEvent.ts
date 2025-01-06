@@ -1,7 +1,8 @@
 
 import { questionStartTime, currentQuestion } from "./printQuestion";
-import { getNextQuestion, sessionCount } from "./questionCounter";
-
+import { getNextQuestion, sessionCount, questionCount } from "./questionCounter";
+import { getGameTimer } from "./gameTimer";
+import { updateTotalScore } from "./getQuizQuestions";
 
 /**
  * Event listener for user answers.
@@ -14,6 +15,9 @@ import { getNextQuestion, sessionCount } from "./questionCounter";
  * - The next question is retrieved after a short delay of 2 seconds.
  */
 export function userAnswerEvent(): void {
+
+  const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+  const timer = getGameTimer(timeDisplay);
   
   // Get submit answer button
   const submitAnswerBtn = document.querySelector('.js-next-question') as HTMLButtonElement;
@@ -62,12 +66,11 @@ export function userAnswerEvent(): void {
         startCountDown(answerBtn, answerIcon);
 
         //! DEBUG: Log the updated question properties to the console for testing
-        console.log(
-          'User answer:', userAnswer, 
-          '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
-          // '\nTime taken:', timeTaken,  
-          '\nScore:', currentQuestion.score
-        );
+        // console.log(
+        //   'User answer:', userAnswer, 
+        //   '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
+        //   '\nScore:', currentQuestion.score
+        // );
 
       }
       else {
@@ -79,7 +82,6 @@ export function userAnswerEvent(): void {
     }
   }
 
-
   function updateCountDownDisplay(count: number): void {
     submitAnswerBtn.innerText = `Nästa fråga visas om.. ${count}`;
   }
@@ -87,7 +89,15 @@ export function userAnswerEvent(): void {
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
     // Calculate the time taken to answer the question
     const timeTaken = (Date.now() - questionStartTime) / 1000;
+    console.log('finishCountDown(): timeTaken', timeTaken);
     currentQuestion.timeTaken = timeTaken;
+    currentQuestion.score = currentQuestion.calculateScore();
+    console.log('currentQuestion.score', currentQuestion.score);
+    updateTotalScore(currentQuestion.score);
+
+    if (questionCount === 10) {
+      timer.stop();
+    }
     
     submitAnswerBtn.innerText = 'Bekräfta svar';
     document.body.style.removeProperty('pointer-events');
