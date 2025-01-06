@@ -37,7 +37,7 @@ let totalScore: number = 0;
  * Updates the total score and the HTML element.
  * @param points - The number of points to add.
  */
-function updateTotalScore(points: number): void {
+export function updateTotalScore(points: number): void {
   // Add the score to the total score
   totalScore += points;
 
@@ -48,6 +48,12 @@ function updateTotalScore(points: number): void {
   } else {
     console.error("Element for points could not be found.");
   }
+}
+
+export function resetTotalScore(): void {
+  const scoreElement = document.querySelector('.js-current-score') as HTMLElement;
+  scoreElement.textContent = '0';
+  totalScore = 0;
 }
 
 
@@ -108,16 +114,24 @@ export class QuizQuestion implements IQuizQuestion {
    */
 
   calculateScore(): number {
-    if (!this.isUserAnswerCorrect) {
+
+    if (this.timeTaken === 0 || !this.isUserAnswerCorrect) {
+      console.log('calculateScore() A:', '0');
       return 0; // Incorrect answer
     }
-    if (!this.timeTaken || this.timeTaken > 60) {
+    if (this.timeTaken > 60) {
+      console.log('calculateScore() B:', '1');
+      console.log('calculateScore() B: this.timeTaken', this.timeTaken);
       return 1; // More than 60 seconds
     }
     if (this.timeTaken <= 10) {
+      console.log('calculateScore() C:', '10');
+      console.log('calculateScore() C: this.timeTaken', this.timeTaken);
       return 10; // Maximum score for quick answers
     }
     // Gradual score reduction for times between 10 and 60 seconds
+    console.log('calculateScore() this.timeTaken:', this.timeTaken);
+    console.log('calculateScore() D:', Math.max(1, 10 - Math.floor((this.timeTaken - 10) / 5)));
     return Math.max(1, 10 - Math.floor((this.timeTaken - 10) / 5));
   }
 
@@ -132,12 +146,12 @@ export class QuizQuestion implements IQuizQuestion {
   checkUserAnswer(userAnswer: string): void {
     this.userAnswer = userAnswer; // Record the user's answer
     this.isUserAnswerCorrect = userAnswer === this.correctAnswer; // Check correctness
-    this.score = this.calculateScore(); // Calculate the score
+    //this.score = this.calculateScore(); // Calculate the score
     
     // If answer is correct, add points to total score in top of the game
-    if (this.isUserAnswerCorrect) {
-    updateTotalScore(this.score);
-    }
+    // if (this.isUserAnswerCorrect) {
+    //   updateTotalScore(this.score);
+    // }
   }
 }
 
@@ -162,12 +176,13 @@ export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount:
       // Shuffle the answers within each question
       quizQuestion.answers = shuffleArray(quizQuestion.answers);
     });
-  }
 
-  // Reset time taken
-  quizQuestions.forEach(question => {
-    question.timeTaken = 0;
-  });
+    // Reset time taken
+    quizQuestions.forEach(question => {
+      console.log('Reset timeTaken');
+      question.timeTaken = 0;
+    });
+  }
   
   // Return the array of questions
   return quizQuestions;
