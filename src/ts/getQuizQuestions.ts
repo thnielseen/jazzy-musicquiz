@@ -30,6 +30,26 @@ export class Answer implements IAnswer {
   }
 }
 
+// Global variable for the total score
+let totalScore: number = 0;
+
+/**
+ * Updates the total score and the HTML element.
+ * @param points - The number of points to add.
+ */
+function updateTotalScore(points: number): void {
+  // Add the score to the total score
+  totalScore += points;
+
+  // Update the HTML element
+  const scoreElement = document.querySelector('.js-current-score');
+  if (scoreElement) {
+    scoreElement.textContent = totalScore.toString();
+  } else {
+    console.error("Element for points could not be found.");
+  }
+}
+
 
 // Class representing a QuizQuestion
 export class QuizQuestion implements IQuizQuestion {
@@ -113,6 +133,11 @@ export class QuizQuestion implements IQuizQuestion {
     this.userAnswer = userAnswer; // Record the user's answer
     this.isUserAnswerCorrect = userAnswer === this.correctAnswer; // Check correctness
     this.score = this.calculateScore(); // Calculate the score
+    
+    // If answer is correct, add points to total score in top of the game
+    if (this.isUserAnswerCorrect) {
+    updateTotalScore(this.score);
+    }
   }
 }
 
