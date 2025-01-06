@@ -1,4 +1,4 @@
-import { getGameTimer } from "./gameTimer";
+// import { getGameTimer } from "./gameTimer";
 import { QuizQuestion } from "./getQuizQuestions";
 import { quizQuestions } from "./quizData";
 import { printQuestion } from "./printQuestion";
@@ -24,8 +24,8 @@ export let sessionCount: number = 0;
 
 export function getNextQuestion(currentSession: number): QuizQuestion | null {
 
-    const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
-    const timer = getGameTimer(timeDisplay);
+    // const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+    // const timer = getGameTimer(timeDisplay);
 
     const numQuestionsLeft: number = (currentSession * -10) + quizQuestions.length;
 
@@ -45,11 +45,16 @@ export function getNextQuestion(currentSession: number): QuizQuestion | null {
     } else {
         // What happens when quiz is over
         console.log('Quiz is finished!');
-        timer.stop();
+        //timer.stop();
         sessionCount++;
         questionCount = 0;
         printResult(quizQuestions);
         switchHiddenGameAndResult(); // Alternerar mellan att gömma/visa game eller result-section
+        // Reset scores
+        quizQuestions.forEach(question => {
+            console.log('Reset Score');
+            question.score = 0;
+        });
         return null;
     }
 }
