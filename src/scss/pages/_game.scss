@@ -37,7 +37,7 @@
     border-radius: calc(var(--fs-300) * .75);
 
     display: grid;
-    justify-content: center;
+    justify-content: stretch;
 
     @include mx.for-breakpoint('tablet-up') {
       padding: calc(var(--fs-300) * 4);
@@ -144,7 +144,7 @@
     border: 0;
     border-radius: 100px;
     padding: 1.5em 4em;
-    min-width: 50%;
+    min-width: 60%;
 
     background-color: var(--button-background);
     color: var(--button-text);
@@ -155,14 +155,5 @@
     &:hover {
       background-color: var(--button-background-hover);
     }
-  }
-
-  &__next-question-overlay {
-    position: absolute;
-    z-index: 99;
-    inset: 0;
-    pointer-events: none;
-    display: grid;
-    place-content: center;
   }
 }

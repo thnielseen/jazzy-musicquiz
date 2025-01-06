@@ -1,6 +1,8 @@
-import { questionStartTime, currentQuestion } from "./printQuestion";
-import { getNextQuestion } from "./questionCounter";
 
+import { questionStartTime, currentQuestion } from "./printQuestion";
+import { getNextQuestion, sessionCount, questionCount } from "./questionCounter";
+import { getGameTimer } from "./gameTimer";
+import { updateTotalScore } from "./getQuizQuestions";
 
 /**
  * Event listener for user answers.
@@ -14,6 +16,9 @@ import { getNextQuestion } from "./questionCounter";
  */
 export function userAnswerEvent(): void {
 
+  const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+  const timer = getGameTimer(timeDisplay);
+  
   // Get submit answer button
   const submitAnswerBtn = document.querySelector('.js-next-question') as HTMLButtonElement;
 
@@ -42,20 +47,12 @@ export function userAnswerEvent(): void {
       const userAnswer: string = checkedAnswer.value;
 
       // Calculate the time taken to answer the question
-      const timeTaken = (Date.now() - questionStartTime) / 1000;
+      // const timeTaken = (Date.now() - questionStartTime) / 1000;
 
       if (currentQuestion) {
         // Store the user's answer, check if it is correct, and update the score in the current question object
-        currentQuestion.timeTaken = timeTaken;
+        // currentQuestion.timeTaken = timeTaken;
         currentQuestion.checkUserAnswer(userAnswer);
-
-        //! DEBUG: Log the updated question properties to the console for testing
-        console.log(
-          'User answer:', userAnswer, 
-          '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
-          '\nTime taken:', timeTaken,  
-          '\nScore:', currentQuestion.score
-        );
 
         // Show for user if correct or incorrect
         if (currentQuestion.isUserAnswerCorrect) {
@@ -66,11 +63,14 @@ export function userAnswerEvent(): void {
           answerIcon.innerHTML = '<svg class="icon"><use href="#sad-icon"/></svg>';
         }
         
-        // Get the next question after a short delay          
-        // setTimeout(() => {
-        //   getNextQuestion();
-        // }, 3000);
         startCountDown(answerBtn, answerIcon);
+
+        //! DEBUG: Log the updated question properties to the console for testing
+        // console.log(
+        //   'User answer:', userAnswer, 
+        //   '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
+        //   '\nScore:', currentQuestion.score
+        // );
 
       }
       else {
@@ -82,12 +82,23 @@ export function userAnswerEvent(): void {
     }
   }
 
-
   function updateCountDownDisplay(count: number): void {
     submitAnswerBtn.innerText = `Nästa fråga visas om.. ${count}`;
   }
 
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    // Calculate the time taken to answer the question
+    const timeTaken = (Date.now() - questionStartTime) / 1000;
+    console.log('finishCountDown(): timeTaken', timeTaken);
+    currentQuestion.timeTaken = timeTaken;
+    currentQuestion.score = currentQuestion.calculateScore();
+    console.log('currentQuestion.score', currentQuestion.score);
+    updateTotalScore(currentQuestion.score);
+
+    if (questionCount === 10) {
+      timer.stop();
+    }
+    
     submitAnswerBtn.innerText = 'Bekräfta svar';
     document.body.style.removeProperty('pointer-events');
     document.body.style.removeProperty('cursor');
@@ -96,7 +107,7 @@ export function userAnswerEvent(): void {
     answerBtn?.classList.remove('invalid');
     answerIcon.innerHTML = '';
     isCountDownActive = false;
-    getNextQuestion();
+    getNextQuestion(sessionCount);
   }
 
   function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
@@ -109,7 +120,7 @@ export function userAnswerEvent(): void {
           finishCountDown(answerBtn, answerIcon);
           clearInterval(intervalId);
       }
-    }, 1000);
+    }, 1000); //! Ändra tillbaka till 1000
   }
 
   function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
@@ -118,7 +129,7 @@ export function userAnswerEvent(): void {
 
     // Set up Initial State
     isCountDownActive = true;
-    currentCountDown = 3;
+    currentCountDown = 2;
 
     document.body.style.pointerEvents = 'none';
     document.body.style.cursor = 'wait';

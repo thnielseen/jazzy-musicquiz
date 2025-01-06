@@ -1,4 +1,6 @@
-import { QuizQuestion, quizQuestions } from "./getQuizQuestions";
+// import { getGameTimer } from "./gameTimer";
+import { QuizQuestion } from "./getQuizQuestions";
+import { quizQuestions } from "./quizData";
 import { printQuestion } from "./printQuestion";
 import { printResult } from "./printResult";
 import { switchHiddenGameAndResult } from './showAndHideSections';
@@ -16,20 +18,43 @@ import { switchHiddenGameAndResult } from './showAndHideSections';
 
 
 // Counter for amount of questions shown
-export let questionCount = 0; 
+export let questionCount: number = 0;
+export let currentIndex: number = 0;
+export let sessionCount: number = 0;
 
-export function getNextQuestion(): QuizQuestion | null {
+export function getNextQuestion(currentSession: number): QuizQuestion | null {
+
+    // const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+    // const timer = getGameTimer(timeDisplay);
+
+    const numQuestionsLeft: number = (currentSession * -10) + quizQuestions.length;
+
+    if (numQuestionsLeft < 10) {
+        currentSession = sessionCount = 0;
+    }
+
+    console.log('getNextQuestion(): currentSession', currentSession);
+
+    currentIndex = (currentSession * 10) + questionCount;
+
     if (questionCount < 10) {
-        const nextQuestion = quizQuestions[questionCount]; // Get question based on index in quizQuestions array
-        printQuestion(nextQuestion, questionCount); // Name of Therese's print question function
+        const nextQuestion = quizQuestions[currentIndex]; // Get question based on index in quizQuestions array
+        printQuestion(nextQuestion, currentIndex); // Name of Therese's print question function
         questionCount++; // Increase counter
         return nextQuestion;
     } else {
         // What happens when quiz is over
         console.log('Quiz is finished!');
+        //timer.stop();
+        sessionCount++;
+        questionCount = 0;
         printResult(quizQuestions);
         switchHiddenGameAndResult(); // Alternerar mellan att gömma/visa game eller result-section
+        // Reset scores
+        quizQuestions.forEach(question => {
+            console.log('Reset Score');
+            question.score = 0;
+        });
         return null;
     }
 }
-
