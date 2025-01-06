@@ -7,7 +7,7 @@
  X Skapa en funktion som när timern stoppas så lagrar den det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet.
  */
 
- import { questionCount } from './questionCounter';
+// import { questionCount } from './questionCounter';
 
 export class Timer {
     private seconds: number;
