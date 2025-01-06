@@ -1,7 +1,7 @@
 //import { Timer } from './timerFunction';  // Importera timer-funktionen
 import { getGameTimer } from './gameTimer';
 import { getNextQuestion, sessionCount } from "./questionCounter";
-import { createGameQuestions } from "./getQuizQuestions";
+import { createGameQuestions, resetTotalScore } from "./getQuizQuestions";
 import { quizQuestions } from './quizData';
 import { switchHiddenGameAndResult } from './showAndHideSections';
 
@@ -19,6 +19,8 @@ export function initRestartGame(): void {
 
   restartBtn?.addEventListener('click', (e)=> {
     e.preventDefault;
+    // Reset score
+    resetTotalScore();
     //const myTimer = new Timer(timeDisplay);  // Skapa Timer-objektet
     //myTimer.start();  // Starta timern
     timer.start();  // Starta timern

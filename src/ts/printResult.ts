@@ -15,7 +15,7 @@ import { QuizQuestion } from "./getQuizQuestions";
  */
 
 function formatTime (seconds: number): string {
-  const minutes = Math.floor(seconds / 60);
+  const minutes = Math.round(seconds / 60);
   const remainingSeconds = seconds % 60;
   return `${minutes} minuter och ${remainingSeconds.toString().padStart(2, '0')} sekunder.`;
 }
