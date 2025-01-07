@@ -1,6 +1,5 @@
 import { QuizQuestion } from "./getQuizQuestions";
 
-
 /**
  * Converts a time value in seconds to a formatted string "X minuter och Y sekunder".
  * Calculates full minutes and remaining seconds, ensuring seconds are two digits.
@@ -14,7 +13,7 @@ import { QuizQuestion } from "./getQuizQuestions";
  */
 
 function formatTime (seconds: number): string {
-  const minutes = Math.round(seconds / 60);
+  const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
   return `${minutes} minuter och ${remainingSeconds} sekunder`;
 }
@@ -31,29 +30,33 @@ export function printResult(questions: QuizQuestion[]): void {
     const resultContainer = document.querySelector(".result__content");
 
     if(!resultContainer) {
-        console.error('Result container not found!');
-        return;
+      console.error('Result container not found!');
+      return;
     }
 
     const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
-    const totalTime: number = Math.floor(
-      questions.reduce((acc, q) => acc + (q.timeTaken ?? 0), 0)
-    ); // Round here to ensure that totalTime is an integer (heltal)
     const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
+
+    let savedTimes: number[] = [];
+    try {
+      savedTimes = JSON.parse(localStorage.getItem('timerHistory') || '[]');
+    } catch (err) {
+      console.error('Failed to parse timer history from localStorage', err);
+    }
     
     resultContainer.innerHTML = `
-    <h2 class="result__title">Resultat</h2>
-    <div class="row">
-      <span class="result__label">Antal rätt:</span>
-      <span class="result__data js-result-count">${correctAnswers} av 10</span>
-    </div>
-    <div class="row">
-      <span class="result__label">Antal poäng:</span>
-      <span class="result__data js-result-score">${totalScore} p</span>
-    </div>
-    <div class="row">
-      <span class="result__label">Din tid:</span>
-      <span class="result__data">${formatTime(totalTime)}</span>
-    </div>
-    `
+      <h2 class="result__title">Resultat</h2>
+      <div class="row">
+        <span class="result__label">Antal rätt:</span>
+        <span class="result__data js-result-count">${correctAnswers} av 10</span>
+      </div>
+      <div class="row">
+        <span class="result__label">Antal poäng:</span>
+        <span class="result__data js-result-score">${totalScore} p</span>
+      </div>
+      <div class="row">
+        <span class="result__label">Din tid:</span>
+        <span class="result__data">${formatTime(savedTimes.slice(-1)[0])}</span>
+      </div>
+    `;
 }
