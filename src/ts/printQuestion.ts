@@ -20,13 +20,19 @@ export function printQuestion(
   questionIndex: number,
 ): void {
   const gameContent = document.querySelector('.js-question-card');
-  const questionNumberElement = document.querySelector(
-    '.js-game-question-number',
-  );
+  const questionNumberElement = document.querySelector('.js-game-question-number');
+  const questionFeedbackNumber = document.querySelector('.js-question-feedback-number');
 
+
+  
   if (gameContent && questionNumberElement) {
     // Update the displayed question number
     questionNumberElement.textContent = (questionCount + 1).toString();
+
+    if (gameContent && questionFeedbackNumber) {
+    // Update the displayed question number
+    questionFeedbackNumber.textContent = (questionCount + 1).toString();
+    }
 
     // Render the question and answer options
     gameContent.innerHTML = `
