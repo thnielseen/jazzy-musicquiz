@@ -41,6 +41,7 @@ export function userAnswerEvent(): void {
     if (checkedAnswer) {
       const answerBtn = checkedAnswer.closest('.js-answer-btn') as HTMLElement;
       const answerIcon = answerBtn?.querySelector('.js-answer-icon') as HTMLInputElement;
+      const feedbackMessage = document.querySelector('.js-feedback-result') as HTMLElement;
 
       // Store the value of the selected answer
       const userAnswer: string = checkedAnswer.value;
@@ -52,10 +53,16 @@ export function userAnswerEvent(): void {
         // Show for user if correct or incorrect
         if (currentQuestion.isUserAnswerCorrect) {
           answerBtn?.classList.add('valid');
-          answerIcon.innerHTML = '<svg class="icon"><use href="#party-icon"/></svg>';
+          answerIcon.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#party-icon"/></svg>';
+          if (feedbackMessage) {
+            feedbackMessage.textContent = "Rätt svar! Bra jobbat!";
+          }
         } else {
           answerBtn?.classList.add('invalid');
-          answerIcon.innerHTML = '<svg class="icon"><use href="#sad-icon"/></svg>';
+          answerIcon.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#sad-icon"/></svg>';
+          if (feedbackMessage) {
+            feedbackMessage.textContent = `Tyvärr, det blev fel`;
+          }
         }
         
         startCountDown(answerBtn, answerIcon);
