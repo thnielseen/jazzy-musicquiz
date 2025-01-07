@@ -86,7 +86,7 @@ export class QuizQuestion implements IQuizQuestion {
     this.isUserAnswerCorrect = null;
     this.score = 0; // Initial score is 0
 
-    this.calculateCorrectAnswer(); // Determine which answer is correct
+    this.toggleCorrectAnswer(); // Determine which answer is correct
   }
 
   /**
@@ -95,7 +95,7 @@ export class QuizQuestion implements IQuizQuestion {
    * based on whether it matches the `correctAnswer`.
    */
 
-  calculateCorrectAnswer(): void {
+  toggleCorrectAnswer(): void {
     this.answers.forEach((answer) => {
       answer.isCorrect = answer.answer === this.correctAnswer;
     });
