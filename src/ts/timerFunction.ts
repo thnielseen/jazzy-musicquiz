@@ -16,15 +16,8 @@ export class Timer {
 
         this.reset();  // Resets the timer when pressing the start game button again
 
-        this.intervalId = setInterval(() => {
-            this.seconds++;
-            this.displayTime();
-
-        // Stop the timer after 30 minutes if no stop is triggered
-        if (this.seconds >= 1800) { // 30 min = 1800 sec
-                this.stop();
-            }
-        }, 1000); // Update every second
+    
+        this.intervalId = setInterval(this.updateTimer.bind(this), 1000); // Update every second
     }
 
 
@@ -42,6 +35,16 @@ export class Timer {
         this.displayTime();
     }
 
+    private updateTimer() {
+        this.seconds++;
+        this.displayTime();
+
+        // Stoppar timern efter 30 minuter
+        if (this.seconds >= 1800) { // 30 min = 1800 sekunder
+            this.stop();
+        }
+    }
+    
     // Updates the timer in minutes and seconds on the screen
     private displayTime() {
         const minutes = Math.floor(this.seconds / 60);
