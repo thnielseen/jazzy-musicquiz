@@ -5,18 +5,18 @@ export function endGameButton(): void{
     const closeModalBtn = document.querySelector('#closeModal') as HTMLButtonElement | null;
     const openConfirmBtn = document.querySelector('#openConfirm') as HTMLButtonElement | null;
 
-    // Kollar om HTML-elementen finns
+    // Checks if the HTML elements exist
     if (dialog && finishGameBtn && closeModalBtn && openConfirmBtn) {
 
-        // "Avsluta"-knappen på resultatsidan. Öppnar dialogruta.
+        // "Finish" button on the results page. Opens a dialog box.
         finishGameBtn.addEventListener("click", () => {
             dialog.showModal();
         });
 
-        // "Ja"-knapp i första dialogrutan. Öppnar andra dialogrutan.
+        // "Yes" button in the first dialog box. Opens a confirmation dialog.
         openConfirmBtn.addEventListener("click", () => {
 
-            // Andra dialogrutan
+            // Second dialog box
             const userConfirm = confirm("Är du verkligen säker på att du vill avsluta spelet?");
             if (userConfirm) {
                 localStorage.clear();
@@ -24,16 +24,14 @@ export function endGameButton(): void{
             } else {
                 dialog.close(); 
             }
-
         });
 
-        // "Nej"-knapp på första dialogrutan. Återgår till resultatsidan.
+        // "No" button on the first dialog box. Returns to the results page.
         closeModalBtn.addEventListener("click", () => {
             dialog.close();
         });
-
     } else {
-        console.error("En eller flera HTML-element hittades inte.");
+        console.error("One or more HTML elements were not found.");
     }
 
 }

@@ -14,8 +14,8 @@ import { updateTotalScore } from "./getQuizQuestions";
  * - The user's score is updated based on the correctness of the answer and the time taken to answer and stored in the question object.
  * - The next question is retrieved after a short delay of 2 seconds.
  */
-export function userAnswerEvent(): void {
 
+export function userAnswerEvent(): void {
   const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
   const timer = getGameTimer(timeDisplay);
   
@@ -26,19 +26,18 @@ export function userAnswerEvent(): void {
   let isCountDownActive: boolean = false;
   let currentCountDown: number = 3;
   
-  function submitAnswer(e: Event) {
-
+  function submitAnswer(e: Event) { // add : void ?
     e.preventDefault;
-
-    //! DEBUG
-    // const rbs = Array.from(document.querySelectorAll('input[name="answer"]')) as HTMLInputElement[];
-    // rbs.forEach(rb => {
-    //   console.log(rb.id, rb.checked);
-    // });
 
     // Get the elements
     const checkedAnswer = document.querySelector('input[name="answer"]:checked') as HTMLInputElement;
 
+    if (!checkedAnswer) {
+      alert('Var vänlig markera ett svar innan du klickar på knappen "Skicka svar"');
+      console.error('No current question is set.');
+      return;
+    }
+    
     if (checkedAnswer) {
       const answerBtn = checkedAnswer.closest('.js-answer-btn') as HTMLElement;
       const answerIcon = answerBtn?.querySelector('.js-answer-icon') as HTMLInputElement;
@@ -46,12 +45,8 @@ export function userAnswerEvent(): void {
       // Store the value of the selected answer
       const userAnswer: string = checkedAnswer.value;
 
-      // Calculate the time taken to answer the question
-      // const timeTaken = (Date.now() - questionStartTime) / 1000;
-
       if (currentQuestion) {
         // Store the user's answer, check if it is correct, and update the score in the current question object
-        // currentQuestion.timeTaken = timeTaken;
         currentQuestion.checkUserAnswer(userAnswer);
 
         // Show for user if correct or incorrect
@@ -64,35 +59,19 @@ export function userAnswerEvent(): void {
         }
         
         startCountDown(answerBtn, answerIcon);
-
-        //! DEBUG: Log the updated question properties to the console for testing
-        // console.log(
-        //   'User answer:', userAnswer, 
-        //   '\nIs user answer correct:', currentQuestion.isUserAnswerCorrect, 
-        //   '\nScore:', currentQuestion.score
-        // );
-
-      }
-      else {
-        // Log an error if there is no current question object
-        console.error('Ingen aktuell fråga är inställd.');
-      }
-    } else {
-      alert('Var vänlig markera ett svar innan du cklickar på knappen "Skicka svar"');
+      } 
     }
   }
 
   function updateCountDownDisplay(count: number): void {
-    submitAnswerBtn.innerText = `Nästa fråga visas om.. ${count}`;
+    submitAnswerBtn.innerText = `Nästa fråga visas om ... ${count}`;
   }
 
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
     // Calculate the time taken to answer the question
     const timeTaken = (Date.now() - questionStartTime) / 1000;
-    console.log('finishCountDown(): timeTaken', timeTaken);
     currentQuestion.timeTaken = timeTaken;
     currentQuestion.score = currentQuestion.calculateScore();
-    console.log('currentQuestion.score', currentQuestion.score);
     updateTotalScore(currentQuestion.score);
 
     if (questionCount === 10) {
@@ -120,7 +99,7 @@ export function userAnswerEvent(): void {
           finishCountDown(answerBtn, answerIcon);
           clearInterval(intervalId);
       }
-    }, 1000); //! Ändra tillbaka till 1000
+    }, 1000);
   }
 
   function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
@@ -139,9 +118,6 @@ export function userAnswerEvent(): void {
     runCountDown(answerBtn, answerIcon);
   }
 
-
   // Event listener for submit answer button
   submitAnswerBtn?.addEventListener('click', submitAnswer);
-
-
 }

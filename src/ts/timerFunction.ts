@@ -1,14 +1,3 @@
-/**
- X Skapa en platshållare för timern i html
- X Skapa en funktion för att starta timern med hjälp av starta spel knappen.
- X Skapa en funtkion som nollställer timern om starta spel knappen trycks en gång till.
- X Kkoppla denna funktion till stop funktionen.
- X Skapa en funktion som stoppar timern efter 30 minter om inte ovan funktion utlöst ett stopp.  
- X Skapa en funktion som när timern stoppas så lagrar den det värdet i local storage. Efter 10 omgångar ska sen börja rensa det äldsta värdet.
- */
-
-// import { questionCount } from './questionCounter';
-
 export class Timer {
     private seconds: number;
     private intervalId: number | null;
@@ -22,26 +11,20 @@ export class Timer {
 
     start() {
         if (this.intervalId !== null) {
-            this.stop();  // Stoppar den gamla timern om den är igång
+            this.stop();  // Stops the old timer if it's running
         }
 
-        this.reset();  // Nollstället timern om man trycker på starta spel igen
+        this.reset();  // Resets the timer when pressing the start game button again
 
         this.intervalId = setInterval(() => {
             this.seconds++;
             this.displayTime();
 
-            // if (questionCount >= 10) {
-            //     console.log('Quizet är klart, timern stängs av.');
-            //     this.stop();  // Stoppa timern om quizet är över
-            // }
-
-            // Stanna timern efter 30 minuter om inget stop utlöses
-            if (this.seconds >= 1800) { // 30 minuter = 1800 sekunder
-                //console.log('30 minuter har passerat, timern stängs av.');
+        // Stop the timer after 30 minutes if no stop is triggered
+        if (this.seconds >= 1800) { // 30 min = 1800 sec
                 this.stop();
             }
-        }, 1000); // Uppdatera varje sekund
+        }, 1000); // Update every second
     }
 
 
@@ -49,26 +32,24 @@ export class Timer {
         if (this.intervalId !== null) {
             clearInterval(this.intervalId);
             this.intervalId = null;
-            console.log('Timer stopped.');//console.log för testning
-            this.saveTime(); // Sparar värdet i localStorage när timern stoppas
+            this.saveTime(); // Saves the value in localStorage when the timer is stopped
         }
     }
 
-    // Återställer timern till sitt ursprungliga tillstånd
+    // Resets the timer to its original state
     reset() {
         this.seconds = 0;
         this.displayTime();
     }
 
-   // Uppdaterar timern i minuter och sekunder på skärmen 
+    // Updates the timer in minutes and seconds on the screen
     private displayTime() {
         const minutes = Math.floor(this.seconds / 60);
         const remainingSeconds = this.seconds % 60;
-        //console.log(`Time updated: ${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`); //console.log för testning
         this.timeDisplay.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
 
-    // Sparar ner den nya tiden i listan när timern stoppas
+    // Saves the new time in the list when the timer is stopped
     private saveTime() {
         let savedTimes: number[] = [];
         try {
@@ -79,16 +60,12 @@ export class Timer {
 
         savedTimes.push(this.seconds);
 
-        // Om det finns fler än 10 objekt i local storage, ta bort det äldsta (index 0)
+        // If there are more than 10 items in local storage, remove the oldest (index 0)
         if (savedTimes.length > 10) {
             savedTimes.shift();
         }
 
-        // Spara den uppdaterade listan tillbaka i localStorage
+        // Save the updated list back to localStorage
         localStorage.setItem('timerHistory', JSON.stringify(savedTimes));
-
-        console.log('Timer saved:', this.seconds); // Loggar den senaste sparade tiden
-
-        console.log('All saved times:', savedTimes); // Loggar alla sparade tider i localStorage
     }
 }
