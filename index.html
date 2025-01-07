@@ -32,20 +32,22 @@
       <div class="container--boxed header__content">
         <div class="header__brand">
           <img
-            src="/images/jazz-up-logo-w512.avif"
+            src="/images/jazz-up-logo.avif"
             alt="Jazz-up logotyp, en tecknad glad man med orangea glasögon och en hand som pekar uppåt"
             class="header__brand-image"
-            width="172"
-            height="172"
+            width="512"
+            height="512"
+            loading="lazy"
           />
-          </div>
-          <div class="header__score">
-            Poäng: <span class="js-current-score">0</span>
-          </div>
-          <div class="header__timer">
+        </div>
+        <div class="header__score">
+          Poäng: <span class="js-current-score">0</span>
+        </div>
+        <div class="header__timer">
           Tid: <span class="js-current-timer" id="timeDisplay">0:00</span>
-          </div>
-      </header>
+        </div>
+      </div>
+    </header>
 
     <main class="container--boxed">
       <!------------------------------------>
@@ -152,6 +154,16 @@
             Avsluta
           </button>
         </div>
+
+        <!-- Dialogruta -->
+        <dialog class="result__modal" id="modal">
+          <h3 class="result__modal-title">Är du säker på att du vill avsluta spelet?</h3>
+          <div class="result__modal-buttons">
+            <button class="result__modal-button" id="openConfirm">Ja</button>
+            <button class="result__modal-button" id="closeModal">Nej</button>
+          </div>
+        </dialog>
+
       </section>
     </main>
 
