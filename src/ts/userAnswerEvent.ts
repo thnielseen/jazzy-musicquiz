@@ -75,6 +75,8 @@ export function userAnswerEvent(): void {
   }
 
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+    
+    const gameContent = document.querySelector(".js-game-content",) as HTMLElement;
     // Calculate the time taken to answer the question
     const timeTaken = (Date.now() - questionStartTime) / 1000;
     currentQuestion.timeTaken = timeTaken;
@@ -84,6 +86,11 @@ export function userAnswerEvent(): void {
     if (questionCount === 10) {
       timer.stop();
     }
+    // When new question redirect focus to 
+    if (gameContent) {
+      gameContent.focus();
+    }
+  
     
     submitAnswerBtn.innerText = 'Bekräfta svar';
     document.body.style.removeProperty('pointer-events');
