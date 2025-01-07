@@ -94,21 +94,22 @@
       <!---------- Game section ---------->
       <!---------------------------------->
       <section class="game hidden">
-        <h2 class="game__title">
+        <h2 class="game__title" aria-hidden="true">
           <span
-            >Du är nu på fråga <span class="js-game-question-number">1</span> av
+            >Du är nu på fråga <span class="js-game-question-number"></span> av
             10</span>
-          <span class="game__progress-bar js-game-progress-bar"></span>
         </h2>
         <div class="game__content">
+          <p class="js-progress-feedback" tabindex="-1" aria-live="polite">
+            <span>Du är nu på fråga <span class="js-question-feedback-number"></span> av 10</span>
+          </p>
           <article class="js-question-card"></article>
           <button type="button" class="game__next-button js-next-question">
-            Bekräfta svar <span class="js-next-questtion-counter"></span>
+            Bekräfta svar <span class="js-next-question-counter"></span>
           </button>
-          <div
-            class="game__next-question-counter js-next-questtion-overlay"
-          ></div>
+          <p class="js-feedback-result" aria-live="polite" role="alert"></p>
         </div>
+        
       </section>
 
       <!------------------------------------>
