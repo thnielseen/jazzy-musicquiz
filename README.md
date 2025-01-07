@@ -37,12 +37,13 @@ Vi följde Scrum-metoden och delade in projektet i sprintar.
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
 #### Scrum Master
-Rollen delas upp över de olika sprintarna så att alla fick testa på rollen. 
+Rollen delas upp över de olika sprintarna så att de flesta fick testa på rollen. Angelica Nylander var Scrum Master 16:e till 23 december, Elin Nilsson var Scrum Master 27 december till 3 januari och
+Frida Nordenlöw var Scrum Master 7:e till 10 januari.
 
 #### Utvecklingsteam
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
-#### Stackholders 
+#### Stakeholders 
 Maria Larsson Bovin, Jenni Pulli och Jenny Waller
 
 #### Gruppkontrakt
@@ -62,7 +63,7 @@ Vår backlog och sprint planering gjordes i programmet GitHub Projects. Under va
 Vi genomförde dagliga standup-möten för att synkronisera vårt arbete, dela med oss av framsteg och lyfta eventuella utmaningar. Dessa möten bidrog till att hålla teamet uppdaterat och möjliggjorde snabba lösningar på problem.
 
 #### Demo
-Vi fick efter sprint 1 demonstrera sprintens resultat för stackholders. Där hade de möjlighet att ge feedback som vi kunde planera in i sprint 2.
+Vi fick efter sprint 1 demonstrera sprintens resultat för stakeholders. Där hade de möjlighet att ge feedback som vi kunde planera in i sprint 2.
 
 #### Retrospektiv
 Efter varje sprint höll vi retrospektiva möten med hjälp av verktyget Miro. Där utvärderade vi vårt arbete och diskuterade vad som fungerade bra och identifierade områden för förbättring. Denna process hjälpte oss att ständigt utvecklas och anpassa vårt arbetssätt.
