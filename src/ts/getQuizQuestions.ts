@@ -116,22 +116,15 @@ export class QuizQuestion implements IQuizQuestion {
   calculateScore(): number {
 
     if (this.timeTaken === 0 || !this.isUserAnswerCorrect) {
-      console.log('calculateScore() A:', '0');
       return 0; // Incorrect answer
     }
     if (this.timeTaken > 60) {
-      console.log('calculateScore() B:', '1');
-      console.log('calculateScore() B: this.timeTaken', this.timeTaken);
       return 1; // More than 60 seconds
     }
     if (this.timeTaken <= 10) {
-      console.log('calculateScore() C:', '10');
-      console.log('calculateScore() C: this.timeTaken', this.timeTaken);
       return 10; // Maximum score for quick answers
     }
     // Gradual score reduction for times between 10 and 60 seconds
-    console.log('calculateScore() this.timeTaken:', this.timeTaken);
-    console.log('calculateScore() D:', Math.max(1, 10 - Math.floor((this.timeTaken - 10) / 5)));
     return Math.max(1, 10 - Math.floor((this.timeTaken - 10) / 5));
   }
 
@@ -146,12 +139,6 @@ export class QuizQuestion implements IQuizQuestion {
   checkUserAnswer(userAnswer: string): void {
     this.userAnswer = userAnswer; // Record the user's answer
     this.isUserAnswerCorrect = userAnswer === this.correctAnswer; // Check correctness
-    //this.score = this.calculateScore(); // Calculate the score
-    
-    // If answer is correct, add points to total score in top of the game
-    // if (this.isUserAnswerCorrect) {
-    //   updateTotalScore(this.score);
-    // }
   }
 }
 
@@ -167,10 +154,7 @@ export class QuizQuestion implements IQuizQuestion {
 export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount: number = 0): QuizQuestion[] => {
   
   const numQuestionsLeft: number = (sessionCount * -10) + quizQuestions.length;
-  console.log('numQuestionsLeft',numQuestionsLeft);
-
   if (sessionCount < 1 || numQuestionsLeft < 10) {
-    console.log('Shuffle')
     // Shuffle the quiz questions array
     shuffleArray(quizQuestions).forEach((quizQuestion) => {
       // Shuffle the answers within each question
@@ -179,7 +163,6 @@ export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount:
 
     // Reset time taken
     quizQuestions.forEach(question => {
-      console.log('Reset timeTaken');
       question.timeTaken = 0;
     });
   }

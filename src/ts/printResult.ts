@@ -1,7 +1,6 @@
 import { QuizQuestion } from "./getQuizQuestions";
 
 
-// Skulle kunna flyttas ut till en annan modul, typ utilities?
 /**
  * Converts a time value in seconds to a formatted string "X minuter och Y sekunder".
  * Calculates full minutes and remaining seconds, ensuring seconds are two digits.
@@ -10,14 +9,14 @@ import { QuizQuestion } from "./getQuizQuestions";
  * @returns A formatted string representing the time.
  * 
  * @example
- * formatTime(125); // "2 minuter och 05 sekunder"
+ * formatTime(125); // "2 minuter och 5 sekunder"
  * formatTime(59);  // "0 minuter och 59 sekunder"
  */
 
 function formatTime (seconds: number): string {
   const minutes = Math.round(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes} minuter och ${remainingSeconds.toString().padStart(2, '0')} sekunder.`;
+  return `${minutes} minuter och ${remainingSeconds} sekunder`;
 }
 
 /**
@@ -28,7 +27,7 @@ function formatTime (seconds: number): string {
  * @param questions - An array of quiz questions, including the user's answers, time taken, and scores.
  */
 
-export function printResult(questions: QuizQuestion[]): void { // Typen på questions sätts till QuizQuestion[]
+export function printResult(questions: QuizQuestion[]): void {
     const resultContainer = document.querySelector(".result__content");
 
     if(!resultContainer) {
@@ -39,11 +38,8 @@ export function printResult(questions: QuizQuestion[]): void { // Typen på ques
     const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
     const totalTime: number = Math.floor(
       questions.reduce((acc, q) => acc + (q.timeTaken ?? 0), 0)
-    ); // Avrunda här för att säkerställa att totalTime är ett heltal    
+    ); // Round here to ensure that totalTime is an integer (heltal)
     const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
-
-
-    console.log(correctAnswers, totalTime, totalScore);  // Debugging
     
     resultContainer.innerHTML = `
     <h2 class="result__title">Resultat</h2>
@@ -61,13 +57,3 @@ export function printResult(questions: QuizQuestion[]): void { // Typen på ques
     </div>
     `
 }
-
-// <div class="row">
-// <details>
-//   <summary>Highscore</summary>
-//   <div>
-//     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias,
-//     ducimus.
-//   </div>
-// </details>
-// </div>

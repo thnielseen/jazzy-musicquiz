@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const usernameInput = document.getElementById('username') as HTMLInputElement;
 
-  // Försök att hämta användarnamnet från localStorage
+  // Attempt to get the username from localStorage
   const savedUsername = localStorage.getItem('username');
 
-  // Om vi har ett sparat användarnamn, sätt det i inputfältet
+  // If we have a saved username, set it in the input field
   if (usernameInput) {
     if (savedUsername) {
-      // Om vi har ett sparat användarnamn, sätt det som värde i inputfältet
-      usernameInput.value = savedUsername;  // Här sätts sparat användarnamn som värde
-      console.log('Sparat användarnamn visas:', savedUsername);
+      // If we have a saved username, set it as the value in the input field
+      usernameInput.value = savedUsername;  // Saved username is set as the value
     } else {
-      // Om inget sparat namn finns, sätt till default-värde
-      usernameInput.value = "Jazzonymous";  // Om inget sparat namn, sätt standard
-      console.log('Inget sparat användarnamn, standardnamn sätts.');
+      // If no saved name is set, set the default value "Jazzonymous"
+      usernameInput.value = "Jazzonymous";
     }
   }
 });
