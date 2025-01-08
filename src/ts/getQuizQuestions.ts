@@ -1,14 +1,14 @@
 import { shuffleArray } from "./utilities";
 
 
-// Interface representing an answer object
+/** Interface for quiz answer data */
 export interface IAnswer {
   answer: string;       // The text of the answer
   isCorrect: boolean;   // Indicates if the answer is correct
 }
 
 
-// Interface representing a QuizQuestion object
+/** Interface for quiz question data */
 export interface IQuizQuestion {
   question: string;             // The text of the question
   answers: IAnswer[];           // An array of possible answers
@@ -19,14 +19,21 @@ export interface IQuizQuestion {
 }
 
 
-// Class representing an answer
+/**
+ * Represents a single answer choice in a quiz question.
+ * Implements the IAnswer interface.
+ */
 export class Answer implements IAnswer {
   answer: string;    // The text of the answer
   isCorrect: boolean; // Indicates if the answer is correct
 
+  /**
+   * Creates a new answer object.
+   * @param {string} answer - Text of the answer choice
+   */
   constructor(answer: string) {
     this.answer = answer;
-    this.isCorrect = false; // Default value; will be updated later if it's correct
+    this.isCorrect = false; // Default to incorrect until set
   }
 }
 
@@ -34,8 +41,10 @@ export class Answer implements IAnswer {
 let totalScore: number = 0;
 
 /**
- * Updates the total score and the HTML element.
- * @param points - The number of points to add.
+ * Updates the total score and displays it.
+ * @param {number} points - Points to add to total score 
+ * @returns {void}
+ * @throws {Error} Logs error if score element not found
  */
 export function updateTotalScore(points: number): void {
   // Add the score to the total score
@@ -50,6 +59,10 @@ export function updateTotalScore(points: number): void {
   }
 }
 
+/**
+ * Resets the total score to zero and updates display.
+ * @returns {void}
+ */
 export function resetTotalScore(): void {
   const scoreElement = document.querySelector('.js-current-score') as HTMLElement;
   scoreElement.textContent = '0';
@@ -57,7 +70,10 @@ export function resetTotalScore(): void {
 }
 
 
-// Class representing a QuizQuestion
+/**
+ * Represents a quiz question with answer choices and scoring logic.
+ * Implements the IQuizQuestion interface.
+ */
 export class QuizQuestion implements IQuizQuestion {
   question: string;                // The text of the question
   answers: Answer[];               // An array of Answer objects
@@ -68,15 +84,11 @@ export class QuizQuestion implements IQuizQuestion {
   score: number;                   // The score awarded for the question
 
   /**
-   * Constructor for the QuizQuestion class.
-   * @param question - The text of the question.
-   * @param answers - An array of possible answers as strings.
-   * @param correctAnswer - The correct answer as a string.
-   * 
-   * The constructor initializes the QuizQuestion properties and converts the 
-   * answers array into Answer objects. It also determines which answer is correct.
+   * Creates a new quiz question.
+   * @param {string} question - Question text with [_______] placeholder
+   * @param {string[]} answers - Array of possible answer strings 
+   * @param {string} correctAnswer - The correct answer string
    */
-
   constructor(question: string, answers: string[], correctAnswer: string) {
     this.question = question;
     this.answers = answers.map((answer) => new Answer(answer)); // Convert strings to Answer objects
@@ -90,11 +102,9 @@ export class QuizQuestion implements IQuizQuestion {
   }
 
   /**
-   * Determines the correct answer for the question.
-   * This method updates the `isCorrect` property of each Answer object
-   * based on whether it matches the `correctAnswer`.
+   * Marks which answer is correct in the answers array.
+   * @returns {void}
    */
-
   toggleCorrectAnswer(): void {
     this.answers.forEach((answer) => {
       answer.isCorrect = answer.answer === this.correctAnswer;
@@ -102,17 +112,14 @@ export class QuizQuestion implements IQuizQuestion {
   }
 
   /**
-   * Calculates the score for the QuizQuestion based on the user's performance.
+   * Calculates score based on correctness and time taken.
+   * - 10 points: Correct answer within 10 seconds
+   * - 1-9 points: Correct answer between 10-60 seconds (decreases with time)
+   * - 1 point: Correct answer after 60 seconds
+   * - 0 points: Incorrect answer
    * 
-   * Scoring rules:
-   * - 0 points if the user's answer is incorrect.
-   * - 1 point if the time taken exceeds 60 seconds.
-   * - 10 points if the user answers correctly within 10 seconds.
-   * - For times between 10 and 60 seconds, the score decreases linearly from 10 to 1.
-   * 
-   * @returns {number} The calculated score.
+   * @returns {number} Calculated score for the question
    */
-
   calculateScore(): number {
 
     if (this.timeTaken === 0 || !this.isUserAnswerCorrect) {
@@ -129,13 +136,10 @@ export class QuizQuestion implements IQuizQuestion {
   }
 
   /**
-   * Checks the user's answer for correctness and calculates the score.
-   * @param userAnswer - The user's selected answer as a string.
-   * 
-   * This method sets the user's answer, evaluates if it's correct, and calculates
-   * the score based on the answer and time taken.
+   * Records and validates user's answer.
+   * @param {string} userAnswer - The user's selected answer
+   * @returns {void}
    */
-
   checkUserAnswer(userAnswer: string): void {
     this.userAnswer = userAnswer; // Record the user's answer
     this.isUserAnswerCorrect = userAnswer === this.correctAnswer; // Check correctness
@@ -144,13 +148,11 @@ export class QuizQuestion implements IQuizQuestion {
 
 
 /**
- * Shuffles the order of the provided quiz questions
- * and also shuffles the order of the answers for each question.
- *
- * @param {QuizQuestion[]} quizQuestions - The array of QuizQuestion objects to shuffle.
- * @returns {QuizQuestion[]} - The shuffled array of QuizQuestions with shuffled answers.
+ * Creates a new quiz session by shuffling questions and answers.
+ * @param {QuizQuestion[]} quizQuestions - Array of quiz questions to shuffle
+ * @param {number} sessionCount - Current session number (defaults to 0)
+ * @returns {QuizQuestion[]} Shuffled array of quiz questions
  */
-
 export const createGameQuestions = (quizQuestions: QuizQuestion[], sessionCount: number = 0): QuizQuestion[] => {
   
   const numQuestionsLeft: number = (sessionCount * -10) + quizQuestions.length;
