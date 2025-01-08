@@ -1,3 +1,11 @@
+/**
+ * Initializes the username input field when the DOM content is loaded.
+ * This function:
+ * 1. Retrieves any previously saved username from localStorage
+ * 2. Sets the input field value to either the saved username or a default value
+ * 
+ * @listens DOMContentLoaded - Waits for the DOM to be fully loaded before executing
+ */
 document.addEventListener('DOMContentLoaded', () => {
   const usernameInput = document.getElementById('username') as HTMLInputElement;
 

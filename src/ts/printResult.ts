@@ -19,44 +19,56 @@ function formatTime (seconds: number): string {
 }
 
 /**
- * Calculates and displays the user's quiz results in the result container.
- * It computes the total number of correct answers, total time taken,
- * and total score, then updates the HTML content of the result container.
- * 
- * @param questions - An array of quiz questions, including the user's answers, time taken, and scores.
- */
-
+* Prints the quiz results to the DOM, including correct answers count,
+* total score, and completion time.
+* 
+* @param {QuizQuestion[]} questions - Array of quiz questions with user answers
+* @returns {void}
+* @throws {Error} Logs error if result container element is not found
+*/
 export function printResult(questions: QuizQuestion[]): void {
-    const resultContainer = document.querySelector(".result__content");
+  const resultContainer = document.querySelector(".result__content");
 
-    if(!resultContainer) {
-      console.error('Result container not found!');
-      return;
-    }
+  /** Validate result container exists before proceeding */
+  if(!resultContainer) {
+    console.error('Result container not found!');
+    return;
+  }
 
-    const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
-    const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
+  /** Calculate final statistics */
+  const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
+  const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
 
-    let savedTimes: number[] = [];
-    try {
-      savedTimes = JSON.parse(localStorage.getItem('timerHistory') || '[]');
-    } catch (err) {
-      console.error('Failed to parse timer history from localStorage', err);
-    }
-    
-    resultContainer.innerHTML = `
-      <h2 class="result__title">Resultat</h2>
-      <div class="row">
-        <span class="result__label">Antal rätt:</span>
-        <span class="result__data js-result-count">${correctAnswers} av 10</span>
-      </div>
-      <div class="row">
-        <span class="result__label">Antal poäng:</span>
-        <span class="result__data js-result-score">${totalScore} p</span>
-      </div>
-      <div class="row">
-        <span class="result__label">Din tid:</span>
-        <span class="result__data">${formatTime(savedTimes.slice(-1)[0])}</span>
-      </div>
-    `;
+  /**
+   * Retrieve completion times from localStorage
+   * Defaults to empty array if no history exists
+   */
+  let savedTimes: number[] = [];
+  try {
+    savedTimes = JSON.parse(localStorage.getItem('timerHistory') || '[]');
+  } catch (err) {
+    console.error('Failed to parse timer history from localStorage', err);
+  }
+  
+  /**
+   * Update DOM with formatted results:
+   * - Number of correct answers (out of 10)
+   * - Total score achieved
+   * - Completion time for this attempt
+   */
+  resultContainer.innerHTML = `
+    <h2 class="result__title">Resultat</h2>
+    <div class="row">
+      <span class="result__label">Antal rätt:</span>
+      <span class="result__data js-result-count">${correctAnswers} av 10</span>
+    </div>
+    <div class="row">
+      <span class="result__label">Antal poäng:</span>
+      <span class="result__data js-result-score">${totalScore} p</span>
+    </div>
+    <div class="row">
+      <span class="result__label">Din tid:</span>
+      <span class="result__data">${formatTime(savedTimes.slice(-1)[0])}</span>
+    </div>
+  `;
 }
