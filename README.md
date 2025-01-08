@@ -37,8 +37,8 @@ Vi följde Scrum-metoden och delade in projektet i sprintar.
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
 #### Scrum Master
-Rollen delas upp över de olika sprintarna så att de flesta fick testa på rollen. Angelica Nylander var Scrum Master 16:e till 23 december, Elin Nilsson var Scrum Master 27 december till 3 januari och
-Frida Nordenlöw var Scrum Master 7:e till 10 januari.
+Rollen delas upp över de olika sprintarna så att de flesta fick testa på rollen. Angelica Nylander var Scrum Master 16:e till 23:e december, Elin Nilsson var Scrum Master 23:e december till 3:e januari och
+Frida Nordenlöw var Scrum Master 3:e till 10:e januari.
 
 #### Utvecklingsteam
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
