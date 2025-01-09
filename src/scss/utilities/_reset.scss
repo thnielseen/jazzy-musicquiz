@@ -10,7 +10,9 @@ $_module-name: 'Reset';
 
 /* ### #{$_module-name} START */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -20,7 +22,26 @@ html {
 }
 
 /* Remove Margin and padding */
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, figure, hr, form, fieldset, legend, button, input, textarea {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote,
+figure,
+hr,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea {
   margin: 0;
   padding: 0;
 }
@@ -37,7 +58,11 @@ a:not([class]) {
 }
 
 /* Responsive images and video */
-img, picture, svg, video, canvas {
+img,
+picture,
+svg,
+video,
+canvas {
   display: block;
   max-width: 100%;
   height: auto;

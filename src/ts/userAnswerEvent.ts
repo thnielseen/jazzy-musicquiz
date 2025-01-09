@@ -18,11 +18,10 @@ import { updateTotalScore } from './getQuizQuestions';
  * - The next question is retrieved after a short delay of 2 seconds.
  */
 
-
 /**
  * Sets up the event handling and logic for processing user answers in the quiz game.
  * Manages the answer submission process, countdown timer, and score calculation.
- * 
+ *
  * @returns {void}
  */
 export function userAnswerEvent(): void {
@@ -39,15 +38,16 @@ export function userAnswerEvent(): void {
   // Dynamic countdown attributes
   let isCountDownActive: boolean = false;
   let currentCountDown: number = 3;
-  
+
   /**
    * Handles the submission of a user's answer.
    * Validates the answer selection, updates UI feedback, and initiates countdown.
-   * 
+   *
    * @param {Event} e - The click event object
    * @returns {void}
    */
-  function submitAnswer(e: Event) { // add : void ?
+  function submitAnswer(e: Event) {
+    // add : void ?
     e.preventDefault;
 
     // Get the elements
@@ -103,7 +103,7 @@ export function userAnswerEvent(): void {
 
   /**
    * Updates the countdown display text on the submit button.
-   * 
+   *
    * @param {number} count - The current countdown number to display
    * @returns {void}
    */
@@ -114,13 +114,16 @@ export function userAnswerEvent(): void {
   /**
    * Completes the countdown process, updates scores, and prepares for the next question.
    * Calculates final scores, updates UI, and resets countdown states.
-   * 
+   *
    * @param {HTMLElement} answerBtn - The answer button element to reset
    * @param {HTMLElement} answerIcon - The answer icon element to reset
    * @returns {void}
    */
-  function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
-      const gameContent = document.querySelector(
+  function finishCountDown(
+    answerBtn: HTMLElement,
+    answerIcon: HTMLElement,
+  ): void {
+    const gameContent = document.querySelector(
       '.js-game-content',
     ) as HTMLElement;
 
@@ -152,12 +155,12 @@ export function userAnswerEvent(): void {
   /**
    * Executes the countdown timer, updating the display each second.
    * Calls finishCountDown when countdown reaches zero.
-   * 
+   *
    * @param {HTMLElement} answerBtn - The answer button element
    * @param {HTMLElement} answerIcon - The answer icon element
    * @returns {void}
    */
-  function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+  function runCountDown(answerBtn: HTMLElement, answerIcon: HTMLElement): void {
     const intervalId = setInterval(() => {
       currentCountDown--;
 
@@ -173,13 +176,15 @@ export function userAnswerEvent(): void {
   /**
    * Initiates the countdown process after an answer is submitted.
    * Sets initial states, disables user interaction, and starts the countdown display.
-   * 
+   *
    * @param {HTMLElement} answerBtn - The answer button element
    * @param {HTMLElement} answerIcon - The answer icon element
    * @returns {void}
    */
-  function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
-
+  function startCountDown(
+    answerBtn: HTMLElement,
+    answerIcon: HTMLElement,
+  ): void {
     // Prevent multiple countdowns
     if (isCountDownActive) return;
 

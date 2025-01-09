@@ -1,12 +1,12 @@
 //*** Abstracts Variables: Name ***//
 
-$max-content-width: 80rem;  // 1280 ÷ 16px
+$max-content-width: 80rem; // 1280 ÷ 16px
 
 // Breakpoint definitions
 $breakpoints: (
-  'mobile':  320px,
+  'mobile': 320px,
   'phablet': 540px,
-  'tablet':  720px,
-  'laptop':  1280px,
-  'desktop': 1280px
+  'tablet': 720px,
+  'laptop': 1280px,
+  'desktop': 1280px,
 );

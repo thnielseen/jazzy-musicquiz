@@ -19,26 +19,30 @@ function formatTime(seconds: number): string {
 }
 
 /**
-* Prints the quiz results to the DOM, including correct answers count,
-* total score, and completion time.
-* 
-* @param {QuizQuestion[]} questions - Array of quiz questions with user answers
-* @returns {void}
-* @throws {Error} Logs error if result container element is not found
-*/
+ * Prints the quiz results to the DOM, including correct answers count,
+ * total score, and completion time.
+ *
+ * @param {QuizQuestion[]} questions - Array of quiz questions with user answers
+ * @returns {void}
+ * @throws {Error} Logs error if result container element is not found
+ */
 export function printResult(questions: QuizQuestion[]): void {
-  const resultContainer = document.querySelector(".result__content");
+  const resultContainer = document.querySelector('.result__content');
 
   /** Validate result container exists before proceeding */
-  if(!resultContainer) {
-
+  if (!resultContainer) {
     console.error('Result container not found!');
     return;
   }
 
   /** Calculate final statistics */
-  const correctAnswers: number = questions.filter(q => q.isUserAnswerCorrect).length;
-  const totalScore: number = questions.reduce((acc, q) => acc + (q.score || 0), 0);
+  const correctAnswers: number = questions.filter(
+    (q) => q.isUserAnswerCorrect,
+  ).length;
+  const totalScore: number = questions.reduce(
+    (acc, q) => acc + (q.score || 0),
+    0,
+  );
 
   /**
    * Retrieve completion times from localStorage
@@ -58,7 +62,7 @@ export function printResult(questions: QuizQuestion[]): void {
    * - Total score achieved
    * - Completion time for this attempt
    */
-    resultContainer.innerHTML = `
+  resultContainer.innerHTML = `
   <h2 class="result__title" aria-live="polite">Resultat</h2>
   <div class="row" role="group" aria-labelledby="result-correct">
     <span id="result-correct" class="result__label">Antal rätt:</span>
@@ -74,4 +78,3 @@ export function printResult(questions: QuizQuestion[]): void {
   </div>
 `;
 }
-

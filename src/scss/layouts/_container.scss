@@ -17,11 +17,11 @@ $_module-name: 'Container';
     margin-inline: calc(-50% + 50vw);
   }
 
-  &--boxed, &--narrow {
+  &--boxed,
+  &--narrow {
     @extend .container;
     margin-inline: auto;
-    padding-inline: max(3.125%, .75rem);
-    
+    padding-inline: max(3.125%, 0.75rem);
   }
 
   &--boxed {
@@ -29,7 +29,7 @@ $_module-name: 'Container';
   }
 
   &--narrow {
-    max-width: calc(var.$max-content-width * .8);
+    max-width: calc(var.$max-content-width * 0.8);
   }
 }
 

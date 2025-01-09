@@ -3,7 +3,7 @@
 @use '../variables' as var;
 
 // Example
-@function my-function($myVar: "Default Value") {
+@function my-function($myVar: 'Default Value') {
   // Do something...
   @return $result;
 }

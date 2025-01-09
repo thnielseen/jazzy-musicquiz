@@ -22,27 +22,28 @@ $_module-name: 'Accessibility helpers';
   border: 0 !important;
 }
 
-
 // Reduced motion
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
-  
+
   // Remove transition and animation duration
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
-    
+
     // Or if you need specific durations without conflicts
-    &[style*="transition"] {
+    &[style*='transition'] {
       transition-duration: 0.01ms !important;
     }
-    &[style*="animation"] {
+    &[style*='animation'] {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
     }
-    
+
     scroll-behavior: auto !important;
   }
 }

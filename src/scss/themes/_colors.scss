@@ -6,58 +6,55 @@
 @use '../abstracts/mixins' as mx;
 
 :root {
-
   //---------- Theme Colors ----------//
-  --background-color: #BCEBE5; //#FFFBE7;
-  --background-accent: #FEFFEB; //#FFFFDB;
+  --background-color: #bcebe5; //#FFFBE7;
+  --background-accent: #feffeb; //#FFFFDB;
 
-  --text-color: #115F6B;
-  --link-color: #A31860;
-  --link-color-hover: #C94A1C;
+  --text-color: #115f6b;
+  --link-color: #a31860;
+  --link-color-hover: #c94a1c;
 
-  --button-background: #2E7C88; //#115F6B;
-  --button-background-hover: #C83A84; //#A31860;
-  --button-text: #FEFFEB; //#FAFAFA;
+  --button-background: #2e7c88; //#115F6B;
+  --button-background-hover: #c83a84; //#A31860;
+  --button-text: #feffeb; //#FAFAFA;
 
   //---------- INFO Colors ----------//
-  --valid-border: #4CAF50;
-  --valid-background: #E6F3E6;
-  --valid-text: #2E7C32;
+  --valid-border: #4caf50;
+  --valid-background: #e6f3e6;
+  --valid-text: #2e7c32;
 
-  --danger-border: #F44336;
-  --danger-background: #FFEBEE;
-  --danger-text: #CF2D2D;
+  --danger-border: #f44336;
+  --danger-background: #ffebee;
+  --danger-text: #cf2d2d;
 
-  --info-border: #007CF7;
-  --info-background: #E6F2FF;
-  --info-text: #0056B3;
+  --info-border: #007cf7;
+  --info-background: #e6f2ff;
+  --info-text: #0056b3;
 }
 
 .dark-theme {
-
   //---------- Theme Colors ----------//
-  --background-color: #002C37;
-  --background-accent: #115F6B;
+  --background-color: #002c37;
+  --background-accent: #115f6b;
 
-  --text-color: #FEFFEB; //#FFFFDB;
-  --link-color: #FF8FC9;
-  --link-color-hover: #F27300;
+  --text-color: #feffeb; //#FFFFDB;
+  --link-color: #ff8fc9;
+  --link-color-hover: #f27300;
 
-  --button-background: #2E7C88;
-  --button-background-hover: #C83A84;
-  --button-text: #FEFFEB; //#FAFAFA;
-
+  --button-background: #2e7c88;
+  --button-background-hover: #c83a84;
+  --button-text: #feffeb; //#FAFAFA;
 
   //---------- INFO Colors ----------//
-  --valid-border: #2ADE8A;
-  --valid-background: #063A20;
-  --valid-text: #29D685;
+  --valid-border: #2ade8a;
+  --valid-background: #063a20;
+  --valid-text: #29d685;
 
-  --danger-border: #FF5649;
-  --danger-background: #4D0C0C;
-  --danger-text: #FF5649;
+  --danger-border: #ff5649;
+  --danger-background: #4d0c0c;
+  --danger-text: #ff5649;
 
-  --info-border: #4DA6FF;
-  --info-background: #0C2C4D;
-  --info-text: #4DA6FF;
+  --info-border: #4da6ff;
+  --info-background: #0c2c4d;
+  --info-text: #4da6ff;
 }

@@ -8,20 +8,20 @@
 .game {
   &__question-card {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   &__title {
     font-size: var(--fs-400);
     margin-bottom: 1.25em;
     color: var(--text-color);
-    text-align: center; 
+    text-align: center;
   }
   &__question-title {
     font-size: var(--fs-500);
     font-weight: 700;
     line-height: 1.25em;
-    margin-bottom: .75em;
+    margin-bottom: 0.75em;
     color: var(--text-color);
     text-align: center;
   }
@@ -30,7 +30,6 @@
     padding-block: 1em;
     line-height: 1.5em;
     margin: 0 auto 1.5em;
-
   }
   &__content {
     position: relative;
@@ -40,7 +39,7 @@
     background-color: var(--background-accent);
     color: var(--text-color);
     border: 2px solid var(--text-color);
-    border-radius: calc(var(--fs-300) * .75);
+    border-radius: calc(var(--fs-300) * 0.75);
 
     display: grid;
     justify-content: stretch;
@@ -56,31 +55,33 @@
     border: none;
 
     @include mx.for-breakpoint('tablet-up') {
-        grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 
-        :focus-within {
-          outline: 3px solid var(--info-border);
-          outline-offset: 3px;
-          border-radius: calc(var(--fs-300) * 0.5);
-        }
-    };
-  }   
+      :focus-within {
+        outline: 3px solid var(--info-border);
+        outline-offset: 3px;
+        border-radius: calc(var(--fs-300) * 0.5);
+      }
+    }
+  }
   &__answer-button {
     position: relative;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     font-family: inherit;
     background-color: var(--button-background);
     color: var(--button-text);
-    font-size: var(--fs-300); 
+    font-size: var(--fs-300);
     border: 2px solid var(--button-background);
-    border-radius: calc(var(--fs-300) * .5);
+    border-radius: calc(var(--fs-300) * 0.5);
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
     text-align: center;
 
     // Hides radio button
-    & input[type="radio"] {
+    & input[type='radio'] {
       appearance: none; /* Ta bort standardutseendet */
       position: relative;
       outline: none; /* Ta bort standard-outline */
@@ -95,7 +96,7 @@
       display: flex;
       align-items: center;
       padding-block: calc(var(--fs-300) * 1);
-      padding-inline:  calc(var(--fs-300) * 2)  calc(var(--fs-300) * 2);
+      padding-inline: calc(var(--fs-300) * 2) calc(var(--fs-300) * 2);
     }
 
     // Hover style only when the button is in its "neutral" state
@@ -112,7 +113,8 @@
       outline-offset: 3px;
     }
 
-    &.valid, &.invalid {
+    &.valid,
+    &.invalid {
       outline: 0;
       & label {
         padding-inline-end: calc(var(--fs-300) * 5);

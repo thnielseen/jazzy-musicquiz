@@ -1,4 +1,4 @@
-import '../scss/style.scss'
+import '../scss/style.scss';
 import { setupStartButton } from './startButton';
 import { userAnswerEvent } from './userAnswerEvent';
 import { endGameButton } from './endGame';

@@ -4,7 +4,7 @@
 @use '../functions' as fn;
 
 // Example
-@mixin mixin-name($myVar: "Default Value") {
+@mixin mixin-name($myVar: 'Default Value') {
   // Some styling stuff...
   @content;
 }

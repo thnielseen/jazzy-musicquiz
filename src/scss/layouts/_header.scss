@@ -4,7 +4,6 @@
 @use '../abstracts/functions' as fn;
 @use '../abstracts/mixins' as mx;
 
-
 .header {
   width: 100%;
 
@@ -35,7 +34,8 @@
     height: auto;
   }
 
-  &__score, &__timer {
+  &__score,
+  &__timer {
     width: 50%;
     display: inline-block;
     font-size: var(--fs-500);
@@ -51,5 +51,4 @@
     order: 1;
     text-align: right;
   }
-
 }
