@@ -6,6 +6,11 @@
 @use '../abstracts/mixins' as mx;
 
 .game {
+  &__question-card {
+    display: flex;
+    flex-direction: column; 
+  }
+
   &__title {
     font-size: var(--fs-400);
     margin-bottom: 1.25em;
@@ -23,8 +28,9 @@
   &__question {
     font-size: var(--fs-300);
     padding-block: 1em;
-    margin-bottom: 1.5em; 
     line-height: 1.5em;
+    margin: 0 auto 1.5em;
+
   }
   &__content {
     position: relative;
