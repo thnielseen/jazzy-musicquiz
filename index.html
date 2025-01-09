@@ -2,10 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jazz Up - Quiz for masters</title>
-    <meta name="description" content="" />
+    <title>Jazz Up - Musikquiz för mästare</title>
+    <meta name="description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta name="keywords" content="Jazz Up, musikquiz, låttexter, quiz för mästare, gissa låtar, musikspel, onlinequiz, snabbhet, tävling" />
+    <meta name="author" content="Ditt namn eller företag" />
+    <meta name="robots" content="index, follow" />
+  
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jazz Up - Musikquiz för mästare" />
+    <meta property="og:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta property="og:image" content="https://example.com/images/jazz-up-og-image.jpg" />
+    <meta property="og:url" content="https://example.com/jazz-up" />
+    <meta property="og:site_name" content="Jazz Up" />
+  
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jazz Up - Musikquiz för mästare" />
+    <meta name="twitter:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta name="twitter:image" content="https://example.com/images/jazz-up-twitter-image.jpg" />
+    <meta name="twitter:site" content="@DittTwitterAnvändarnamn" />
+    <meta name="twitter:creator" content="@DittTwitterAnvändarnamn" />
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
     <!-- SVG Symbols -->
@@ -108,7 +131,7 @@
           <button type="button" class="game__next-button js-next-question">
             Bekräfta svar <span class="js-next-question-counter"></span>
           </button>
-          <p class="js-feedback-result" aria-live="polite" role="alert">koas</p>
+          <p class="js-feedback-result" aria-live="polite" role="alert"></p>
         </div>
         
       </section>
@@ -118,29 +141,7 @@
       <!------------------------------------>
       <section class="result hidden">
         <div class="result__content">
-          <h2 class="result__title">Resultat</h2>
-          <div class="row">
-            <span class="result__label">Antal rätt:</span>
-            <span class="result__data js-result-count">9</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Antal poäng:</span>
-            <span class="result__data js-result-score">9</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Din tid:</span>
-
-            <span class="">
-              <span class="result__data js-result-minutes">3</span>&nbsp;<span
-                class="result__label"
-                >minuter</span
-              >
-              <span class="result__data js-result-seconds">35</span>&nbsp;<span
-                class="result__label"
-                >sekunder</span
-              >
-            </span>
-          </div>
+          
         </div>
 
         <div class="result__buttons">
