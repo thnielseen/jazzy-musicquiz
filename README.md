@@ -153,3 +153,4 @@ I detta projekt använde vi oss av;
 
 
 #### Lighthouse analys
+<img src="assets/screenshot_lighthouse_analytic.png" alt="Logo" width="300">
