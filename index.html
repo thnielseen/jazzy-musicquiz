@@ -74,10 +74,11 @@
                 type="text"
                 name="username"
                 id="username"
-                class="intro__input js-username-input"
                 placeholder="Jazzonymous"
+                aria-describedby="username-help"
               />
             </label>
+            <p id="username-help">Använd ett kreativt smeknamn till spelomgången! (valfritt)</p>
             <button
               type="button"
               class="intro__button js-start-button"
@@ -100,14 +101,14 @@
             10</span>
         </h2>
         <div class="game__content js-game-content" tabindex="-1">
-          <p class="js-progress-feedback hidden"  aria-live="polite">
+          <p class="js-progress-feedback"  aria-live="polite">
             <span>Du är nu på fråga <span class="js-question-feedback-number"></span> av 10</span>
           </p>
           <article class="js-question-card"></article>
           <button type="button" class="game__next-button js-next-question">
             Bekräfta svar <span class="js-next-question-counter"></span>
           </button>
-          <p class="js-feedback-result hidden" aria-live="polite" role="alert"></p>
+          <p class="js-feedback-result" aria-live="polite" role="alert">koas</p>
         </div>
         
       </section>
