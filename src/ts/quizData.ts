@@ -23,7 +23,7 @@ import { QuizQuestion } from "./getQuizQuestions";
 export const quizQuestions: QuizQuestion[] = [
   // Questions array containing multiple QuizQuestion instances
   new QuizQuestion(
-    "Trying to keep up with you, and I don't know if I can do it, oh no [ _______ ]",
+    "Trying to keep up with you, and I don't know if I can do it, oh no, [ _______ ]",
     [
       "You had too much",
       "I've said too much",
@@ -79,7 +79,7 @@ export const quizQuestions: QuizQuestion[] = [
       "thing that I could change",
       "thing to replace",
       "thing I could say",
-      "thing I could erase"
+      "thing that I would change"
     ],
     "thing that I would change"
   ),
@@ -181,7 +181,7 @@ export const quizQuestions: QuizQuestion[] = [
         "Singing words of wisdom",
         "Sharing words of wisdom"
       ],
-      "Speaking words of wisdom,"
+      "Speaking words of wisdom"
     ),
     new QuizQuestion(
       "You may say I'm a dreamer <br> But I'm not the only one <br> I hope someday [ _______ ] <br> And the world will be as one",
@@ -194,14 +194,14 @@ export const quizQuestions: QuizQuestion[] = [
       "you'll join us"
     ),
     new QuizQuestion(
-      "And if I only could <br> I'd make a deal with God <br> And I'd get Him [ _______ ]",
+      " And if I only could <br> I'd make a deal with God <br> And I'd get Him to [ _______ ]",
       [
-        "to swap our places",
-        "to fill our spaces",
-        "to trade our dreams",
-        "to swap our spaces"
+        "swap our places",
+        "fill our spaces",
+        "trade our dreams",
+        "swap our spaces"
       ],
-      "to swap our places"
+      "swap our places"
     ),
     new QuizQuestion(
       "There were sounds in my head <br> Of little voices whispering <br> That I should go and this should end <br> [ _______ ]",
