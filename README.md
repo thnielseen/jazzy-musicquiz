@@ -95,14 +95,17 @@ I quizet använder vi textstiler från GoogleFonts:
 ## Resultat
 ### Startsidan
 På spelets första sida finns en kort beskrivning av spelet, möjlighet att ange ett användarnamn, samt en knapp för att starta spelet.
+
 <img src="assets/game_page_1.png" alt="Logo" width="300">
 
 ### Spelsidan
 När spelet startar börjar en timer räkna uppåt i övre delen av skärmen. Under spelets gång får man visuell feedback på om man svarat rätt eller fel på frågorna. Vid rätt svar belönas man med poäng baserat på hur snabbt svaret gavs. På denna sida kan man också följa hur många frågor som besvarats och hur många som återstår i omgången.
+
 <img src="assets/game_page_2.png" alt="Logo" width="300">
 
 ### Resultatsidan
 När den sista frågan har besvarats stoppas timern och resultatsidan visas. Här presenteras en sammanställning över antal rätta svar, den totala poängsumman och tiden det tog att genomföra spelet. På resultatsidan kan man välja att spela igen eller avsluta spelet.
+
 <img src="assets/game_page_3.png" alt="Logo" width="300">
 
 ## Installationer
@@ -142,13 +145,14 @@ I detta projekt använde vi oss av;
 
 
 ## Screenshots
+Validering och analysverktyg säkerställer att HTML, CSS och JavaScript följer standarder och riktlinjer som fastställts av organisationer som W3C (World Wide Web Consortium). Med nedan valideringar och analyser säkerställer vi att spelet håller bästa möjliga kvalité. 
 
 #### Validering HTML
-
+<img src="assets/screenshot-html-validation-quiz-jazzy.png" alt="Logo" width="300">
 
 #### Validering CSS
 
 
 #### Lighthouse analys
 
-
+<img src="assets/screenshot_lighthouse_analytic.png" alt="Logo" width="300">
