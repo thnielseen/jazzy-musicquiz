@@ -8,7 +8,6 @@
  * const numbers = [1, 2, 3, 4, 5];
  * const shuffledNumbers = shuffleArray(numbers);
  */
-
 export function shuffleArray<T>(array: T[]): T[] {
   for (let i = array.length - 1; i > 0; i--) {
     // Generate a random index between 0 and i

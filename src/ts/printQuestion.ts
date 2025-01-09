@@ -6,19 +6,20 @@ export let questionStartTime: number;
 export let currentQuestion: QuizQuestion;
 
 /**
- * Renders a question and its answers in the DOM.
- *
- * This function takes a `QuizQuestion` object and the index of the current question.
- * It updates the question number displayed in the interface and dynamically generates
- * the HTML structure for the question and its answer options.
- *
- * @param {QuizQuestion} question - The question object to render, containing the question text and answers.
- * @param {number} questionIndex - The index of the current question, used for display and tracking.
+ * Renders a quiz question and its answer options to the game interface.
+ * Also tracks question timing and updates question counter display.
+ * 
+ * @param {QuizQuestion} question - The quiz question object to display
+ * @param {number} questionIndex - Index of the current question
+ * @returns {void}
+ * @throws {Error} Logs error if required DOM elements are not found
+ * 
+ * @example
+ * printQuestion(quizQuestion, 0);
  */
-export function printQuestion(
-  question: QuizQuestion,
-  questionIndex: number,
-): void {
+export function printQuestion(question: QuizQuestion, questionIndex: number): void {
+  /** Get required DOM elements */
+
   const gameContent = document.querySelector('.js-question-card');
   const questionNumberElement = document.querySelector('.js-game-question-number');
   const questionFeedbackNumber = document.querySelector('.js-question-feedback-number');
@@ -26,19 +27,27 @@ export function printQuestion(
 
   
   if (gameContent && questionNumberElement) {
-    // Update the displayed question number
-    questionNumberElement.textContent = (questionCount + 1).toString();
+    /** Update question counter display (1-based) */
+      questionNumberElement.textContent = (questionCount + 1).toString(); 
+    
 
     if (gameContent && questionFeedbackNumber) {
-    // Update the displayed question number
+      /** Update question counter display aria feedback (1-based) */
     questionFeedbackNumber.textContent = (questionCount + 1).toString();
     }
-
-    // Render the question and answer options
-    gameContent.innerHTML = `
+    
+      /**
+       * Render question interface with:
+       * - Question title
+       * - Missing lyrics text
+       * - Radio button list of possible answers
+       * - Answer status icons (initially empty)
+       */
+        gameContent.innerHTML = `
         <h3 class='game__question-title'>Vilken sångtext saknas?</h3>
         <h4 class='game__question' data-qid='${questionIndex}' aria-live='polite'>${question.question}</h4>
         <fieldset class='game__buttons'>
+
           ${question.answers
             .map(
               (answer, answerIndex) => `
@@ -53,15 +62,22 @@ export function printQuestion(
         </fieldset>
     `;
 
-    // Store the current question and the time it was displayed
+    /**
+     * Update game state:
+     * - Store current question for answer checking
+     * - Record start time for scoring
+     */
     currentQuestion = question;
     questionStartTime = Date.now();
   } else {
+
+    /** Log specific errors for missing elements */
     if (!gameContent) {
-      console.error('Game content container not found.');
+        console.error("Game content container not found.");
     }
     if (!questionNumberElement) {
-      console.error('Question number element not found.');
+        console.error("Question number element not found.");
     }
   }
 }
+

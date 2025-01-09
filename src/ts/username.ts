@@ -1,8 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const usernameInput = document.getElementById('username') as HTMLInputElement;
+/**
+ * Initializes the username input field.
+ * This function:
+ * 1. Retrieves any previously saved username from localStorage
+ * 2. Sets the input field value to either the saved username or a default value
+ */
+const usernameInput = document.getElementById('username') as HTMLInputElement;
 
-  // Attempt to get the username from localStorage
-  const savedUsername = localStorage.getItem('username');
+// Attempt to get the username from localStorage
+const savedUsername = localStorage.getItem('username');
 
   // If we have a saved username, set it in the input field
   if (usernameInput) {
@@ -14,4 +19,4 @@ document.addEventListener('DOMContentLoaded', () => {
       usernameInput.value = 'Jazzonymous';
     }
   }
-});
+}

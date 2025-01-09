@@ -4,14 +4,11 @@ import { userAnswerEvent } from './userAnswerEvent';
 import { endGameButton } from './endGame';
 import { initRestartGame } from './restartGame';
 
-
-window.addEventListener('DOMContentLoaded', () => {  
-    // Connect start button and time display to setupStartButton
-    setupStartButton('start-game-button', 'timeDisplay');
-    // Restart Game
-    initRestartGame();
-    // End game
-    endGameButton();
-});
+// Connect start button and time display to setupStartButton
+setupStartButton('start-game-button', 'timeDisplay');
+// Restart Game
+initRestartGame();
+// End game
+endGameButton();
 
 userAnswerEvent();
