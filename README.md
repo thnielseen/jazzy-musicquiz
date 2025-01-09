@@ -145,6 +145,7 @@ I detta projekt använde vi oss av;
 
 
 ## Screenshots
+Validering och analysverktyg säkerställer att HTML, CSS och JavaScript följer standarder och riktlinjer som fastställts av organisationer som W3C (World Wide Web Consortium). Med nedan valideringar och analyser säkerställer vi att spelet håller bästa möjliga kvalité. 
 
 #### Validering HTML
 <img src="assets/screenshot-html-validation-quiz-jazzy.png" alt="Logo" width="300">
