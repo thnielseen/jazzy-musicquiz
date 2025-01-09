@@ -37,8 +37,8 @@ Vi följde Scrum-metoden och delade in projektet i sprintar.
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
 
 #### Scrum Master
-Rollen delas upp över de olika sprintarna så att de flesta fick testa på rollen. Angelica Nylander var Scrum Master 16:e till 23 december, Elin Nilsson var Scrum Master 27 december till 3 januari och
-Frida Nordenlöw var Scrum Master 7:e till 10 januari.
+Rollen delas upp över de olika sprintarna så att de flesta fick testa på rollen. Angelica Nylander var Scrum Master 16:e till 23:e december, Elin Nilsson var Scrum Master 23:e december till 3:e januari och
+Frida Nordenlöw var Scrum Master 3:e till 10:e januari.
 
 #### Utvecklingsteam
 Angelica Nylander, Egil Eskilsson, Elin Nilsson, Frida Nordenlöw och Therese Nielsen
@@ -72,9 +72,9 @@ Efter varje sprint höll vi retrospektiva möten med hjälp av verktyget Miro. D
 En wireframe till projektet togs fram med hjälp av Figma innan arbetet startade. 
 
 ### Spelets logotype
-Loggan tog vi fram med hjälp av AI.
+Loggan togs fram med hjälp av AI.
 
-<img src="assets/jazz_up_logo.png" alt="Logo" width="300">
+<img src="assets/jazz_up_logo.png" alt="Logo" width="150">
 
 ### Textstil
 I quizet använder vi textstiler från GoogleFonts:
@@ -91,6 +91,22 @@ I quizet använder vi textstiler från GoogleFonts:
 | Knappfärg           | ![#2e7c88](https://via.placeholder.com/10/2e7c88?text=+) `#2e7c88` |
 | Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) `#c83a84` |
 
+
+## Resultat
+### Startsidan
+På spelets första sida finns en kort beskrivning av spelet, möjlighet att ange ett användarnamn, samt en knapp för att starta spelet.
+
+<img src="assets/game_page_1.png" alt="Logo" width="300">
+
+### Spelsidan
+När spelet startar börjar en timer räkna uppåt i övre delen av skärmen. Under spelets gång får man visuell feedback på om man svarat rätt eller fel på frågorna. Vid rätt svar belönas man med poäng baserat på hur snabbt svaret gavs. På denna sida kan man också följa hur många frågor som besvarats och hur många som återstår i omgången.
+
+<img src="assets/game_page_2.png" alt="Logo" width="300">
+
+### Resultatsidan
+När den sista frågan har besvarats stoppas timern och resultatsidan visas. Här presenteras en sammanställning över antal rätta svar, den totala poängsumman och tiden det tog att genomföra spelet. På resultatsidan kan man välja att spela igen eller avsluta spelet.
+
+<img src="assets/game_page_3.png" alt="Logo" width="300">
 
 ## Installationer
 I detta projekt gjordes följande installationer. 
@@ -131,11 +147,9 @@ I detta projekt använde vi oss av;
 ## Screenshots
 
 #### Validering HTML
-
+<img src="assets/screenshot-html-validation-quiz-jazzy.png" alt="Logo" width="300">
 
 #### Validering CSS
 
 
-#### Lighthouse
-
-
+#### Lighthouse analys
