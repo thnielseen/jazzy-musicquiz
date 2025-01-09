@@ -1,30 +1,30 @@
 <!doctype html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     
     <title>Jazz Up - Musikquiz för mästare</title>
-    <meta name="description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta name="description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" >
     <meta name="keywords" content="Jazz Up, musikquiz, låttexter, quiz för mästare, gissa låtar, musikspel, onlinequiz, snabbhet, tävling" />
-    <meta name="author" content="Ditt namn eller företag" />
-    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Ditt namn eller företag" >
+    <meta name="robots" content="index, follow" >
   
     <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Jazz Up - Musikquiz för mästare" />
-    <meta property="og:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
-    <meta property="og:image" content="https://example.com/images/jazz-up-og-image.jpg" />
-    <meta property="og:url" content="https://example.com/jazz-up" />
-    <meta property="og:site_name" content="Jazz Up" />
+    <meta property="og:type" content="website" >
+    <meta property="og:title" content="Jazz Up - Musikquiz för mästare" >
+    <meta property="og:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" >
+    <meta property="og:image" content="https://example.com/images/jazz-up-og-image.jpg" >
+    <meta property="og:url" content="https://example.com/jazz-up" >
+    <meta property="og:site_name" content="Jazz Up" >
   
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Jazz Up - Musikquiz för mästare" />
-    <meta name="twitter:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
-    <meta name="twitter:image" content="https://example.com/images/jazz-up-twitter-image.jpg" />
-    <meta name="twitter:site" content="@DittTwitterAnvändarnamn" />
-    <meta name="twitter:creator" content="@DittTwitterAnvändarnamn" />
+    <meta name="twitter:card" content="summary_large_image" >
+    <meta name="twitter:title" content="Jazz Up - Musikquiz för mästare" >
+    <meta name="twitter:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" >
+    <meta name="twitter:image" content="https://example.com/images/jazz-up-twitter-image.jpg" >
+    <meta name="twitter:site" content="@DittTwitterAnvändarnamn" >
+    <meta name="twitter:creator" content="@DittTwitterAnvändarnamn" >
 
   </head>
   <body>
@@ -88,7 +88,7 @@
           <p class="intro__text">
             Tror du att du har den skarpaste "jazzy" instinkten? Låt oss sätta igång och se vad du går för!
           </p>
-          <p class="intro__text">
+          <p class="intro__text hidden">
             Fyll i ditt användarnamn och tryck på knappen för att börja spelet. Lycka till!
           </p>
           <form class="intro__form">
@@ -100,10 +100,10 @@
                 id="username"
                 placeholder="Jazzonymous"
                 aria-describedby="username-help"
-              />
+              >
 
             </label>
-            <p id="username-help">Använd ett kreativt smeknamn till spelomgången! (valfritt)</p>
+            <p id="username-help" class="hidden">Använd ett kreativt smeknamn till spelomgången! (valfritt)</p>
             <button
               type="button"
               class="intro__button js-start-button"
@@ -126,15 +126,15 @@
             10</span>
         </h2>
         <div class="game__content js-game-content" tabindex="-1">
-          <p class="js-progress-feedback"  aria-live="polite">
+          <p class="js-progress-feedback hidden"  aria-live="polite">
             <span>Du är nu på fråga <span class="js-question-feedback-number"></span> av 10</span>
           </p>
-          <article class="js-question-card"></article>
+          <article class="game__question-card js-question-card"></article>
           <button type="button" class="game__next-button js-next-question" 
             aria-label="Bekräfta ditt svar och gå vidare till nästa fråga">
             Bekräfta svar <span class="js-next-questtion-counter"></span>
           </button>
-          <p class="js-feedback-result" aria-live="polite" role="alert"></p>
+          <p class="js-feedback-result hidden" aria-live="polite" role="alert"></p>
         </div>
         
       </section>

@@ -125,14 +125,14 @@ export class QuizQuestion implements IQuizQuestion {
     if (this.timeTaken === 0 || !this.isUserAnswerCorrect) {
       return 0; // Incorrect answer
     }
-    if (this.timeTaken > 60) {
+    if (this.timeTaken > 30) {
       return 1; // More than 60 seconds
     }
-    if (this.timeTaken <= 10) {
+    if (this.timeTaken <= 5) {
       return 10; // Maximum score for quick answers
     }
     // Gradual score reduction for times between 10 and 60 seconds
-    return Math.max(1, 10 - Math.floor((this.timeTaken - 10) / 5));
+    return Math.max(1, 5  - Math.floor((this.timeTaken - 5) / 5));
   }
 
   /**
