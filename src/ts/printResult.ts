@@ -59,7 +59,7 @@ export function printResult(questions: QuizQuestion[]): void {
    * - Completion time for this attempt
    */
     resultContainer.innerHTML = `
-  <h2 class="result__title" aria-live="polite" role="heading" aria-level="2">Resultat</h2>
+  <h2 class="result__title" aria-live="polite">Resultat</h2>
   <div class="row" role="group" aria-labelledby="result-correct">
     <span id="result-correct" class="result__label">Antal rätt:</span>
     <span class="result__data js-result-count">${correctAnswers} av 10</span>
