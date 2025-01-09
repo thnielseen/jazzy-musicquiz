@@ -1,7 +1,6 @@
 import { QuizQuestion } from './getQuizQuestions';
 import { questionCount } from './questionCounter';
 
-
 // Variables to store the current question and the time it was displayed
 export let questionStartTime: number;
 export let currentQuestion: QuizQuestion;
@@ -20,13 +19,23 @@ export let currentQuestion: QuizQuestion;
  */
 export function printQuestion(question: QuizQuestion, questionIndex: number): void {
   /** Get required DOM elements */
+
   const gameContent = document.querySelector('.js-question-card');
   const questionNumberElement = document.querySelector('.js-game-question-number');
+  const questionFeedbackNumber = document.querySelector('.js-question-feedback-number');
 
+
+  
   if (gameContent && questionNumberElement) {
-      /** Update question counter display (1-based) */
+    /** Update question counter display (1-based) */
       questionNumberElement.textContent = (questionCount + 1).toString(); 
+    
 
+    if (gameContent && questionFeedbackNumber) {
+      /** Update question counter display aria feedback (1-based) */
+    questionFeedbackNumber.textContent = (questionCount + 1).toString();
+    }
+    
       /**
        * Render question interface with:
        * - Question title
@@ -34,22 +43,23 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
        * - Radio button list of possible answers
        * - Answer status icons (initially empty)
        */
-      gameContent.innerHTML = `
-        <h3 class="game__question-title">Vilken sångtext saknas?</h3>
-        <h4 class="game__question" data-qid="${questionIndex}">${question.question}</h4>
-        <ul class="game__buttons">
+        gameContent.innerHTML = `
+        <h3 class='game__question-title'>Vilken sångtext saknas?</h3>
+        <h4 class='game__question' data-qid='${questionIndex}' aria-live='polite'>${question.question}</h4>
+        <fieldset class='game__buttons'>
+
           ${question.answers
             .map(
               (answer, answerIndex) => `
-            <li class="game__answer-button js-answer-btn">
-              <label for="answer${answerIndex}">${answer.answer}</label>
-              <input type="radio" name="answer" id="answer${answerIndex}" value="${answer.answer}">
-              <span class="game__answer-icon js-answer-icon"></span>
-            </li>
-          `
+            <div class='game__answer-button js-answer-btn'>
+              <label for='answer${answerIndex}'>${answer.answer}</label>
+              <input type='radio' name='answer' id='answer${answerIndex}' value='${answer.answer}'>
+              <span class='game__answer-icon js-answer-icon'></span>
+            </div>
+          `,
             )
             .join('')}
-        </ul>
+        </fieldset>
     `;
 
     /**
@@ -60,6 +70,7 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
     currentQuestion = question;
     questionStartTime = Date.now();
   } else {
+
     /** Log specific errors for missing elements */
     if (!gameContent) {
         console.error("Game content container not found.");
@@ -69,3 +80,4 @@ export function printQuestion(question: QuizQuestion, questionIndex: number): vo
     }
   }
 }
+

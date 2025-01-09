@@ -1,8 +1,11 @@
-
-import { questionStartTime, currentQuestion } from "./printQuestion";
-import { getNextQuestion, sessionCount, questionCount } from "./questionCounter";
-import { getGameTimer } from "./gameTimer";
-import { updateTotalScore } from "./getQuizQuestions";
+import { questionStartTime, currentQuestion } from './printQuestion';
+import {
+  getNextQuestion,
+  sessionCount,
+  questionCount,
+} from './questionCounter';
+import { getGameTimer } from './gameTimer';
+import { updateTotalScore } from './getQuizQuestions';
 
 /**
  * Event listener for user answers.
@@ -23,11 +26,15 @@ import { updateTotalScore } from "./getQuizQuestions";
  * @returns {void}
  */
 export function userAnswerEvent(): void {
-  const timeDisplay = document.querySelector('.js-current-timer') as HTMLElement;
+  const timeDisplay = document.querySelector(
+    '.js-current-timer',
+  ) as HTMLElement;
   const timer = getGameTimer(timeDisplay);
-  
+
   // Get submit answer button
-  const submitAnswerBtn = document.querySelector('.js-next-question') as HTMLButtonElement;
+  const submitAnswerBtn = document.querySelector(
+    '.js-next-question',
+  ) as HTMLButtonElement;
 
   // Dynamic countdown attributes
   let isCountDownActive: boolean = false;
@@ -44,17 +51,26 @@ export function userAnswerEvent(): void {
     e.preventDefault;
 
     // Get the elements
-    const checkedAnswer = document.querySelector('input[name="answer"]:checked') as HTMLInputElement;
+    const checkedAnswer = document.querySelector(
+      'input[name="answer"]:checked',
+    ) as HTMLInputElement;
 
     if (!checkedAnswer) {
-      alert('Var vänlig markera ett svar innan du klickar på knappen "Skicka svar"');
+      alert(
+        'Var vänlig markera ett svar innan du klickar på knappen "Skicka svar"',
+      );
       console.error('No current question is set.');
       return;
     }
-    
+
     if (checkedAnswer) {
       const answerBtn = checkedAnswer.closest('.js-answer-btn') as HTMLElement;
-      const answerIcon = answerBtn?.querySelector('.js-answer-icon') as HTMLInputElement;
+      const answerIcon = answerBtn?.querySelector(
+        '.js-answer-icon',
+      ) as HTMLInputElement;
+      const feedbackMessage = document.querySelector(
+        '.js-feedback-result',
+      ) as HTMLElement;
 
       // Store the value of the selected answer
       const userAnswer: string = checkedAnswer.value;
@@ -66,14 +82,22 @@ export function userAnswerEvent(): void {
         // Show for user if correct or incorrect
         if (currentQuestion.isUserAnswerCorrect) {
           answerBtn?.classList.add('valid');
-          answerIcon.innerHTML = '<svg class="icon"><use href="#party-icon"/></svg>';
+          answerIcon.innerHTML =
+            '<svg class="icon" aria-hidden="true"><use href="#party-icon"/></svg>';
+          if (feedbackMessage) {
+            feedbackMessage.textContent = `Rätt svar! Bra jobbat! Nuvarande poäng:{totalscore}`;
+          }
         } else {
           answerBtn?.classList.add('invalid');
-          answerIcon.innerHTML = '<svg class="icon"><use href="#sad-icon"/></svg>';
+          answerIcon.innerHTML =
+            '<svg class="icon" aria-hidden="true"><use href="#sad-icon"/></svg>';
+          if (feedbackMessage) {
+            feedbackMessage.textContent = `Tyvärr, det blev fel Nuvarande poäng:{totalscore}`;
+          }
         }
-        
+
         startCountDown(answerBtn, answerIcon);
-      } 
+      }
     }
   }
 
@@ -96,6 +120,10 @@ export function userAnswerEvent(): void {
    * @returns {void}
    */
   function finishCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+      const gameContent = document.querySelector(
+      '.js-game-content',
+    ) as HTMLElement;
+
     // Calculate the time taken to answer the question
     const timeTaken = (Date.now() - questionStartTime) / 1000;
     currentQuestion.timeTaken = timeTaken;
@@ -105,7 +133,11 @@ export function userAnswerEvent(): void {
     if (questionCount === 10) {
       timer.stop();
     }
-    
+    // When new question redirect focus to
+    if (gameContent) {
+      gameContent.focus();
+    }
+
     submitAnswerBtn.innerText = 'Bekräfta svar';
     document.body.style.removeProperty('pointer-events');
     document.body.style.removeProperty('cursor');
@@ -128,12 +160,12 @@ export function userAnswerEvent(): void {
   function runCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
     const intervalId = setInterval(() => {
       currentCountDown--;
-      
+
       if (currentCountDown > 0) {
-          updateCountDownDisplay(currentCountDown);
+        updateCountDownDisplay(currentCountDown);
       } else {
-          finishCountDown(answerBtn, answerIcon);
-          clearInterval(intervalId);
+        finishCountDown(answerBtn, answerIcon);
+        clearInterval(intervalId);
       }
     }, 1000);
   }
@@ -147,6 +179,7 @@ export function userAnswerEvent(): void {
    * @returns {void}
    */
   function startCountDown(answerBtn:HTMLElement, answerIcon:HTMLElement): void {
+
     // Prevent multiple countdowns
     if (isCountDownActive) return;
 

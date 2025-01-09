@@ -1,11 +1,31 @@
 <!doctype html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/vite.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jazz Up - Quiz for masters</title>
-    <meta name="description" content="10-question quiz">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Jazz Up - Musikquiz för mästare</title>
+    <meta name="description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta name="keywords" content="Jazz Up, musikquiz, låttexter, quiz för mästare, gissa låtar, musikspel, onlinequiz, snabbhet, tävling" />
+    <meta name="author" content="Ditt namn eller företag" />
+    <meta name="robots" content="index, follow" />
+  
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jazz Up - Musikquiz för mästare" />
+    <meta property="og:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta property="og:image" content="https://example.com/images/jazz-up-og-image.jpg" />
+    <meta property="og:url" content="https://example.com/jazz-up" />
+    <meta property="og:site_name" content="Jazz Up" />
+  
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jazz Up - Musikquiz för mästare" />
+    <meta name="twitter:description" content="Utmanar dina musikaliska instinkter med Jazz Up! Ett snabbt och spännande quiz där du gissar låttexter för att samla poäng innan tiden tar slut. Testa nu!" />
+    <meta name="twitter:image" content="https://example.com/images/jazz-up-twitter-image.jpg" />
+    <meta name="twitter:site" content="@DittTwitterAnvändarnamn" />
+    <meta name="twitter:creator" content="@DittTwitterAnvändarnamn" />
+
   </head>
   <body>
     <!-- SVG Symbols -->
@@ -60,14 +80,16 @@
           <h1 class="intro__title">Välkommen till Jazz Up!</h1>
           <h2 class="intro__subtitle">Så här går spelet till:</h2>
           <p class="intro__text">
-            Börja med att ange ditt användarnamn och tryck sedan på starta spel.
-            Svara på frågor som sträcker sig över allt från (allmänkunskap till
-            rolig trivia) men tänk snabb för spelet går på tid! Klockan tickar
-            uppe i hörnet på spelet där du även ser dina poäng.
+            Jazzy är ett spännande musikquiz där du sätter dina kunskaper om låttexter och din snabbhet på prov. Ju snabbare du gissar den saknade textraden, desto fler poäng får du!
           </p>
           <p class="intro__text">
-            Låt oss se vem som har både den snabbaste hjärnan och den bästa
-            "jazzy" instinkten!
+            Du får direkt feedback på dina svar, och nästa fråga visas efter tre sekunder. Målet är att samla så många poäng som möjligt innan tiden är slut.
+          </p>
+          <p class="intro__text">
+            Tror du att du har den skarpaste "jazzy" instinkten? Låt oss sätta igång och se vad du går för!
+          </p>
+          <p class="intro__text">
+            Fyll i ditt användarnamn och tryck på knappen för att börja spelet. Lycka till!
           </p>
           <form class="intro__form">
             <label class="intro__user-name-wrapper">
@@ -76,10 +98,12 @@
                 type="text"
                 name="username"
                 id="username"
-                class="intro__input js-username-input"
                 placeholder="Jazzonymous"
-              >
+                aria-describedby="username-help"
+              />
+
             </label>
+            <p id="username-help">Använd ett kreativt smeknamn till spelomgången! (valfritt)</p>
             <button
               type="button"
               class="intro__button js-start-button"
@@ -96,21 +120,23 @@
       <!-- ********** Game section ********** -->
       <!-- ********************************** -->
       <section class="game hidden">
-        <h2 class="game__title">
+        <h2 class="game__title" aria-hidden="true">
           <span
-            >Du är nu på fråga <span class="js-game-question-number">1</span> av
+            >Du är nu på fråga <span class="js-game-question-number"></span> av
             10</span>
-          <span class="game__progress-bar js-game-progress-bar"></span>
         </h2>
-        <div class="game__content">
+        <div class="game__content js-game-content" tabindex="-1">
+          <p class="js-progress-feedback"  aria-live="polite">
+            <span>Du är nu på fråga <span class="js-question-feedback-number"></span> av 10</span>
+          </p>
           <article class="js-question-card"></article>
-          <button type="button" class="game__next-button js-next-question" aria-label="Bekräfta ditt svar och gå vidare till nästa fråga">
+          <button type="button" class="game__next-button js-next-question" 
+            aria-label="Bekräfta ditt svar och gå vidare till nästa fråga">
             Bekräfta svar <span class="js-next-questtion-counter"></span>
           </button>
-          <div
-            class="game__next-question-counter js-next-questtion-overlay"
-          ></div>
+          <p class="js-feedback-result" aria-live="polite" role="alert"></p>
         </div>
+        
       </section>
 
       <!-- ********************************** -->
@@ -118,29 +144,7 @@
       <!-- ********************************** -->
       <section class="result hidden">
         <div class="result__content">
-          <h2 class="result__title">Resultat</h2>
-          <div class="row">
-            <span class="result__label">Antal rätt:</span>
-            <span class="result__data js-result-count">9</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Antal poäng:</span>
-            <span class="result__data js-result-score">9</span>
-          </div>
-          <div class="row">
-            <span class="result__label">Din tid:</span>
-
-            <span class="">
-              <span class="result__data js-result-minutes">3</span>&nbsp;<span
-                class="result__label"
-                >minuter</span
-              >
-              <span class="result__data js-result-seconds">35</span>&nbsp;<span
-                class="result__label"
-                >sekunder</span
-              >
-            </span>
-          </div>
+          
         </div>
 
         <div class="result__buttons">

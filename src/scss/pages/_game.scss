@@ -47,9 +47,16 @@
     display: grid;
     gap: calc(var(--fs-300) * 1.25);
     grid-auto-rows: 1fr;
+    border: none;
 
     @include mx.for-breakpoint('tablet-up') {
         grid-template-columns: 1fr 1fr;
+
+        :focus-within {
+          outline: 3px solid var(--info-border);
+          outline-offset: 3px;
+          border-radius: calc(var(--fs-300) * 0.5);
+        }
     };
   }   
   &__answer-button {
@@ -67,10 +74,11 @@
     text-align: center;
 
     // Hides radio button
-    & input[type="radio"]{
-      visibility: hidden;
-      height: 0;
-      width: 0;
+    & input[type="radio"] {
+      appearance: none; /* Ta bort standardutseendet */
+      position: relative;
+      outline: none; /* Ta bort standard-outline */
+      cursor: pointer; /* Behåll klickbarhet */
     }
 
     & label {
