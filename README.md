@@ -7,7 +7,7 @@ Det här projektet är ett quiz-spel som utvecklats som en del av vårt första 
 
 ## Kravlistan
 #### Startsida
-Spelet skulle innehålla en startsida med instruktioner och en knapp för att starta spelet. Det skulle även finnas ett fält för att kunna ange ett användarnamn.
+Spelet är utvecklat så att det ska vara roligt och tillgängligt för alla.  T.ex. är spelets färger är noggrant utvalda för att säkerställa god kontrast och tydlighet, vilket gör det enklare att spela även för personer med nedsatt syn eller färgblindhet.
 
 #### Frågor
 Spelet skulle innehålla minst 20 frågor med tre eller fler svarsalternativ. Vid varje spelomgång skulle 10 frågor slumpas fram, vilket säkerställde variation mellan omgångarna. Under spelets gång skulle även spelaren få en visuell återkoppling som tydligt indikerade om ett svar var rätt eller fel.
@@ -92,7 +92,7 @@ I quizet använder vi textstiler från GoogleFonts:
 | Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) `#c83a84` |
 
 ## Tillgänglighet
-Spelet är även tillgänglighetsanapassad så spelet kan t.ex. läsas upp med hjälp av skärmläsare, styra med enbart tangetbord etc. 
+Spelet är utvecklat så att det ska vara roligt och tillgängligt för alla. T.ex. är spelets färger är noggrant utvalda för att säkerställa god kontrast och tydlighet, vilket gör det enklare att spela även för personer med nedsatt syn eller färgblindhet. Spelet är kompatibelt med skärmläsare för att hjälpa användare som förlitar sig på ljudfeedback att navigera i menyer och spela spelet och hela spelet kan spelas med enbart tangentbordet, vilket underlättar för användare som inte använder mus eller pekskärm.
 
 ## Resultat
 ### Startsidan
