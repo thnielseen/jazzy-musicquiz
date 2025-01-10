@@ -91,6 +91,8 @@ I quizet använder vi textstiler från GoogleFonts:
 | Knappfärg           | ![#2e7c88](https://via.placeholder.com/10/2e7c88?text=+) `#2e7c88` |
 | Hover färg          | ![#c83a84](https://via.placeholder.com/10/c83a84?text=+) `#c83a84` |
 
+## Tillgänglighet
+Spelet är även tillgänglighetsanapassad så spelet kan t.ex. läsas upp med hjälp av skärmläsare, styra med enbart tangetbord etc. 
 
 ## Resultat
 ### Startsidan
