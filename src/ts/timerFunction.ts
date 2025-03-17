@@ -7,8 +7,8 @@ export class Timer {
   /** Number of elapsed seconds */
   private seconds: number;
 
-  /** ID of the interval timer, null when stopped */
-  private intervalId: number | null;
+  /** ID of the interval timer */
+  private intervalId: ReturnType<typeof setInterval> | null;
 
   /** DOM element that displays the current time */
   private timeDisplay: HTMLElement;
@@ -35,7 +35,7 @@ export class Timer {
 
     this.reset(); // Resets the timer when pressing the start game button again
 
-    this.intervalId = setInterval(this.updateTimer.bind(this), 1000); // Update every second
+    this.intervalId = setInterval(this.updateTimer.bind(this), 1000);
   }
 
   /**
@@ -67,9 +67,8 @@ export class Timer {
     this.seconds++;
     this.displayTime();
 
-    // Stoppar timern efter 30 minuter
+    // Stop the timer after 30 minutes (1800 seconds)
     if (this.seconds >= 1800) {
-      // 30 min = 1800 sekunder
       this.stop();
     }
   }

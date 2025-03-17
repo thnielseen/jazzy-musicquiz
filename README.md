@@ -1,6 +1,3 @@
- [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9ew2LI-M)
-
-
 # Quiz-spel - Grupparbete i Scrum
 
 Det här projektet är ett quiz-spel som utvecklats som en del av vårt första grupparbete i skolan. Totalt var projektet på 4 veckor. Projektet genomfördes enligt agila principer med hjälp av ramverket Scrum. Syftet var att inte bara skapa ett roligt och engagerande spel, utan också att lära oss om projektledning, samarbete och arbetsmetoder inom agila utvecklingsmiljöer.
