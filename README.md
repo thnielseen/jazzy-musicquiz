@@ -1,3 +1,21 @@
+# 📌 Personal Portfolio Note (English)
+
+This project was created as part of a 4-week school group assignment using the Scrum methodology.  
+The quiz game is fully functional and focused on accessibility, user feedback, and game logic.
+
+### My personal contributions in this project:
+- Collaborated on planning the game logic and designing the game flowchart.
+- Built the `QuizQuestion` class and implemented the `printQuestion` function.
+- Co-developed the `shuffleQuestions` functionality, triggered at game start.
+- Updated meta tags and worked on improving screen reader compatibility for better accessibility.
+- Participated in sprint planning, daily standups, and retrospectives using the Scrum framework.
+
+The original project documentation written in Swedish by the full team follows below.
+
+📬 For questions or collaboration, feel free to reach out via [GitHub](https://github.com/thnielseen) or connect with me on [LinkedIn](https://www.linkedin.com/in/therese-j-nielsen/).
+
+---
+
 # Quiz-spel - Grupparbete i Scrum
 
 Det här projektet är ett quiz-spel som utvecklats som en del av vårt första grupparbete i skolan. Totalt var projektet på 4 veckor. Projektet genomfördes enligt agila principer med hjälp av ramverket Scrum. Syftet var att inte bara skapa ett roligt och engagerande spel, utan också att lära oss om projektledning, samarbete och arbetsmetoder inom agila utvecklingsmiljöer.
